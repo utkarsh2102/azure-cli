@@ -1,0 +1,8 @@
+usr/bin/az.bat
+usr/bin/az.completion.sh
+usr/lib/python*/dist-packages/azure/__init__.py
+usr/lib/python*/dist-packages/azure/__pycache__
+usr/lib/python*/dist-packages/azure/cli/__pycache__
+usr/lib/python*/dist-packages/.pytest_cache
+usr/lib/python*/dist-packages/tests_core
+usr/lib/python*/dist-packages/tests_extension

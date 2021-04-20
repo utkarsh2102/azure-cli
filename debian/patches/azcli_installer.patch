@@ -1,0 +1,17 @@
+Author: Luca Boccassi <bluca@debian.org>
+Description: set AZ_INSTALLER to DEB
+ The AZ_INSTALLER variable influences the az upgrade command behaviour.
+ For the packaged version, we want it to simply run apt update/upgrade, so
+ always set it to DEB.
+Forwarded: not appropriate
+--- a/src/azure-cli/az
++++ b/src/azure-cli/az
+@@ -13,7 +13,6 @@
+         os.environ.get('PYTHONPATH'),
+     ])
+ 
+-if os.environ.get('AZ_INSTALLER') is None:
+-    os.environ['AZ_INSTALLER'] = 'PIP'
++os.environ['AZ_INSTALLER'] = 'DEB'
+ 
+ os.execl(sys.executable, sys.executable, '-m', 'azure.cli', *sys.argv[1:])

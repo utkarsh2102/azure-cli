@@ -1,0 +1,4 @@
+azure.cli
+azure.cli.core
+azure.cli.telemetry
+azure.cli.testsdk

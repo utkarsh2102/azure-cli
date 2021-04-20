@@ -1,0 +1,122 @@
+#!/usr/bin/make -f
+
+export HTTP_PROXY=127.0.0.1:9
+export HTTPS_PROXY=127.0.0.1:9
+export PYBUILD_BEFORE_TEST=cp -r {dir}/src/azure-cli-core/azure/cli/core/extension/tests/ {build_dir}/tests_extension; \
+	cp -r {dir}/src/azure-cli-core/azure/cli/core/tests/ {build_dir}/tests_core/; \
+	cp -r {dir}/src/azure-cli/azure/cli/command_modules/acr/tests/latest/test_acr_commands_mock.py {build_dir}/tests_core/; \
+	cp -r {dir}/src/azure-cli/azure/cli/command_modules/acs/tests/latest/test_acs_client.py {build_dir}/tests_core/; \
+	cp -r {dir}/src/azure-cli/azure/cli/command_modules/acs/tests/latest/test_custom.py {build_dir}/tests_core/; \
+	cp -r {dir}/src/azure-cli/azure/cli/command_modules/acs/tests/latest/test_helpers.py {build_dir}/tests_core/; \
+	cp -r {dir}/src/azure-cli/azure/cli/command_modules/acs/tests/latest/test_service_principals.py {build_dir}/tests_core/; \
+	cp -r {dir}/src/azure-cli/azure/cli/command_modules/acs/tests/latest/test_validators.py {build_dir}/tests_core/; \
+	cp -r {dir}/src/azure-cli/azure/cli/command_modules/advisor/tests/latest/test_advisor_commands.py {build_dir}/tests_core/; \
+	cp -r {dir}/src/azure-cli/azure/cli/command_modules/appservice/tests/latest/test_app_service_environment_commands_thru_mock.py {build_dir}/tests_core/; \
+	cp -r {dir}/src/azure-cli/azure/cli/command_modules/appservice/tests/latest/test_webapp_commands_thru_mock.py {build_dir}/tests_core/; \
+	cp -r {dir}/src/azure-cli/azure/cli/command_modules/batch/tests/latest/test_batch_commands.py {build_dir}/tests_core/; \
+	cp -r {dir}/src/azure-cli/azure/cli/command_modules/botservice/tests/latest/test_bot_commands.py {build_dir}/tests_core/; \
+	cp -r {dir}/src/azure-cli/azure/cli/command_modules/cdn/tests/latest/test_origin_type.py {build_dir}/tests_core/; \
+	cp -r {dir}/src/azure-cli/azure/cli/command_modules/cdn/tests/latest/test_validators.py {build_dir}/tests_core/; \
+	cp -r {dir}/src/azure-cli/azure/cli/command_modules/cloud/tests/latest/test_cloud.py {build_dir}/tests_core/; \
+	cp -r {dir}/src/azure-cli/azure/cli/command_modules/configure/tests/latest/test_configure.py {build_dir}/tests_core/; \
+	cp -r {dir}/src/azure-cli/azure/cli/command_modules/find/tests/latest/test_find.py {build_dir}/tests_core/; \
+	cp -r {dir}/src/azure-cli/azure/cli/command_modules/lab/tests/latest/test_lab_validators.py {build_dir}/tests_core/; \
+	cp -r {dir}/src/azure-cli/azure/cli/command_modules/network/tests/hybrid_2018_03_01 {build_dir}/tests_core/; \
+	cp -r {dir}/src/azure-cli/azure/cli/command_modules/network/tests/latest/test_dns_commands.py {build_dir}/tests_core/; \
+	cp -r {dir}/src/azure-cli/azure/cli/command_modules/network/tests/latest/test_network_unit_tests.py {build_dir}/tests_core/; \
+	cp -r {dir}/src/azure-cli/azure/cli/command_modules/network/tests/latest/zone_files/ {build_dir}/tests_core/; \
+	cp -r {dir}/src/azure-cli/azure/cli/command_modules/profile/tests/latest/test_profile_custom.py {build_dir}/tests_core/; \
+	cp -r {dir}/src/azure-cli/azure/cli/command_modules/resource/tests/hybrid_2018_03_01/ {build_dir}/tests_core/; \
+	cp -r {dir}/src/azure-cli/azure/cli/command_modules/resource/tests/latest/test_api_check.py {build_dir}/tests_core/; \
+	cp -r {dir}/src/azure-cli/azure/cli/command_modules/resource/tests/latest/test_resource_custom.py {build_dir}/tests_core/; \
+	cp -r {dir}/src/azure-cli/azure/cli/command_modules/resource/tests/latest/test_resource_list_odata_filter.py {build_dir}/tests_core/; \
+	cp -r {dir}/src/azure-cli/azure/cli/command_modules/resource/tests/latest/test_resource_validators.py {build_dir}/tests_core/; \
+	cp -r {dir}/src/azure-cli/azure/cli/command_modules/resource/tests/latest/param-validation-template.json {build_dir}/tests_core/; \
+	cp -r {dir}/src/azure-cli/azure/cli/command_modules/resource/tests/latest/param-validation-params.json {build_dir}/tests_core/; \
+	cp -r {dir}/src/azure-cli/azure/cli/command_modules/role/tests/latest/test_role_commands_thru_mock.py {build_dir}/tests_core/; \
+	cp -r {dir}/src/azure-cli/azure/cli/command_modules/role/tests/latest/test_role_custom.py {build_dir}/tests_core/; \
+	cp -r {dir}/src/azure-cli/azure/cli/command_modules/role/tests/latest/cert.pem {build_dir}/tests_core/
+export PYBUILD_AFTERE_TEST=rm -rf {build_dir}/tests*
+export PYBUILD_TEST_ARGS=-v --deselect=tests_extension/latest/test_extension_commands.py::TestExtensionCommands::test_add_extension_twice \
+	--deselect=tests_extension/latest/test_extension_commands.py::TestExtensionCommands::test_add_extension_verify_no_pip_proxy \
+	--deselect=tests_extension/latest/test_extension_commands.py::TestExtensionCommands::test_add_extension_with_name_but_it_already_exists \
+	--deselect=tests_extension/latest/test_extension_commands.py::TestExtensionCommands::test_add_extension_with_name_valid_checksum \
+	--deselect=tests_extension/latest/test_extension_commands.py::TestExtensionCommands::test_add_extension_with_pip_proxy \
+	--deselect=tests_extension/latest/test_extension_commands.py::TestExtensionCommands::test_add_list_show_remove_system_extension \
+	--deselect=tests_extension/latest/test_extension_commands.py::TestExtensionCommands::test_add_list_show_remove_user_system_extensions \
+	--deselect=tests_extension/latest/test_extension_commands.py::TestExtensionCommands::test_add_list_show_remove_extension \
+	--deselect=tests_extension/latest/test_extension_commands.py::TestExtensionCommands::test_add_list_show_remove_extension_extra_index_url \
+	--deselect=tests_extension/latest/test_extension_commands.py::TestExtensionCommands::test_add_list_show_remove_extension_with_dashes \
+	--deselect=tests_extension/latest/test_extension_commands.py::TestExtensionCommands::test_add_same_extension_user_system \
+	--deselect=tests_extension/latest/test_extension_commands.py::TestExtensionCommands::test_update_extension \
+	--deselect=tests_extension/latest/test_extension_commands.py::TestExtensionCommands::test_update_extension_exception_in_update_and_rolled_back \
+	--deselect=tests_extension/latest/test_extension_commands.py::TestExtensionCommands::test_update_extension_extra_index_url \
+	--deselect=tests_extension/latest/test_extension_commands.py::TestExtensionCommands::test_update_extension_no_updates \
+	--deselect=tests_extension/latest/test_extension_commands.py::TestExtensionCommands::test_update_extension_verify_no_pip_proxy \
+	--deselect=tests_extension/latest/test_extension_commands.py::TestExtensionCommands::test_update_extension_with_pip_proxy \
+	--deselect=tests_extension/latest/test_extension_commands.py::TestExtensionCommands::test_add_extension_azure_to_path \
+	--deselect=tests_extension/latest/test_extension_commands.py::TestExtensionCommands::test_add_extension_to_path \
+	--deselect=tests_extension/latest/test_extension_commands.py::TestExtensionCommands::test_add_extension_with_specific_version \
+	--deselect=tests_extension/latest/test_wheel_type_extension.py::TestWheelTypeExtensionMetadata::test_reading_wheel_type_0_30_0_extension_metadata \
+	--deselect=tests_extension/latest/test_wheel_type_extension.py::TestWheelTypeExtensionMetadata::test_reading_wheel_type_0_31_0_extension_metadata \
+	--deselect=tests_core/test_help.py::HelpTest::test_help_loads \
+	--deselect=tests_core/test_help.py::TestHelpLoads::test_load_from_help_json \
+	--deselect=tests_core/test_help.py::TestHelpLoads::test_load_from_help_py \
+	--deselect=tests_core/test_bot_commands.py::BotTests \
+	--deselect=tests_core/test_cloud.py::SubscriptionSuppressionTest::test_subscription_suppression \
+	--deselect=tests_core/test_configure.py::LocalContextCommandsScenarioTest::test_local_context_commands \
+	--deselect=tests_core/test_extension.py::TestWheelSystemExtension::test_wheel_metadata1 \
+	--deselect=tests_core/test_extension.py::TestWheelSystemExtension::test_wheel_version \
+	--deselect=tests_core/test_help.py::TestHelpLoads::test_load_from_help_yaml \
+	--deselect=tests_core/test_dns_commands.py::DnsZoneImportTest \
+	--deselect=tests_core/test_dns_commands.py::DnsScenarioTest \
+	--deselect=tests_core/test_advisor_commands.py::AzureAdvisorScenarioTest::test_configurations_resource_group \
+	--deselect=tests_core/test_advisor_commands.py::AzureAdvisorScenarioTest::test_configurations_subscription \
+	--deselect=tests_core/test_profile_v2016_06_01.py::TestProfile::test_subscription_finder_constructor \
+	--deselect=tests_core/test_profile.py::TestProfile::test_get_msal_token \
+	--deselect=tests_core/test_profile.py::TestProfile::test_subscription_finder_constructor \
+	--deselect=tests_core/test_profile_custom.py::ProfileCommandTest::test_login_validate_tenant \
+	--deselect=tests_core/test_resource_custom.py::TestCustom::test_deployment_missing_values \
+	--deselect=tests_core/test_resource_custom.py::TestCustom::test_deployment_prompt_alphabetical_order \
+	--deselect=tests_core/test_resource_custom.py::TestCustom::test_deployment_prompt_file_order \
+	--deselect=tests_core/test_resource_custom.py::TestCustom::test_what_if_exclude_change_types \
+	--deselect=tests_core/hybrid_2018_03_01/test_dns_commands.py::DnsZoneImportTest \
+	--deselect=tests_core/hybrid_2018_03_01/test_dns_commands.py::DnsScenarioTest \
+	--deselect=tests_core/hybrid_2018_03_01/test_locks.py \
+	--deselect=tests_core/hybrid_2018_03_01/test_network_commands.py \
+	--deselect=tests_core/hybrid_2018_03_01/test_resource.py \
+	--deselect=tests_core/test_extension.py::TestWheelExtension \
+	--deselect=tests_core/test_extension.py::TestExtensions::test_extension_exists \
+	--deselect=tests_core/test_extension.py::TestExtensions::test_extension_list \
+	--deselect=tests_core/test_extension.py::TestExtensions::test_extension_not_exists \
+	--deselect=tests_core/test_extension.py::TestExtensions::test_get_extension \
+	--deselect=tests_core/test_extension.py::TestExtensions::test_get_extension_names \
+	--ignore=tests_core/test_webapp_commands_thru_mock.py \
+	--ignore=tests_core/test_generic_update.py
+export SUBDIRS = $(shell find src -name setup.py -printf "%h ")
+export MODULES = $(sort $(filter-out %-nspkg,$(SUBDIRS)))
+
+%:
+	dh $@ --with python3 --buildsystem=pybuild
+
+override_dh_auto_clean:
+	for module in $(MODULES); do \
+		( dh_auto_clean --sourcedirectory=$$module; rm -rf $$module/__pycache__ $$module/*.egg-info ); \
+	done
+
+override_dh_auto_configure:
+	for module in $(MODULES); do \
+		( dh_auto_configure --sourcedirectory=$$module ); \
+	done
+
+override_dh_auto_build:
+	for module in $(MODULES); do \
+		( dh_auto_build --sourcedirectory=$$module ); \
+	done
+
+override_dh_auto_install:
+	for module in $(MODULES); do \
+		( dh_auto_install --sourcedirectory=$$module ); \
+	done
+	mkdir -p $(CURDIR)/debian/tmp/usr/share/bash-completion/completions
+	register-python-argcomplete3 az > $(CURDIR)/debian/tmp/usr/share/bash-completion/completions/az

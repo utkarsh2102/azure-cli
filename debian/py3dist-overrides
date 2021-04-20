@@ -1,0 +1,4 @@
+azure_cli python3-azure-cli
+azure_cli_core python3-azure-cli-core
+azure_cli_telemetry python3-azure-cli-telemetry
+azure_cli_testsdk python3-azure-cli-testsdk

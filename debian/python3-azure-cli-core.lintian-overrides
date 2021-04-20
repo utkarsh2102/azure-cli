@@ -1,0 +1,3 @@
+# False positives: they are not documentation
+python3-azure-cli-core: package-contains-documentation-outside-usr-share-doc usr/lib/python3/dist-packages/azure/cli/core/auth_landing_pages/fail.html
+python3-azure-cli-core: package-contains-documentation-outside-usr-share-doc usr/lib/python3/dist-packages/azure/cli/core/auth_landing_pages/ok.html

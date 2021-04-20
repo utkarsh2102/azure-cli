@@ -1,0 +1,2 @@
+Tests:python3-tests
+Depends: @builddeps@, python3-azure-cli, python3-azure-cli-core, python3-azure-cli-telemetry, python3-azure-cli-testsdk,

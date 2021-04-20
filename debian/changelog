@@ -1,0 +1,164 @@
+azure-cli (2.18.0-2) unstable; urgency=medium
+
+  * Add build-dependency on antlr4
+
+ -- Luca Boccassi <bluca@debian.org>  Tue, 20 Apr 2021 22:27:36 +0100
+
+azure-cli (2.18.0-1) unstable; urgency=medium
+
+  * Merge tag 'azure-cli-2.18.0' into debian/sid
+  * Bump dependency on python3-knack
+  * Disable broken test
+  * Add patch to force AZ_INSTALLER=DEB
+
+ -- Luca Boccassi <bluca@debian.org>  Mon, 25 Jan 2021 15:43:00 +0000
+
+azure-cli (2.17.1-1) unstable; urgency=medium
+
+  * Merge tag 'azure-cli-2.17.1' into debian/sid
+
+ -- Luca Boccassi <bluca@debian.org>  Mon, 04 Jan 2021 11:07:44 +0000
+
+azure-cli (2.17.0-1) unstable; urgency=medium
+
+  * Merge tag 'azure-cli-2.17.0' into debian/sid
+  * Bump dependency on python3-azure as required
+
+ -- Luca Boccassi <bluca@debian.org>  Tue, 29 Dec 2020 19:14:02 +0000
+
+azure-cli (2.16.0-1) unstable; urgency=medium
+
+  * Merge tag 'azure-cli-2.16.0' into newver
+  * Bump Standards-Version to 4.5.1, no changes
+  * Bump debhelper-compat to 13
+  * Bump dependency on python-azure
+
+ -- Luca Boccassi <bluca@debian.org>  Fri, 11 Dec 2020 19:37:25 +0000
+
+azure-cli (2.14.2-1) unstable; urgency=medium
+
+  * Merge tag 'azure-cli-2.14.2' into debian/sid
+  * Add missing dependency on python3-decorator
+
+ -- Luca Boccassi <bluca@debian.org>  Mon, 09 Nov 2020 13:54:00 +0000
+
+azure-cli (2.14.1-1) unstable; urgency=medium
+
+  * Merge tag 'azure-cli-2.14.1' into debian/sid
+
+ -- Luca Boccassi <bluca@debian.org>  Fri, 06 Nov 2020 13:54:21 +0000
+
+azure-cli (2.14.0-1) unstable; urgency=medium
+
+  * Merge tag 'azure-cli-2.12.1' into debian/sid
+  * Add new dependencies
+  * Drop token_timezone.patch, fixed upstream
+  * Merge tag 'azure-cli-2.14.0' into debian/sid
+  * Refresh crypto_dependency.patch to remove fuzz from 2.14.0
+  * Skip new, broken test
+  * Bump python3-azure dependency
+  * Override false positive Lintian Warning
+
+ -- Luca Boccassi <bluca@debian.org>  Wed, 28 Oct 2020 13:56:52 +0000
+
+azure-cli (2.11.1-1) unstable; urgency=medium
+
+  [ Ondřej Nový ]
+  * d/control: Update Maintainer field with new Debian Python Team
+    contact address.
+  * d/control: Update Vcs-* fields with new Debian Python Team Salsa
+    layout.
+
+  [ Luca Boccassi ]
+  * Merge tag 'azure-cli-2.11.1' into debian/sid
+  * Bump dependencies requirements for version 2.11.1
+  * Drop antlr4_workaround.patch, merged upstream
+  * Add crypto_dependency.patch to remove upper python3-cryptography
+    version limit (Closes: #969565)
+  * Skip new flaky tests
+  * Add more tests and caches to d/not-installed
+  * azure/cli/__init__.py is not installed anymore
+
+ -- Luca Boccassi <bluca@debian.org>  Sat, 26 Sep 2020 14:49:48 +0100
+
+azure-cli (2.10.1-1) unstable; urgency=medium
+
+  * Merge tag 'azure-cli-2.10.1' into debian/sid
+  * Bump dependencies to match v2.10.1 requirements
+  * Add antlr4_workaround.patch to workaround missing antlr4
+  * Re-enable tests that were disabled because of azure-storage bugs
+  * Deselect new tests that fail without internet connection
+  * Add new build dependency on python3-tz
+  * Add token_timezone.patch to always use UTC for token expiration
+    timestamps
+  * Remove redundant autopkgtest from Testsuite field in d/control
+
+ -- Luca Boccassi <bluca@debian.org>  Fri, 07 Aug 2020 14:28:16 +0100
+
+azure-cli (2.7.0-1) unstable; urgency=medium
+
+  * Bump dependency on python-azure to new version for storage blob APIs
+  * Bump dependency on knack to new version for new config API
+  * Merge tag 'azure-cli-2.7.0' into debian/sid
+  * Drop 0001-Extension-tests-do-not-import-from-absolute-path.patch,
+    merged upstream
+
+ -- Luca Boccassi <bluca@debian.org>  Thu, 18 Jun 2020 19:41:15 +0100
+
+azure-cli (2.6.0-1) unstable; urgency=medium
+
+  * Merge tag 'azure-cli-2.6.0' into debian/sid
+    (Closes: #959630, #958979)
+  * Drop patches, merged upstream
+  * Exclude new tests that require working connection to Azure
+  * Patch unit test to avoid global import of test module
+  * Add new build-deps for tests
+
+ -- Luca Boccassi <bluca@debian.org>  Thu, 21 May 2020 09:37:29 +0100
+
+azure-cli (2.0.81+ds-5) unstable; urgency=medium
+
+  * Skip test_acr_commands_mock.py and test_webapp_commands_thru_mock.py,
+    they need deprecated BlockBlobService from azure-storage-blob
+
+ -- Luca Boccassi <bluca@debian.org>  Wed, 15 Apr 2020 11:01:48 +0100
+
+azure-cli (2.0.81+ds-4) unstable; urgency=medium
+
+  * Backport 0002-humanfriendly-8.0-compat.patch. Fixes compatibility with
+    python3-humanfriendly >= 8.0. (Closes: #955000)
+
+ -- Luca Boccassi <bluca@debian.org>  Sat, 28 Mar 2020 09:36:59 +0000
+
+azure-cli (2.0.81+ds-3) unstable; urgency=medium
+
+  * Fix Lintian Warning: description-synopsis-starts-with-article
+  * List azure-cli* modules in py3dist-overrides
+  * Add build-dependency on multiapi-storage for tests
+  * Add Build-Depends on python3-all and python3-setuptools
+  * Remove nocheck from Build-Depends on python3-argcomplete
+  * Sort module list to make the build reproducible
+  * Enable self-tests on build, select those that can run without the
+    network
+  * Add autopkgtest support
+  * Move package under Python Modules Team maintenance
+  * Fix dependency, pyjavaproperties -> javaproperties
+
+ -- Luca Boccassi <bluca@debian.org>  Sun, 08 Mar 2020 10:57:27 +0000
+
+azure-cli (2.0.81+ds-2) unstable; urgency=medium
+
+  * Depend on python3-azure >= 20200130+git-1~.
+  * Add patch to load extensions from system path. Packages can
+    install extensions in:
+    /usr/lib/python3/dist-packages/azure-cli-extensions/<NAME>
+    The module directory and the egg-info directory can also be just
+    symlinked in the <NAME> directory.
+
+ -- Luca Boccassi <bluca@debian.org>  Wed, 26 Feb 2020 22:44:02 +0000
+
+azure-cli (2.0.81+ds-1) unstable; urgency=medium
+
+  * Initial release. (Closes: #930413)
+
+ -- Luca Boccassi <bluca@debian.org>  Fri, 21 Feb 2020 19:25:30 +0000
