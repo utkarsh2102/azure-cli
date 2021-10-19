@@ -249,7 +249,7 @@ examples:
 
 helps['acr import'] = """
 type: command
-short-summary: Imports an image to an Azure Container Registry from another Container Registry. Import removes the need to docker pull, docker tag, docker push.
+short-summary: Imports an image to an Azure Container Registry from another Container Registry. Import removes the need to docker pull, docker tag, docker push. For larger images consider using `--no-wait`.
 examples:
   - name: Import an image from 'sourceregistry' to 'MyRegistry'. The image inherits its source repository and tag names.
     text: >
@@ -264,6 +264,9 @@ examples:
     text: |
         az acr import -n MyRegistry --source sourcerepository:sourcetag -t targetrepository:targettag \\
             -r /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/sourceResourceGroup/providers/Microsoft.ContainerRegistry/registries/sourceRegistry
+  - name: Import an image without waiting for successful completion. Failures during import will not be reflected. Run `az acr repository show-tags` to confirm that import succeeded.
+    text: >
+        az acr import -n MyRegistry --source sourceregistry.azurecr.io/sourcerepository:sourcetag --no-wait
 """
 
 helps['acr list'] = """
@@ -633,7 +636,7 @@ examples:
   - name: Create a Linux task from a public GitHub repository which builds the hello-world image with both a git commit and pull request trigger enabled. Note that this task does not use Source Registry (MyRegistry), so we can explicitly set Auth mode as None for it.
     text: |
         az acr task create -t hello-world:{{.Run.ID}} -n hello-world -r MyRegistry  -f Dockerfile \\
-            --auth-mode None -c https://github.com/Azure-Samples/acr-build-helloworld-node.git \\
+            --no-push true --auth-mode None -c https://github.com/Azure-Samples/acr-build-helloworld-node.git \\
             --pull-request-trigger-enabled true --git-access-token 000000000000000000000000000000000
   - name: Create a Windows task from a public GitHub repository which builds the Azure Container Builder image on Amd64 architecture with only base image trigger enabled.
     text: |
@@ -1224,7 +1227,7 @@ examples:
   - name: Create a connected registry in registry mode with access to repos app/hello-world and service/mycomponent. It'll create a sync token and scope-map with the right repo permissions.
     text: |
         az acr connected-registry create --registry mycloudregistry --name myconnectedregistry \\
-            --repository "app/hello-world service/mycomponent"
+            --repository "app/hello-world" "service/mycomponent"
   - name: Create a mirror connected registry with only read permissions and pass the sync token
     text: |
         az acr connected-registry create --registry mycloudregistry  --name mymirroracr \\
@@ -1232,7 +1235,7 @@ examples:
   - name: Create a mirror connected registry with client tokens, that syncs every day at midninght and sync window of 4 hours.
     text: |
         az acr connected-registry create -r mycloudregistry -n mymirroracr -p myconnectedregistry \\
-            --repository app/mycomponent -m mirror -s "0 12 * * *" -w PT4H \\
+            --repository "app/mycomponent" -m mirror -s "0 12 * * *" -w PT4H \\
             --client-tokens myTokenName1 myTokenName2
 """
 
@@ -1314,18 +1317,33 @@ helps['acr connected-registry install info'] = """
 type: command
 short-summary: Retrieves information required to activate a connected registry.
 examples:
-  - name: Prints the values requiered to activate a connected registry in json format
+  - name: Set http as the parent protocol, and prints the values required to activate a connected registry in json format
     text: >
-        az acr connected-registry install info --registry mycloudregistry --name myconnectedregistry
+        az acr connected-registry install info --registry mycloudregistry --name myconnectedregistry --parent-protocol http
 """
 
 helps['acr connected-registry install renew-credentials'] = """
 type: command
 short-summary: Retrieves information required to activate a connected registry, and renews the sync token credentials.
 examples:
-  - name: Prints the values in json format requiered to activate a connected registry and the newly generated sync token credentials.
+  - name: Set http as the parent protocol, and prints the values in json format required to activate a connected registry and the newly generated sync token credentials.
     text: >
-        az acr connected-registry install renew-credentials -r mycloudregistry -n myconnectedregistry
+        az acr connected-registry install renew-credentials -r mycloudregistry -n myconnectedregistry --parent-protocol http
+"""
+
+helps['acr connected-registry repo'] = """
+type: command
+short-summary: Updates all the necessary connected registry sync scope maps repository permissions.
+examples:
+  - name: Adds permissions to synchronize images from 'repo1' and 'repo2' to the connected registry 'myconnectedregistry' and its ancestors.
+    text: >
+        az acr connected-registry repo -r mycloudregistry -n myconnectedregistry --add repo1 repo2
+  - name: Removes permissions to synchronize images from 'repo1' and 'repo2' to the connected registry 'myconnectedregistry' and its descendants.
+    text: >
+        az acr connected-registry repo -r mycloudregistry -n myconnectedregistry --remove repo1 repo2
+  - name: Removes permissions to synchronize 'repo1' images and adds permissions for 'repo2' images.
+    text: >
+        az acr connected-registry repo -r mycloudregistry -n myconnectedregistry --remove repo1 --add repo2
 """
 # endregion
 

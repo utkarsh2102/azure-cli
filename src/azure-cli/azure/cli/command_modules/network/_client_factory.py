@@ -252,6 +252,18 @@ def cf_virtual_router(cli_ctx, _):
     return network_client_factory(cli_ctx).virtual_routers
 
 
+def cf_virtual_hub(cli_ctx, _):
+    return network_client_factory(cli_ctx).virtual_hubs
+
+
+def cf_virtual_hub_bgp_connection(cli_ctx, _):
+    return network_client_factory(cli_ctx).virtual_hub_bgp_connection
+
+
+def cf_virtual_hub_bgp_connections(cli_ctx, _):
+    return network_client_factory(cli_ctx).virtual_hub_bgp_connections
+
+
 def cf_virtual_router_peering(cli_ctx, _):
     return network_client_factory(cli_ctx).virtual_router_peerings
 
@@ -274,3 +286,7 @@ def cf_virtual_appliance_skus(cli_ctx, _):
 
 def cf_virtual_appliance_sites(cli_ctx, _):
     return network_client_factory(cli_ctx).virtual_appliance_sites
+
+
+def cf_custom_ip_prefixes(cli_ctx, _):
+    return network_client_factory(cli_ctx).custom_ip_prefixes

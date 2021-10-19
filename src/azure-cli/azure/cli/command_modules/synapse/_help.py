@@ -24,14 +24,27 @@ short-summary: Create a Synapse workspace.
 examples:
   - name: Create a Synapse workspace
     text: |-
-        az synapse workspace create --name fromcli4 --resource-group rg \\
+        az synapse workspace create --name testworkspace --resource-group rg \\
           --storage-account testadlsgen2 --file-system testfilesystem \\
           --sql-admin-login-user cliuser1 --sql-admin-login-password Password123! --location "East US"
   - name: Create a Synapse workspace with storage resource id
     text: |-
-        az synapse workspace create --name fromcli4 --resource-group rg \\
+        az synapse workspace create --name testworkspace --resource-group rg \\
           --storage-account /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg/providers/Microsoft.Storage/storageAccounts/testadlsgen2 --file-system testfilesystem \\
           --sql-admin-login-user cliuser1 --sql-admin-login-password Password123! --location "East US"
+  - name: Create a Synapse workspace using customer-managed key
+    text: |-
+        az synapse workspace create --name testworkspace --resource-group rg \\
+          --storage-account testadlsgen2 --file-system testfilesystem \\
+          --sql-admin-login-user cliuser1 --sql-admin-login-password Password123! --location "East US" \\
+          --key-identifier https://{keyvaultname}.vault.azure.net/keys/{keyname} --key-name testcmk
+  - name: Create a Synapse workspace connecting to azure devops
+    text: |-
+        az synapse workspace create --name testworkspace --resource-group rg \\
+          --storage-account testadlsgen2 --file-system testfilesystem \\
+          --sql-admin-login-user cliuser1 --sql-admin-login-password Password123! --location "East US" \\
+          --repository-type AzureDevOpsGit --account-name testuser --project-name testprj \\
+          --repository-name testrepo --collaboration-branch main
 """
 
 helps['synapse workspace list'] = """
@@ -138,6 +151,10 @@ examples:
     text: |-
         az synapse spark pool update --name testpool --workspace-name testsynapseworkspace --resource-group rg \\
         --enable-auto-scale --min-node-count 3 --max-node-count 100
+  - name: Update the Spark pool's custom libraries.
+    text: |-
+        az synapse spark pool update --name testpool --workspace-name testsynapseworkspace --resource-group rg \\
+        --package-action Add --package package1.jar package2.jar
 """
 
 helps['synapse spark pool delete'] = """
@@ -218,7 +235,8 @@ short-summary: Get a SQL's auditing policy.
 examples:
   - name: Get a SQL's auditing policy.
     text: |-
-        az synapse sql audit-policy show --workspace-name testsynapseworkspace --resource-group rg
+        az synapse sql audit-policy show --workspace-name testsynapseworkspace --resource-group rg \\
+        --blob-auditing-policy-name bapolicyname
 """
 
 helps['synapse sql audit-policy update'] = """
@@ -227,21 +245,51 @@ short-summary: Update a SQL's auditing policy.
 long-summary: If the policy is being enabled, `--storage-account` or both `--storage-endpoint` and `--storage-key` must be specified.
 examples:
   - name: Enable by storage account name.
-    text: |-
-        az synapse sql audit-policy update --workspace-name testsynapseworkspace --resource-group rg \\
-        --state Enabled --storage-account mystorageaccount
+    text: |
+        az synapse sql audit-policy update --workspace-name testsynapseworkspace --resource-group rg --state Enabled \\
+            --blob-storage-target-state Enabled --storage-account mystorage --blob-auditing-policy-name bapname
   - name: Enable by storage endpoint and key.
-    text: |-
-        az synapse sql audit-policy update --workspace-name testsynapseworkspace --resource-group rg \\
-        --state Enabled --storage-endpoint https://mystorage.blob.core.windows.net --storage-key MYKEY==
+    text: |
+        az synapse sql audit-policy update --workspace-name testsynapseworkspace --resource-group rg --state Enabled \\
+            --blob-storage-target-state Enabled --storage-endpoint https://mystorage.blob.core.windows.net \\
+            --storage-key MYKEY== --blob-auditing-policy-name bapname
   - name: Set the list of audit actions.
     text: |
         az synapse sql audit-policy update --workspace-name testsynapseworkspace --resource-group rg \\
-        --actions FAILED_DATABASE_AUTHENTICATION_GROUP 'UPDATE on database::mydb by public'
+        --actions SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP 'UPDATE on database::mydb by public' \\
+        --blob-auditing-policy-name bapolicyname
   - name: Disable an auditing policy.
     text: |-
         az synapse sql audit-policy update --workspace-name testsynapseworkspace --resource-group rg \\
-        --state Disabled
+        --state Disabled --blob-auditing-policy-name bapolicyname
+  - name: Disable a blob storage auditing policy.
+    text: |-
+        az synapse sql audit-policy update --workspace-name testsynapseworkspace --resource-group rg \\
+        --blob-storage-target-state Disabled --blob-auditing-policy-name bapname
+  - name: Enable a log analytics auditing policy.
+    text: |
+        az synapse sql audit-policy update --resource-group mygroup --workspace-name myws --state Enabled \\
+            --log-analytics-target-state Enabled --log-analytics-workspace-resource-id myworkspaceresourceid \\
+            --blob-auditing-policy-name bapname
+  - name: Disable a log analytics auditing policy.
+    text: |
+        az synapse sql audit-policy update --resource-group mygroup --workspace-name myws --state Enabled
+            --log-analytics-target-state Disabled --blob-auditing-policy-name bapname
+  - name: Enable an event hub auditing policy.
+    text: |
+        az synapse sql audit-policy update --resource-group mygroup --workspace-name myws --state Enabled \\
+            --event-hub-target-state Enabled \\
+            --event-hub-authorization-rule-id eventhubauthorizationruleid \\
+            --event-hub eventhubname --blob-auditing-policy-name bapname
+  - name: Enable an event hub auditing policy for default event hub.
+    text: |
+        az synapse sql audit-policy update --resource-group mygroup --workspace-name myws --state Enabled \\
+            --event-hub-target-state Enabled \\
+            --event-hub-authorization-rule-id eventhubauthorizationruleid --blob-auditing-policy-name bapname
+  - name: Disable an event hub auditing policy.
+    text: |
+        az synapse sql audit-policy update --resource-group mygroup --workspace-name myws
+           --state Enabled --event-hub-target-state Disabled --blob-auditing-policy-name bapname
 """
 
 helps['synapse sql audit-policy wait'] = """
@@ -454,7 +502,8 @@ short-summary: Set a SQL pool's transparent data encryption configuration.
 examples:
   - name: Set a SQL pool's transparent data encryption configuration. (autogenerated)
     text: |-
-        az synapse sql pool tde set --name sqlpool --workspace-name testsynapseworkspace --resource-group rg --status Enabled
+        az synapse sql pool tde set --name sqlpool --workspace-name testsynapseworkspace --resource-group rg \\
+        --status Enabled --transparent-data-encryption-name tdename
 """
 
 helps['synapse sql pool tde show'] = """
@@ -463,7 +512,8 @@ short-summary: Get a SQL pool's transparent data encryption configuration.
 examples:
   - name: Get a SQL pool's transparent data encryption configuration. (autogenerated)
     text: |-
-        az synapse sql pool tde show --name sqlpool --workspace-name testsynapseworkspace --resource-group rg
+        az synapse sql pool tde show --name sqlpool --workspace-name testsynapseworkspace --resource-group rg \\
+        --transparent-data-encryption-name tdename
 """
 
 helps['synapse sql pool threat-policy'] = """
@@ -477,7 +527,8 @@ short-summary: Get a SQL pool's threat detection policy.
 examples:
   - name: Get a SQL pool's threat detection policy.
     text: |-
-        az synapse sql pool threat-policy show --name sqlpool --workspace-name testsynapseworkspace --resource-group rg
+        az synapse sql pool threat-policy show --name sqlpool --workspace-name testsynapseworkspace \\
+        --resource-group rg --security-alert-policy-name threatpolicy
 """
 
 helps['synapse sql pool threat-policy update'] = """
@@ -488,23 +539,25 @@ examples:
   - name: Enable by storage account name.
     text: |-
         az synapse sql pool threat-policy update --name sqlpool --workspace-name testsynapseworkspace --resource-group rg \\
-        --state Enabled --storage-account mystorageaccount
+        --state Enabled --storage-account mystorageaccount --security-alert-policy-name threatpolicy
   - name: Enable by storage endpoint and key.
     text: |-
         az synapse sql pool threat-policy update --name sqlpool --workspace-name testsynapseworkspace --resource-group rg \\
-        --state Enabled --storage-endpoint https://mystorage.blob.core.windows.net --storage-key MYKEY==
+        --state Enabled --storage-endpoint https://mystorage.blob.core.windows.net --storage-key MYKEY== \\
+        --security-alert-policy-name threatpolicy
   - name: Disable a subset of alert types.
     text: |-
         az synapse sql pool threat-policy update --name sqlpool --workspace-name testsynapseworkspace --resource-group rg \\
-        --disabled-alerts Sql_Injection_Vulnerability Access_Anomaly
+        --disabled-alerts Sql_Injection_Vulnerability Access_Anomaly --security-alert-policy-name threatpolicy
   - name: Configure email recipients for a policy.
     text: |-
         az synapse sql pool threat-policy update --name sqlpool --workspace-name testsynapseworkspace --resource-group rg \\
-        --email-addresses me@examlee.com you@example.com --email-account-admins true
+        --email-addresses me@examlee.com you@example.com --email-account-admins true \\
+        --security-alert-policy-name threatpolicy
   - name: Disable a threat policy.
     text: |-
         az synapse sql pool threat-policy update --name sqlpool --workspace-name testsynapseworkspace --resource-group rg \\
-        --state Disabled
+        --state Disabled --security-alert-policy-name threatpolicy
 """
 
 helps['synapse sql pool audit-policy'] = """
@@ -527,21 +580,153 @@ short-summary: Update a SQL pool's auditing policy.
 long-summary: If the policy is being enabled, `--storage-account` or both `--storage-endpoint` and `--storage-key` must be specified.
 examples:
   - name: Enable by storage account name.
-    text: |-
-        az synapse sql pool audit-policy update --name sqlpool --workspace-name testsynapseworkspace --resource-group rg \\
-        --state Enabled --storage-account mystorageaccount
+    text: |
+        az synapse sql pool audit-policy update --name sqlpool --workspace-name testsynapseworkspace \\
+        --resource-group rg --state Enabled --blob-storage-target-state Enabled --storage-account mystorage \\
+        --blob-auditing-policy-name bapname
   - name: Enable by storage endpoint and key.
-    text: |-
-        az synapse sql pool audit-policy update --name sqlpool --workspace-name testsynapseworkspace --resource-group rg \\
-        --state Enabled --storage-endpoint https://mystorage.blob.core.windows.net --storage-key MYKEY==
+    text: |
+        az synapse sql pool audit-policy update --name sqlpool --workspace-name testsynapseworkspace \\
+        --resource-group rg --state Enabled --blob-storage-target-state Enabled \\
+        --storage-endpoint https://mystorage.blob.core.windows.net --storage-key MYKEY== \\
+        --blob-auditing-policy-name bapname
   - name: Set the list of audit actions.
     text: |
-        az synapse sql pool audit-policy update --name sqlpool --workspace-name testsynapseworkspace --resource-group rg \\
-        --actions FAILED_DATABASE_AUTHENTICATION_GROUP 'UPDATE on database::mydb by public'
+        az synapse sql pool audit-policy update --name sqlpool --workspace-name testsynapseworkspace \\
+        --resource-group rg --actions SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP 'UPDATE on database::mydb by public' \\
+        --blob-auditing-policy-name bapname
   - name: Disable an auditing policy.
     text: |-
-        az synapse sql pool audit-policy update --name sqlpool --workspace-name testsynapseworkspace --resource-group rg \\
-        --state Disabled
+        az synapse sql pool audit-policy update --name sqlpool --workspace-name testsynapseworkspace \\
+        --resource-group rg --state Disabled --blob-auditing-policy-name bapname
+  - name: Disable a blob storage auditing policy.
+    text: |-
+        az synapse sql pool audit-policy update --name sqlpool --workspace-name testsynapseworkspace \\
+        --resource-group rg --blob-storage-target-state Disabled --blob-auditing-policy-name bapname
+  - name: Enable a log analytics auditing policy.
+    text: |
+        az synapse sql pool audit-policy update --name sqlpool --workspace-name testsynapseworkspace \\
+        --resource-group rg --state Enabled --log-analytics-target-state Enabled \\
+        --log-analytics-workspace-resource-id myworkspaceresourceid --blob-auditing-policy-name bapname
+  - name: Disable a log analytics auditing policy.
+    text: |
+        az synapse sql pool audit-policy update --name sqlpool --workspace-name testsynapseworkspace \\
+        --resource-group rg --log-analytics-target-state Disabled --blob-auditing-policy-name bapname
+  - name: Enable an event hub auditing policy.
+    text: |
+        az synapse sql pool audit-policy update --name sqlpool --workspace-name testsynapseworkspace \\
+        --resource-group rg --state Enabled --event-hub-target-state Enabled \\
+        --event-hub-authorization-rule-id eventhubauthorizationruleid --event-hub eventhubname \\
+        --blob-auditing-policy-name bapname
+  - name: Enable an event hub auditing policy for default event hub.
+    text: |
+        az synapse sql pool audit-policy update --name sqlpool --workspace-name testsynapseworkspace \\
+        --resource-group rg --state Enabled --event-hub-target-state Enabled \\
+        --event-hub-authorization-rule-id eventhubauthorizationruleid --blob-auditing-policy-name bapname
+  - name: Disable an event hub auditing policy.
+    text: |
+        az synapse sql pool audit-policy update --name sqlpool --workspace-name testsynapseworkspace \\
+        --resource-group rg  --event-hub-target-state Disabled --blob-auditing-policy-name bapname
+"""
+
+helps['synapse workspace key'] = """
+type: group
+short-summary:  Manage workspace's keys.
+"""
+
+helps['synapse workspace key create'] = """
+type: command
+short-summary: Create a workspace's key.
+examples:
+  - name: Create a workspace's key.
+    text: |-
+        az synapse workspace key create --name newkey --workspace-name testsynapseworkspace \\
+        --resource-group rg --key-identifier https://{keyvaultname}.vault.azure.net/keys/{keyname}
+"""
+
+helps['synapse workspace activate'] = """
+type: command
+short-summary: Activates a workspace and change it's state from pending to success state when the workspace is first being provisioned and double encryption is enabled.
+long-summary: When creating an Azure Synapse Analytics workspace, you can choose to encrypt all data at rest in the workspace with a customer-managed key which will provide double encryption to the workspace.You may need to set up the encryption environment firstly, such as to create a key vault with purge protection enable and specify Access Polices to the key vault. Then use this cmdlet to activate the new Azure Synapse Analytics workspace which double encryption is enabled using a customer-managed key.
+examples:
+  - name: activate a workspace.
+    text: |-
+        az synapse workspace activate --name newkey --workspace-name testsynapseworkspace \\
+        --resource-group rg --key-identifier https://{keyvaultname}.vault.azure.net/keys/{keyname}
+"""
+
+helps['synapse workspace key delete'] = """
+type: command
+short-summary: Delete a workspace's key. The key at active status can't be deleted.
+examples:
+  - name: Delete a workspace's key.
+    text: |-
+        az synapse workspace key delete --name newkey --workspace-name testsynapseworkspace \\
+        --resource-group rg
+"""
+
+helps['synapse workspace key show'] = """
+type: command
+short-summary: Show a workspace's key by name.
+examples:
+  - name: Show a workspace's key.
+    text: |-
+        az synapse workspace key show --name newkey --workspace-name testsynapseworkspace \\
+        --resource-group rg
+"""
+
+helps['synapse workspace key list'] = """
+type: command
+short-summary: List keys under specified workspace.
+examples:
+  - name: List keys under specified workspace.
+    text: |-
+        az synapse workspace key list --workspace-name testsynapseworkspace --resource-group rg
+"""
+
+helps['synapse workspace key wait'] = """
+type: command
+short-summary: Place the CLI in a waiting state until a condition of a workspace key is met.
+"""
+
+helps['synapse workspace managed-identity'] = """
+type: group
+short-summary:  Manage workspace's managed-identity.
+"""
+
+helps['synapse workspace managed-identity show-sql-access'] = """
+type: command
+short-summary: Show workspace's sql-access state to managed-identity.
+examples:
+  - name: Show workspace's sql-access state to managed-identity.
+    text: |-
+        az synapse workspace managed-identity show-sql-access --workspace-name testsynapseworkspace \\
+        --resource-group rg
+"""
+
+helps['synapse workspace managed-identity revoke-sql-access'] = """
+type: command
+short-summary: Revoke workspace's sql-access to managed-identity.
+examples:
+  - name: Revoke workspace's sql-access to managed-identity.
+    text: |-
+        az synapse workspace managed-identity revoke-sql-access --workspace-name testsynapseworkspace \\
+        --resource-group rg
+"""
+
+helps['synapse workspace managed-identity grant-sql-access'] = """
+type: command
+short-summary: Grant workspace's sql-access to managed-identity.
+examples:
+  - name: Grant workspace's sql-access to managed-identity.
+    text: |-
+        az synapse workspace managed-identity grant-sql-access --workspace-name testsynapseworkspace \\
+        --resource-group rg
+"""
+
+helps['synapse workspace managed-identity wait'] = """
+type: command
+short-summary: Place the CLI in a waiting state until a condition of sql-access state to managed-identity is met.
 """
 
 helps['synapse workspace firewall-rule'] = """
@@ -753,6 +938,20 @@ type: group
 short-summary: Manage Synapse's role assignments and definitions.
 """
 
+helps['synapse role scope'] = """
+type: group
+short-summary: Manage Synapse's role scopes.
+"""
+
+helps['synapse role scope list'] = """
+type: command
+short-summary: List role scopes.
+examples:
+  - name: List role scopes.
+    text: |-
+        az synapse role scope list --workspace-name testsynapseworkspace
+"""
+
 helps['synapse role assignment'] = """
 type: group
 short-summary: Manage Synapse's role assignments.
@@ -778,7 +977,7 @@ examples:
   - name: List role assignments by role id/name.
     text: |-
         az synapse role assignment list --workspace-name testsynapseworkspace \\
-        --role "Sql Admin"
+        --role "Synapse Apache Spark Administrator"
   - name: List role assignments by assignee.
     text: |-
         az synapse role assignment list --workspace-name testsynapseworkspace \\
@@ -786,7 +985,15 @@ examples:
   - name: List role assignments by objectId of the User, Group or Service Principal.
     text: |-
         az synapse role assignment list --workspace-name testsynapseworkspace \\
-        --assignee 00000000-0000-0000-0000-000000000000
+        --assignee-object-id 00000000-0000-0000-0000-000000000000
+  - name: List role assignments by scope.
+    text: |-
+        az synapse role assignment list --workspace-name testsynapseworkspace \\
+        --scope "workspaces/{workspaceName}"
+  - name: List role assignments by item type and item name.
+    text: |-
+        az synapse role assignment list --workspace-name testsynapseworkspace \\
+        --item-type "bigDataPools" --item "bigDataPoolName"
 """
 
 helps['synapse role assignment create'] = """
@@ -796,15 +1003,24 @@ examples:
   - name: Create a role assignment using service principal name.
     text: |-
         az synapse role assignment create --workspace-name testsynapseworkspace \\
-        --role "Sql Admin" --assignee sp_name
+        --role "Synapse Administrator" --assignee sp_name
   - name: Create a role assignment using user principal name.
     text: |-
         az synapse role assignment create --workspace-name testsynapseworkspace \\
-        --role "Sql Admin" --assignee username@contoso.com
+        --role "Synapse Administrator" --assignee username@contoso.com
   - name: Create a role assignment using objectId of the User, Group or Service Principal.
     text: |-
         az synapse role assignment create --workspace-name testsynapseworkspace \\
-        --role "Sql Admin" --assignee 00000000-0000-0000-0000-000000000000
+        --role "Synapse Administrator" --assignee 00000000-0000-0000-0000-000000000000
+  - name: Create a role assignment at scope.
+    text: |-
+        az synapse role assignment create --workspace-name testsynapseworkspace \\
+        --scope "workspaces/{workspaceName}" --role "Synapse Administrator" --assignee username@contoso.com
+  - name: Create a role assignment at scope that combination of item type and item name.
+    text: |-
+        az synapse role assignment create --workspace-name testsynapseworkspace \\
+        --item-type "bigDataPools" --item "bigDataPoolName" --role "Synapse Administrator" \\
+        --assignee username@contoso.com
 """
 
 helps['synapse role assignment delete'] = """
@@ -814,11 +1030,11 @@ examples:
   - name: Delete role assignments by role and assignee.
     text: |-
         az synapse role assignment delete --workspace-name testsynapseworkspace \\
-        --role "Sql Admin" --assignee sp_name
+        --role "Synapse Administrator" --assignee sp_name
   - name: Delete role assignments by role id/name.
     text: |-
         az synapse role assignment delete --workspace-name testsynapseworkspace \\
-        --role "Sql Admin"
+        --role "Synapse Administrator"
   - name: Delete role assignments by service principal name.
     text: |-
         az synapse role assignment delete --workspace-name testsynapseworkspace \\
@@ -835,6 +1051,10 @@ examples:
     text: |-
         az synapse role assignment delete --workspace-name testsynapseworkspace \\
         --ids 10000000-0000-0000-0000-10000000-10000000-0000-0000-0000-10000000
+  - name: Delete role assignments by scope.
+    text: |-
+        az synapse role assignment delete --workspace-name testsynapseworkspace \\
+        --scope "workspaces/testsynapseworkspace/linkedServices/testlinkedServices"
 """
 
 helps['synapse role definition'] = """
@@ -849,6 +1069,9 @@ examples:
   - name: List role definitions.
     text: |-
         az synapse role definition list --workspace-name testsynapseworkspace
+  - name: List role definitions built-in by Synapse.
+    text: |-
+        az synapse role definition list --workspace-name testsynapseworkspace --is-built-in True
 """
 
 helps['synapse role definition show'] = """
@@ -859,6 +1082,10 @@ examples:
     text: |-
         az synapse role definition show --workspace-name testsynapseworkspace \\
         --role 00000000-0000-0000-0000-000000000000
+  - name: Get role definition by role name.
+    text: |-
+        az synapse role definition show --workspace-name testsynapseworkspace \\
+        --role "Synapse SQL Administrator"
 """
 
 helps['synapse linked-service'] = """
@@ -876,11 +1103,21 @@ examples:
           --name testlinkedservice --file @path/linkedservice.json
 """
 
+helps['synapse linked-service update'] = """
+type: command
+short-summary: Update an exist linked service.
+examples:
+  - name: Update an exist linked service.
+    text: |-
+        az synapse linked-service update --workspace-name testsynapseworkspace \\
+          --name testlinkedservice --file @path/linkedservice.json
+"""
+
 helps['synapse linked-service set'] = """
 type: command
-short-summary: Set an exist linked service.
+short-summary: Update an exist linked service.
 examples:
-  - name: Set an exist linked service.
+  - name: Update an exist linked service.
     text: |-
         az synapse linked-service set --workspace-name testsynapseworkspace \\
           --name testlinkedservice --file @path/linkedservice.json
@@ -930,11 +1167,21 @@ examples:
           --name testdataset --file @path/dataset.json
 """
 
+helps['synapse dataset update'] = """
+type: command
+short-summary: Update an exist dataset.
+examples:
+  - name: Update an exist dataset.
+    text: |-
+        az synapse dataset update --workspace-name testsynapseworkspace \\
+          --name testdataset --file @path/dataset.json
+"""
+
 helps['synapse dataset set'] = """
 type: command
-short-summary: Set an exist dataset.
+short-summary: Update an exist dataset.
 examples:
-  - name: Set an exist dataset.
+  - name: Update an exist dataset.
     text: |-
         az synapse dataset set --workspace-name testsynapseworkspace \\
           --name testdataset --file @path/dataset.json
@@ -984,11 +1231,21 @@ examples:
           --name testpipeline --file @path/pipeline.json
 """
 
+helps['synapse pipeline update'] = """
+type: command
+short-summary: Update an exist pipeline.
+examples:
+  - name: Update an exist pipeline.
+    text: |-
+        az synapse pipeline update --workspace-name testsynapseworkspace \\
+          --name testpipeline --file @path/pipeline.json
+"""
+
 helps['synapse pipeline set'] = """
 type: command
-short-summary: Set an exist pipeline.
+short-summary: Update an exist pipeline.
 examples:
-  - name: Set an exist pipeline.
+  - name: Update an exist pipeline.
     text: |-
         az synapse pipeline set --workspace-name testsynapseworkspace \\
           --name testpipeline --file @path/pipeline.json
@@ -1100,11 +1357,21 @@ examples:
           --name testtrigger --file @path/trigger.json
 """
 
+helps['synapse trigger update'] = """
+type: command
+short-summary: Update an exist trigger.
+examples:
+  - name: Update an exist trigger.
+    text: |-
+        az synapse trigger update --workspace-name testsynapseworkspace \\
+          --name testtrigger --file @path/trigger.json
+"""
+
 helps['synapse trigger set'] = """
 type: command
-short-summary: Set an exist trigger.
+short-summary: Update an exist trigger.
 examples:
-  - name: Set an exist trigger.
+  - name: Update an exist trigger.
     text: |-
         az synapse trigger set --workspace-name testsynapseworkspace \\
           --name testtrigger --file @path/trigger.json
@@ -1137,6 +1404,11 @@ examples:
     text: |-
         az synapse trigger delete --workspace-name testsynapseworkspace \\
           --name testtrigger
+"""
+
+helps['synapse trigger wait'] = """
+type: command
+short-summary: Place the CLI in a waiting state until a condition of a trigger is met.
 """
 
 helps['synapse trigger subscribe-to-event'] = """
@@ -1201,6 +1473,16 @@ examples:
   - name: Rerun single trigger instance by runId.
     text: |-
         az synapse trigger-run rerun --workspace-name testsynapseworkspace \\
+          --name testtrigger --run-id 08586024068106001417583731803CU31
+"""
+
+helps['synapse trigger-run cancel'] = """
+type: command
+short-summary: Cancel a single trigger instance by runId.
+examples:
+  - name: Cancel a single trigger instance by runId.
+    text: |-
+        az synapse trigger-run cancel --workspace-name testsynapseworkspace \\
           --name testtrigger --run-id 08586024068106001417583731803CU31
 """
 
@@ -1281,7 +1563,7 @@ examples:
   - name: Create a notebook.
     text: |-
         az synapse notebook create --workspace-name testsynapseworkspace \\
-          --name testnotebook --file @path/notebook.json
+          --name testnotebook --file @path/notebook.ipynb
 """
 
 helps['synapse notebook set'] = """
@@ -1291,7 +1573,7 @@ examples:
   - name: Set an exist notebook.
     text: |-
         az synapse notebook set --workspace-name testsynapseworkspace \\
-          --name testnotebook --file @path/notebook.json
+          --name testnotebook --file @path/notebook.ipynb
 """
 
 helps['synapse notebook import'] = """
@@ -1301,7 +1583,7 @@ examples:
   - name: Import a notebook.
     text: |-
         az synapse notebook import --workspace-name testsynapseworkspace \\
-          --name testnotebook --file @path/notebook.json
+          --name testnotebook --file @path/notebook.ipynb
 """
 
 helps['synapse notebook show'] = """
@@ -1346,10 +1628,93 @@ examples:
         az synapse notebook delete --workspace-name testsynapseworkspace \\
           --name testnotebook
 """
+helps['synapse workspace-package'] = """
+type: group
+short-summary: Manage Synapse's workspace packages.
+"""
+
+helps['synapse workspace-package upload'] = """
+type: command
+short-summary: Upload a local workspace package file to an Azure Synapse workspace.
+examples:
+  - name: Upload a local workspace package file to an Azure Synapse workspace.
+    text: |-
+        az synapse workspace-package upload --workspace-name testsynapseworkspace \\
+          --package C:/package.jar
+"""
+
+helps['synapse workspace-package upload-batch'] = """
+type: command
+short-summary: Upload workspace package files from a local directory to an Azure Synapse workspace.
+examples:
+  - name: Upload workspace package files from a local directory to an Azure Synapse workspace.
+    text: |-
+        az synapse workspace-package upload-batch --workspace-name testsynapseworkspace \\
+          --source C:/package
+"""
+
+helps['synapse workspace-package show'] = """
+type: command
+short-summary: Get a workspace package.
+examples:
+  - name: Get a workspace package.
+    text: |-
+        az synapse workspace-package show --workspace-name testsynapseworkspace \\
+          --name testpackage.jar
+"""
+
+helps['synapse workspace-package list'] = """
+type: command
+short-summary: List workspace packages.
+examples:
+  - name: List workspace packages.
+    text: |-
+        az synapse workspace-package list --workspace-name testsynapseworkspace
+"""
+
+helps['synapse workspace-package delete'] = """
+type: command
+short-summary: Delete a workspace package.
+examples:
+  - name: Delete a workspace package.
+    text: |-
+        az synapse workspace-package delete --workspace-name testsynapseworkspace \\
+          --name testpackage.jar
+"""
 
 helps['synapse integration-runtime'] = """
 type: group
 short-summary: Manage Synapse's integration runtimes.
+"""
+
+helps['synapse integration-runtime managed'] = """
+    type: group
+    short-summary: Manage integration runtime with synapse sub group managed
+"""
+
+helps['synapse integration-runtime managed create'] = """
+type: command
+short-summary: Create an managed integration runtime.
+examples:
+  - name: Create an managed integration runtime.
+    text: |-
+        az synapse integration-runtime managed create --workspace-name testsynapseworkspace --resource-group rg \\
+          --name testintegrationruntime
+"""
+
+helps['synapse integration-runtime self-hosted'] = """
+    type: group
+    short-summary: Manage integration runtime with synapse sub group self-hosted
+"""
+
+helps['synapse integration-runtime self-hosted create'] = """
+type: command
+short-summary: Create an self-hosted integration runtime.
+examples:
+  - name: Create an self-hosted integration runtime.
+    text: |-
+        az synapse integration-runtime self-hosted create --workspace-name testsynapseworkspace --resource-group rg \\
+          --name testintegrationruntime
 """
 
 helps['synapse integration-runtime create'] = """
@@ -1476,6 +1841,26 @@ examples:
           --name selfhostedintegrationruntime
 """
 
+helps['synapse integration-runtime start'] = """
+type: command
+short-summary: start an SSIS integration runtime.
+examples:
+  - name: start an SSIS integration runtime.
+    text: |-
+        az synapse integration-runtime start --workspace-name testsynapseworkspace --resource-group rg \\
+          --name testintegrationruntime
+"""
+
+helps['synapse integration-runtime stop'] = """
+type: command
+short-summary: stop an SSIS integration runtime.
+examples:
+  - name: stop an SSIS integration runtime.
+    text: |-
+        az synapse integration-runtime stop --workspace-name testsynapseworkspace --resource-group rg \\
+          --name testintegrationruntime
+"""
+
 helps['synapse integration-runtime-node'] = """
 type: group
 short-summary: Manage Synapse's self-hosted integration runtime nodes.
@@ -1498,7 +1883,7 @@ examples:
   - name: Update self-hosted integration runtime node.
     text: |-
         az synapse integration-runtime-node update --workspace-name testsynapseworkspace --resource-group rg \\
-          --name selfhostedintegrationruntime --node-name testnode
+          --name selfhostedintegrationruntime --node-name testnode --auto-update On --update-delay-offset 'PT03H'
 """
 
 helps['synapse integration-runtime-node delete'] = """
@@ -1519,4 +1904,109 @@ examples:
     text: |-
         az synapse integration-runtime-node get-ip-address --workspace-name testsynapseworkspace --resource-group rg \\
           --name selfhostedintegrationruntime --node-name testnode
+"""
+
+helps['synapse managed-private-endpoints'] = """
+type: group
+short-summary: Manage synapse managed private endpoints.
+"""
+
+helps['synapse managed-private-endpoints show'] = """
+type: command
+short-summary: Get a synapse managed private endpoints.
+examples:
+  - name: Get a synapse managed private endpoints.
+    text: |-
+        az synapse managed-private-endpoints show --workspace-name testsynapseworkspace \\
+          --pe-name testendpointname
+"""
+
+helps['synapse managed-private-endpoints create'] = """
+type: command
+short-summary: Create a synapse managed private endpoints.
+examples:
+  - name: Create a synapse managed private endpoints.
+    text: |-
+        az synapse managed-private-endpoints create --workspace-name testsynapseworkspace \\
+          --pe-name testendpointname \\
+          --resource-id '/subscriptions/yoursub/resourceGroups/myResourceGroup/providers/Microsoft.Storage/accounts/myStorageAccount' \\
+          --group-Id blob
+"""
+
+helps['synapse managed-private-endpoints list'] = """
+type: command
+short-summary: List synapse managed private endpoints in a workspace.
+examples:
+  - name: List a synapse managed private endpoints.
+    text: |-
+        az synapse managed-private-endpoints list --workspace-name testsynapseworkspace
+"""
+
+helps['synapse managed-private-endpoints delete'] = """
+type: command
+short-summary: delete synapse managed private endpoints in a workspace.
+examples:
+  - name: Delete a synapse managed private endpoints.
+    text: |-
+        az synapse managed-private-endpoints delete --workspace-name testsynapseworkspace \\
+          --pe-name testendpointname
+"""
+
+helps['synapse spark-job-definition'] = """
+type: group
+short-summary: Manage spark job definitions in a synapse workspace.
+"""
+
+helps['synapse spark-job-definition show'] = """
+type: command
+short-summary: Get a spark job definition.
+examples:
+  - name: Get a spark job definition.
+    text: |-
+        az synapse spark-job-definition show --workspace-name testsynapseworkspace \\
+          --name testsjdname
+"""
+
+helps['synapse spark-job-definition list'] = """
+type: command
+short-summary: List spark job definitions.
+examples:
+  - name: List spark job definitions.
+    text: |-
+        az synapse spark-job-definition list --workspace-name testsynapseworkspace
+"""
+
+helps['synapse spark-job-definition delete'] = """
+type: command
+short-summary: Delete a spark job definition.
+examples:
+  - name: Delete a spark job definition.
+    text: |-
+        az synapse spark-job-definition delete --workspace-name testsynapseworkspace \\
+          --name testsjdname
+"""
+
+helps['synapse spark-job-definition create'] = """
+type: command
+short-summary: Create a spark job definition.
+examples:
+  - name: Create a spark job definition.
+    text: |-
+        az synapse spark-job-definition create --workspace-name testsynapseworkspace \\
+          --name testsjdname --file @path/test.json
+"""
+
+helps['synapse spark-job-definition update'] = """
+type: command
+short-summary: Update a spark job definition.
+examples:
+  - name: Update a spark job definition.
+    text: |-
+        az synapse spark-job-definition update --workspace-name testsynapseworkspace \\
+          --name testsjdname --file @path/test.json
+"""
+
+helps['synapse spark-job-definition wait'] = """
+type: command
+short-summary: Place the CLI in a waiting state until a condition of a spark job definition is met.
 """

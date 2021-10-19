@@ -17,7 +17,7 @@ def multi_transformers(*transformers):
 def keep_max_results(output, **command_args):
     maxresults = command_args.get('maxresults', None)
     if maxresults:
-        return [_ for _ in output][:maxresults]
+        return list(output)[:maxresults]
     return output
 
 
@@ -57,4 +57,26 @@ def transform_key_decryption_output(output, **command_args):
     if not raw_result or not isinstance(raw_result, bytes):
         return output
     setattr(output, 'result', raw_result.decode('utf-8'))
+    return output
+
+
+# pylint: disable=unused-argument, protected-access
+def transform_key_output(result, **command_args):
+    from azure.keyvault.keys import KeyVaultKey, JsonWebKey
+    import base64
+    if not isinstance(result, KeyVaultKey):
+        return result
+
+    if result.key and isinstance(result.key, JsonWebKey):
+        for attr in result.key._FIELDS:
+            value = getattr(result.key, attr)
+            if value and isinstance(value, bytes):
+                setattr(result.key, attr, base64.b64encode(value))
+
+    output = {
+        'attributes': result.properties._attributes,
+        'key': result.key,
+        'managed': result.properties.managed,
+        'tags': result.properties.tags
+    }
     return output
