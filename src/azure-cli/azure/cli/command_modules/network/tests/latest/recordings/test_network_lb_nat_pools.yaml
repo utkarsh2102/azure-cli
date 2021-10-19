@@ -13,24 +13,21 @@ interactions:
       ParameterSetName:
       - -g -n
       User-Agent:
-      - python/3.7.8 (Windows-10-10.0.19041-SP0) msrest/0.6.18 msrest_azure/0.6.3
-        azure-mgmt-resource/10.3.0 Azure-SDK-For-Python AZURECLI/2.16.0
-      accept-language:
-      - en-US
+      - AZURECLI/2.23.0 azsdk-python-azure-mgmt-resource/16.1.0 Python/3.7.3 (Windows-10-10.0.19041-SP0)
     method: GET
-    uri: https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/cli_test_lb_nat_pools000001?api-version=2020-10-01
+    uri: https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/cli_test_lb_nat_pools000001?api-version=2021-04-01
   response:
     body:
-      string: '{"id":"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001","name":"cli_test_lb_nat_pools000001","type":"Microsoft.Resources/resourceGroups","location":"westus","tags":{"product":"azurecli","cause":"automation","date":"2020-12-16T06:52:34Z"},"properties":{"provisioningState":"Succeeded"}}'
+      string: '{"id":"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001","name":"cli_test_lb_nat_pools000001","type":"Microsoft.Resources/resourceGroups","location":"eastus2","tags":{"product":"azurecli","cause":"automation","date":"2021-05-14T06:05:16Z"},"properties":{"provisioningState":"Succeeded"}}'
     headers:
       cache-control:
       - no-cache
       content-length:
-      - '428'
+      - '429'
       content-type:
       - application/json; charset=utf-8
       date:
-      - Wed, 16 Dec 2020 06:52:38 GMT
+      - Fri, 14 May 2021 06:05:18 GMT
       expires:
       - '-1'
       pragma:
@@ -58,57 +55,9 @@ interactions:
       ParameterSetName:
       - -g -n
       User-Agent:
-      - python/3.7.8 (Windows-10-10.0.19041-SP0) msrest/0.6.18 msrest_azure/0.6.3
-        azure-mgmt-resource/10.3.0 Azure-SDK-For-Python AZURECLI/2.16.0
-      accept-language:
-      - en-US
+      - AZURECLI/2.23.0 azsdk-python-azure-mgmt-resource/16.1.0 Python/3.7.3 (Windows-10-10.0.19041-SP0)
     method: GET
-    uri: https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resources?$filter=resourceGroup%20eq%20%27cli_test_lb_nat_pools000001%27%20and%20name%20eq%20%27None%27%20and%20resourceType%20eq%20%27Microsoft.Network%2FpublicIPAddresses%27&api-version=2020-10-01
-  response:
-    body:
-      string: '{"value":[],"nextLink":"https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resources?%24filter=resourceGroup+eq+%27cli_test_lb_nat_pools000001%27+and+name+eq+%27None%27+and+resourceType+eq+%27Microsoft.Network%2fpublicIPAddresses%27&api-version=2020-10-01&%24skiptoken=eyJuZXh0UGFydGl0aW9uS2V5IjoiMSE4IU5UbERNREktIiwibmV4dFJvd0tleSI6IjEhMTY0IVFURkNSa0UyTXpWR01rSkdOREpHTVRnMlFqVTRORGhETmpjMFJrTXpNakZmUjFKTUxWUkZUVkJNUVZSRlUxQkZRMU5EVEVrdFRVbERVazlUVDBaVU9qSkZVa1ZUVDFWU1EwVlRPakpHVkVWTlVFeEJWRVZUVUVWRFV6b3lSbFZZVkVWVFZEb3lSbFpGVWxOSlQwNVRPakpHT0RndFJVRlRWRlZUIn0%3d"}'
-    headers:
-      cache-control:
-      - no-cache
-      content-length:
-      - '646'
-      content-type:
-      - application/json; charset=utf-8
-      date:
-      - Fri, 18 Dec 2020 00:06:29 GMT
-      expires:
-      - '-1'
-      pragma:
-      - no-cache
-      strict-transport-security:
-      - max-age=31536000; includeSubDomains
-      vary:
-      - Accept-Encoding
-      x-content-type-options:
-      - nosniff
-    status:
-      code: 200
-      message: OK
-- request:
-    body: null
-    headers:
-      Accept:
-      - application/json
-      Accept-Encoding:
-      - gzip, deflate
-      CommandName:
-      - network lb create
-      Connection:
-      - keep-alive
-      ParameterSetName:
-      - -g -n
-      User-Agent:
-      - python/3.8.6 (Windows-10-10.0.19041-SP0) msrest/0.6.18 msrest_azure/0.6.3
-        azure-mgmt-resource/12.0.0 Azure-SDK-For-Python AZURECLI/2.16.0
-      accept-language:
-      - en-US
-    method: GET
-    uri: https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resources?%24filter=resourceGroup+eq+%27cli_test_lb_nat_pools000001%27+and+name+eq+%27None%27+and+resourceType+eq+%27Microsoft.Network%2FpublicIPAddresses%27&api-version=2020-10-01&%24skiptoken=eyJuZXh0UGFydGl0aW9uS2V5IjoiMSE4IU5UbERNREktIiwibmV4dFJvd0tleSI6IjEhMTY0IVFURkNSa0UyTXpWR01rSkdOREpHTVRnMlFqVTRORGhETmpjMFJrTXpNakZmUjFKTUxWUkZUVkJNUVZSRlUxQkZRMU5EVEVrdFRVbERVazlUVDBaVU9qSkZVa1ZUVDFWU1EwVlRPakpHVkVWTlVFeEJWRVZUVUVWRFV6b3lSbFZZVkVWVFZEb3lSbFpGVWxOSlQwNVRPakpHT0RndFJVRlRWRlZUIn0%3D
+    uri: https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resources?$filter=resourceGroup%20eq%20%27cli_test_lb_nat_pools000001%27%20and%20name%20eq%20%27None%27%20and%20resourceType%20eq%20%27Microsoft.Network%2FpublicIPAddresses%27&api-version=2021-04-01
   response:
     body:
       string: '{"value":[]}'
@@ -120,7 +69,7 @@ interactions:
       content-type:
       - application/json; charset=utf-8
       date:
-      - Wed, 16 Dec 2020 06:52:40 GMT
+      - Fri, 14 May 2021 06:05:18 GMT
       expires:
       - '-1'
       pragma:
@@ -137,16 +86,16 @@ interactions:
 - request:
     body: '{"properties": {"template": {"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
       "contentVersion": "1.0.0.0", "parameters": {}, "variables": {}, "resources":
-      [{"apiVersion": "2020-07-01", "type": "Microsoft.Network/publicIPAddresses",
-      "name": "PublicIPlb1", "location": "westus", "tags": {}, "dependsOn": [], "properties":
+      [{"apiVersion": "2021-02-01", "type": "Microsoft.Network/publicIPAddresses",
+      "name": "PublicIPlb1", "location": "eastus2", "tags": {}, "dependsOn": [], "properties":
       {"publicIPAllocationMethod": "Dynamic"}, "sku": {"name": "Basic"}}, {"type":
-      "Microsoft.Network/loadBalancers", "name": "lb1", "location": "westus", "tags":
-      {}, "apiVersion": "2020-07-01", "dependsOn": ["Microsoft.Network/publicIpAddresses/PublicIPlb1"],
+      "Microsoft.Network/loadBalancers", "name": "lb1", "location": "eastus2", "tags":
+      {}, "apiVersion": "2021-02-01", "dependsOn": ["Microsoft.Network/publicIpAddresses/PublicIPlb1"],
       "properties": {"backendAddressPools": [{"name": "lb1bepool"}], "frontendIPConfigurations":
       [{"name": "LoadBalancerFrontEnd", "properties": {"publicIPAddress": {"id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/publicIPAddresses/PublicIPlb1"},
       "privateIPAddressVersion": "IPv4"}}]}, "sku": {"name": "Basic"}}], "outputs":
       {"loadBalancer": {"type": "object", "value": "[reference(''lb1'')]"}}}, "parameters":
-      {}, "mode": "Incremental"}}'
+      {}, "mode": "incremental"}}'
     headers:
       Accept:
       - application/json
@@ -157,32 +106,29 @@ interactions:
       Connection:
       - keep-alive
       Content-Length:
-      - '1180'
+      - '1182'
       Content-Type:
-      - application/json; charset=utf-8
+      - application/json
       ParameterSetName:
       - -g -n
       User-Agent:
-      - python/3.7.8 (Windows-10-10.0.19041-SP0) msrest/0.6.18 msrest_azure/0.6.3
-        azure-mgmt-resource/10.3.0 Azure-SDK-For-Python AZURECLI/2.16.0
-      accept-language:
-      - en-US
+      - AZURECLI/2.23.0 azsdk-python-azure-mgmt-resource/16.1.0 Python/3.7.3 (Windows-10-10.0.19041-SP0)
     method: PUT
-    uri: https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/cli_test_lb_nat_pools000001/providers/Microsoft.Resources/deployments/mock-deployment?api-version=2020-10-01
+    uri: https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/cli_test_lb_nat_pools000001/providers/Microsoft.Resources/deployments/mock-deployment?api-version=2021-04-01
   response:
     body:
-      string: '{"id":"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Resources/deployments/lb_deploy_OPYlCMOPHDhg8NM7CaVQiAbxN4JHxSjM","name":"lb_deploy_OPYlCMOPHDhg8NM7CaVQiAbxN4JHxSjM","type":"Microsoft.Resources/deployments","properties":{"templateHash":"9359689258381100287","parameters":{},"mode":"Incremental","provisioningState":"Accepted","timestamp":"2020-12-16T06:52:45.4358847Z","duration":"PT2.1805898S","correlationId":"853ee4af-4d40-4825-9b75-875263468d7e","providers":[{"namespace":"Microsoft.Network","resourceTypes":[{"resourceType":"publicIPAddresses","locations":["westus"]},{"resourceType":"loadBalancers","locations":["westus"]}]}],"dependencies":[{"dependsOn":[{"id":"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/publicIPAddresses/PublicIPlb1","resourceType":"Microsoft.Network/publicIPAddresses","resourceName":"PublicIPlb1"}],"id":"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/loadBalancers/lb1","resourceType":"Microsoft.Network/loadBalancers","resourceName":"lb1"}]}}'
+      string: '{"id":"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Resources/deployments/lb_deploy_54nKwK2TUd8mN5HvDdwWsWAFZHFOhdk8","name":"lb_deploy_54nKwK2TUd8mN5HvDdwWsWAFZHFOhdk8","type":"Microsoft.Resources/deployments","properties":{"templateHash":"7477480594777034379","parameters":{},"mode":"Incremental","provisioningState":"Accepted","timestamp":"2021-05-14T06:05:22.1335164Z","duration":"PT1.2137269S","correlationId":"856b86fe-5c33-4476-82f7-b1a053e87e0f","providers":[{"namespace":"Microsoft.Network","resourceTypes":[{"resourceType":"publicIPAddresses","locations":["eastus2"]},{"resourceType":"loadBalancers","locations":["eastus2"]}]}],"dependencies":[{"dependsOn":[{"id":"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/publicIPAddresses/PublicIPlb1","resourceType":"Microsoft.Network/publicIPAddresses","resourceName":"PublicIPlb1"}],"id":"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/loadBalancers/lb1","resourceType":"Microsoft.Network/loadBalancers","resourceName":"lb1"}]}}'
     headers:
       azure-asyncoperation:
-      - https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/cli_test_lb_nat_pools000001/providers/Microsoft.Resources/deployments/lb_deploy_OPYlCMOPHDhg8NM7CaVQiAbxN4JHxSjM/operationStatuses/08585935053222223184?api-version=2020-06-01
+      - https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/cli_test_lb_nat_pools000001/providers/Microsoft.Resources/deployments/lb_deploy_54nKwK2TUd8mN5HvDdwWsWAFZHFOhdk8/operationStatuses/08585806345645578336?api-version=2021-04-01
       cache-control:
       - no-cache
       content-length:
-      - '1346'
+      - '1348'
       content-type:
       - application/json; charset=utf-8
       date:
-      - Wed, 16 Dec 2020 06:52:45 GMT
+      - Fri, 14 May 2021 06:05:24 GMT
       expires:
       - '-1'
       pragma:
@@ -192,7 +138,7 @@ interactions:
       x-content-type-options:
       - nosniff
       x-ms-ratelimit-remaining-subscription-writes:
-      - '1179'
+      - '1193'
     status:
       code: 201
       message: Created
@@ -200,7 +146,7 @@ interactions:
     body: null
     headers:
       Accept:
-      - application/json
+      - '*/*'
       Accept-Encoding:
       - gzip, deflate
       CommandName:
@@ -210,10 +156,9 @@ interactions:
       ParameterSetName:
       - -g -n
       User-Agent:
-      - python/3.7.8 (Windows-10-10.0.19041-SP0) msrest/0.6.18 msrest_azure/0.6.3
-        azure-mgmt-resource/10.3.0 Azure-SDK-For-Python AZURECLI/2.16.0
+      - AZURECLI/2.23.0 azsdk-python-azure-mgmt-resource/16.1.0 Python/3.7.3 (Windows-10-10.0.19041-SP0)
     method: GET
-    uri: https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/cli_test_lb_nat_pools000001/providers/Microsoft.Resources/deployments/mock-deployment/operationStatuses/08585935053222223184?api-version=2020-06-01
+    uri: https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/cli_test_lb_nat_pools000001/providers/Microsoft.Resources/deployments/mock-deployment/operationStatuses/08585806345645578336?api-version=2021-04-01
   response:
     body:
       string: '{"status":"Succeeded"}'
@@ -225,7 +170,7 @@ interactions:
       content-type:
       - application/json; charset=utf-8
       date:
-      - Wed, 16 Dec 2020 06:53:18 GMT
+      - Fri, 14 May 2021 06:05:55 GMT
       expires:
       - '-1'
       pragma:
@@ -243,7 +188,7 @@ interactions:
     body: null
     headers:
       Accept:
-      - application/json
+      - '*/*'
       Accept-Encoding:
       - gzip, deflate
       CommandName:
@@ -253,22 +198,21 @@ interactions:
       ParameterSetName:
       - -g -n
       User-Agent:
-      - python/3.7.8 (Windows-10-10.0.19041-SP0) msrest/0.6.18 msrest_azure/0.6.3
-        azure-mgmt-resource/10.3.0 Azure-SDK-For-Python AZURECLI/2.16.0
+      - AZURECLI/2.23.0 azsdk-python-azure-mgmt-resource/16.1.0 Python/3.7.3 (Windows-10-10.0.19041-SP0)
     method: GET
-    uri: https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/cli_test_lb_nat_pools000001/providers/Microsoft.Resources/deployments/mock-deployment?api-version=2020-10-01
+    uri: https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/cli_test_lb_nat_pools000001/providers/Microsoft.Resources/deployments/mock-deployment?api-version=2021-04-01
   response:
     body:
-      string: '{"id":"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Resources/deployments/lb_deploy_OPYlCMOPHDhg8NM7CaVQiAbxN4JHxSjM","name":"lb_deploy_OPYlCMOPHDhg8NM7CaVQiAbxN4JHxSjM","type":"Microsoft.Resources/deployments","properties":{"templateHash":"9359689258381100287","parameters":{},"mode":"Incremental","provisioningState":"Succeeded","timestamp":"2020-12-16T06:53:10.13941Z","duration":"PT26.8841151S","correlationId":"853ee4af-4d40-4825-9b75-875263468d7e","providers":[{"namespace":"Microsoft.Network","resourceTypes":[{"resourceType":"publicIPAddresses","locations":["westus"]},{"resourceType":"loadBalancers","locations":["westus"]}]}],"dependencies":[{"dependsOn":[{"id":"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/publicIPAddresses/PublicIPlb1","resourceType":"Microsoft.Network/publicIPAddresses","resourceName":"PublicIPlb1"}],"id":"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/loadBalancers/lb1","resourceType":"Microsoft.Network/loadBalancers","resourceName":"lb1"}],"outputs":{"loadBalancer":{"type":"Object","value":{"provisioningState":"Succeeded","resourceGuid":"a45cfae0-2925-488a-ae45-bc3ec999e0fd","frontendIPConfigurations":[{"name":"LoadBalancerFrontEnd","id":"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/loadBalancers/lb1/frontendIPConfigurations/LoadBalancerFrontEnd","etag":"W/\"42a31782-bab4-47ba-85ec-cb9e3846988d\"","type":"Microsoft.Network/loadBalancers/frontendIPConfigurations","properties":{"provisioningState":"Succeeded","privateIPAllocationMethod":"Dynamic","publicIPAddress":{"id":"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/publicIPAddresses/PublicIPlb1"},"privateIPAddressVersion":"IPv4"}}],"backendAddressPools":[{"name":"lb1bepool","id":"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/loadBalancers/lb1/backendAddressPools/lb1bepool","etag":"W/\"42a31782-bab4-47ba-85ec-cb9e3846988d\"","properties":{"provisioningState":"Succeeded"},"type":"Microsoft.Network/loadBalancers/backendAddressPools"}],"loadBalancingRules":[],"probes":[],"inboundNatRules":[],"inboundNatPools":[]}}},"outputResources":[{"id":"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/loadBalancers/lb1"},{"id":"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/publicIPAddresses/PublicIPlb1"}]}}'
+      string: '{"id":"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Resources/deployments/lb_deploy_54nKwK2TUd8mN5HvDdwWsWAFZHFOhdk8","name":"lb_deploy_54nKwK2TUd8mN5HvDdwWsWAFZHFOhdk8","type":"Microsoft.Resources/deployments","properties":{"templateHash":"7477480594777034379","parameters":{},"mode":"Incremental","provisioningState":"Succeeded","timestamp":"2021-05-14T06:05:43.3155723Z","duration":"PT22.3957828S","correlationId":"856b86fe-5c33-4476-82f7-b1a053e87e0f","providers":[{"namespace":"Microsoft.Network","resourceTypes":[{"resourceType":"publicIPAddresses","locations":["eastus2"]},{"resourceType":"loadBalancers","locations":["eastus2"]}]}],"dependencies":[{"dependsOn":[{"id":"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/publicIPAddresses/PublicIPlb1","resourceType":"Microsoft.Network/publicIPAddresses","resourceName":"PublicIPlb1"}],"id":"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/loadBalancers/lb1","resourceType":"Microsoft.Network/loadBalancers","resourceName":"lb1"}],"outputs":{"loadBalancer":{"type":"Object","value":{"provisioningState":"Succeeded","resourceGuid":"60eba153-c9f6-42d0-a4ad-2a184e71e303","frontendIPConfigurations":[{"name":"LoadBalancerFrontEnd","id":"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/loadBalancers/lb1/frontendIPConfigurations/LoadBalancerFrontEnd","etag":"W/\"455d9d25-5423-4d60-ad98-3b6ed252ae0f\"","type":"Microsoft.Network/loadBalancers/frontendIPConfigurations","properties":{"provisioningState":"Succeeded","privateIPAllocationMethod":"Dynamic","publicIPAddress":{"id":"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/publicIPAddresses/PublicIPlb1"},"privateIPAddressVersion":"IPv4"}}],"backendAddressPools":[{"name":"lb1bepool","id":"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/loadBalancers/lb1/backendAddressPools/lb1bepool","etag":"W/\"455d9d25-5423-4d60-ad98-3b6ed252ae0f\"","properties":{"provisioningState":"Succeeded"},"type":"Microsoft.Network/loadBalancers/backendAddressPools"}],"loadBalancingRules":[],"probes":[],"inboundNatRules":[],"inboundNatPools":[]}}},"outputResources":[{"id":"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/loadBalancers/lb1"},{"id":"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/publicIPAddresses/PublicIPlb1"}]}}'
     headers:
       cache-control:
       - no-cache
       content-length:
-      - '3191'
+      - '3195'
       content-type:
       - application/json; charset=utf-8
       date:
-      - Wed, 16 Dec 2020 06:53:19 GMT
+      - Fri, 14 May 2021 06:05:55 GMT
       expires:
       - '-1'
       pragma:
@@ -297,19 +241,19 @@ interactions:
       - -g --lb-name -n --protocol --frontend-port-range-start --frontend-port-range-end
         --backend-port
       User-Agent:
-      - AZURECLI/2.16.0 azsdk-python-azure-mgmt-network/17.0.0 Python/3.7.8 (Windows-10-10.0.19041-SP0)
+      - AZURECLI/2.23.0 azsdk-python-azure-mgmt-network/18.0.0 Python/3.7.3 (Windows-10-10.0.19041-SP0)
     method: GET
-    uri: https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/loadBalancers/lb1?api-version=2020-07-01
+    uri: https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/loadBalancers/lb1?api-version=2021-02-01
   response:
     body:
       string: "{\r\n  \"name\": \"lb1\",\r\n  \"id\": \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/loadBalancers/lb1\",\r\n
-        \ \"etag\": \"W/\\\"42a31782-bab4-47ba-85ec-cb9e3846988d\\\"\",\r\n  \"type\":
-        \"Microsoft.Network/loadBalancers\",\r\n  \"location\": \"westus\",\r\n  \"tags\":
+        \ \"etag\": \"W/\\\"455d9d25-5423-4d60-ad98-3b6ed252ae0f\\\"\",\r\n  \"type\":
+        \"Microsoft.Network/loadBalancers\",\r\n  \"location\": \"eastus2\",\r\n  \"tags\":
         {},\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n
-        \   \"resourceGuid\": \"a45cfae0-2925-488a-ae45-bc3ec999e0fd\",\r\n    \"frontendIPConfigurations\":
+        \   \"resourceGuid\": \"60eba153-c9f6-42d0-a4ad-2a184e71e303\",\r\n    \"frontendIPConfigurations\":
         [\r\n      {\r\n        \"name\": \"LoadBalancerFrontEnd\",\r\n        \"id\":
         \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/loadBalancers/lb1/frontendIPConfigurations/LoadBalancerFrontEnd\",\r\n
-        \       \"etag\": \"W/\\\"42a31782-bab4-47ba-85ec-cb9e3846988d\\\"\",\r\n
+        \       \"etag\": \"W/\\\"455d9d25-5423-4d60-ad98-3b6ed252ae0f\\\"\",\r\n
         \       \"type\": \"Microsoft.Network/loadBalancers/frontendIPConfigurations\",\r\n
         \       \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n
         \         \"privateIPAllocationMethod\": \"Dynamic\",\r\n          \"publicIPAddress\":
@@ -317,7 +261,7 @@ interactions:
         \         },\r\n          \"privateIPAddressVersion\": \"IPv4\"\r\n        }\r\n
         \     }\r\n    ],\r\n    \"backendAddressPools\": [\r\n      {\r\n        \"name\":
         \"lb1bepool\",\r\n        \"id\": \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/loadBalancers/lb1/backendAddressPools/lb1bepool\",\r\n
-        \       \"etag\": \"W/\\\"42a31782-bab4-47ba-85ec-cb9e3846988d\\\"\",\r\n
+        \       \"etag\": \"W/\\\"455d9d25-5423-4d60-ad98-3b6ed252ae0f\\\"\",\r\n
         \       \"properties\": {\r\n          \"provisioningState\": \"Succeeded\"\r\n
         \       },\r\n        \"type\": \"Microsoft.Network/loadBalancers/backendAddressPools\"\r\n
         \     }\r\n    ],\r\n    \"loadBalancingRules\": [],\r\n    \"probes\": [],\r\n
@@ -327,13 +271,13 @@ interactions:
       cache-control:
       - no-cache
       content-length:
-      - '2137'
+      - '2138'
       content-type:
       - application/json; charset=utf-8
       date:
-      - Wed, 16 Dec 2020 06:53:21 GMT
+      - Fri, 14 May 2021 06:05:56 GMT
       etag:
-      - W/"42a31782-bab4-47ba-85ec-cb9e3846988d"
+      - W/"455d9d25-5423-4d60-ad98-3b6ed252ae0f"
       expires:
       - '-1'
       pragma:
@@ -350,13 +294,13 @@ interactions:
       x-content-type-options:
       - nosniff
       x-ms-arm-service-request-id:
-      - 386d5743-898f-4f75-a1a1-ea5bbc2b2802
+      - 71f6df1a-7d05-4591-9097-2888cf81f380
     status:
       code: 200
       message: OK
 - request:
     body: '{"id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/loadBalancers/lb1",
-      "location": "westus", "tags": {}, "sku": {"name": "Basic", "tier": "Regional"},
+      "location": "eastus2", "tags": {}, "sku": {"name": "Basic", "tier": "Regional"},
       "properties": {"frontendIPConfigurations": [{"id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/loadBalancers/lb1/frontendIPConfigurations/LoadBalancerFrontEnd",
       "name": "LoadBalancerFrontEnd", "properties": {"privateIPAllocationMethod":
       "Dynamic", "privateIPAddressVersion": "IPv4", "publicIPAddress": {"id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/publicIPAddresses/PublicIPlb1"}}}],
@@ -378,26 +322,26 @@ interactions:
       Connection:
       - keep-alive
       Content-Length:
-      - '2051'
+      - '2052'
       Content-Type:
       - application/json
       ParameterSetName:
       - -g --lb-name -n --protocol --frontend-port-range-start --frontend-port-range-end
         --backend-port
       User-Agent:
-      - AZURECLI/2.16.0 azsdk-python-azure-mgmt-network/17.0.0 Python/3.7.8 (Windows-10-10.0.19041-SP0)
+      - AZURECLI/2.23.0 azsdk-python-azure-mgmt-network/18.0.0 Python/3.7.3 (Windows-10-10.0.19041-SP0)
     method: PUT
-    uri: https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/loadBalancers/lb1?api-version=2020-07-01
+    uri: https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/loadBalancers/lb1?api-version=2021-02-01
   response:
     body:
       string: "{\r\n  \"name\": \"lb1\",\r\n  \"id\": \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/loadBalancers/lb1\",\r\n
-        \ \"etag\": \"W/\\\"1f36f4b3-9425-4a00-a54f-fb0844e4c4dd\\\"\",\r\n  \"type\":
-        \"Microsoft.Network/loadBalancers\",\r\n  \"location\": \"westus\",\r\n  \"tags\":
+        \ \"etag\": \"W/\\\"65a8b4e5-6354-4d64-b832-2bab63508fa3\\\"\",\r\n  \"type\":
+        \"Microsoft.Network/loadBalancers\",\r\n  \"location\": \"eastus2\",\r\n  \"tags\":
         {},\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n
-        \   \"resourceGuid\": \"a45cfae0-2925-488a-ae45-bc3ec999e0fd\",\r\n    \"frontendIPConfigurations\":
+        \   \"resourceGuid\": \"60eba153-c9f6-42d0-a4ad-2a184e71e303\",\r\n    \"frontendIPConfigurations\":
         [\r\n      {\r\n        \"name\": \"LoadBalancerFrontEnd\",\r\n        \"id\":
         \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/loadBalancers/lb1/frontendIPConfigurations/LoadBalancerFrontEnd\",\r\n
-        \       \"etag\": \"W/\\\"1f36f4b3-9425-4a00-a54f-fb0844e4c4dd\\\"\",\r\n
+        \       \"etag\": \"W/\\\"65a8b4e5-6354-4d64-b832-2bab63508fa3\\\"\",\r\n
         \       \"type\": \"Microsoft.Network/loadBalancers/frontendIPConfigurations\",\r\n
         \       \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n
         \         \"privateIPAllocationMethod\": \"Dynamic\",\r\n          \"publicIPAddress\":
@@ -407,13 +351,13 @@ interactions:
         \           }\r\n          ],\r\n          \"privateIPAddressVersion\": \"IPv4\"\r\n
         \       }\r\n      }\r\n    ],\r\n    \"backendAddressPools\": [\r\n      {\r\n
         \       \"name\": \"lb1bepool\",\r\n        \"id\": \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/loadBalancers/lb1/backendAddressPools/lb1bepool\",\r\n
-        \       \"etag\": \"W/\\\"1f36f4b3-9425-4a00-a54f-fb0844e4c4dd\\\"\",\r\n
+        \       \"etag\": \"W/\\\"65a8b4e5-6354-4d64-b832-2bab63508fa3\\\"\",\r\n
         \       \"properties\": {\r\n          \"provisioningState\": \"Succeeded\"\r\n
         \       },\r\n        \"type\": \"Microsoft.Network/loadBalancers/backendAddressPools\"\r\n
         \     }\r\n    ],\r\n    \"loadBalancingRules\": [],\r\n    \"probes\": [],\r\n
         \   \"inboundNatRules\": [],\r\n    \"inboundNatPools\": [\r\n      {\r\n
         \       \"name\": \"rule1000\",\r\n        \"id\": \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/loadBalancers/lb1/inboundNatPools/rule1000\",\r\n
-        \       \"etag\": \"W/\\\"1f36f4b3-9425-4a00-a54f-fb0844e4c4dd\\\"\",\r\n
+        \       \"etag\": \"W/\\\"65a8b4e5-6354-4d64-b832-2bab63508fa3\\\"\",\r\n
         \       \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n
         \         \"frontendPortRangeStart\": 1000,\r\n          \"frontendPortRangeEnd\":
         1999,\r\n          \"backendPort\": 1000,\r\n          \"protocol\": \"Tcp\",\r\n
@@ -426,15 +370,15 @@ interactions:
         \"Regional\"\r\n  }\r\n}"
     headers:
       azure-asyncoperation:
-      - https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Network/locations/westus/operations/d7abbaff-c6fa-4dc2-b815-7801b84a5a9a?api-version=2020-07-01
+      - https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Network/locations/eastus2/operations/32dbbc1d-e818-4452-b6ad-2ba749c944fd?api-version=2021-02-01
       cache-control:
       - no-cache
       content-length:
-      - '3614'
+      - '3615'
       content-type:
       - application/json; charset=utf-8
       date:
-      - Wed, 16 Dec 2020 06:53:22 GMT
+      - Fri, 14 May 2021 06:05:59 GMT
       expires:
       - '-1'
       pragma:
@@ -451,9 +395,9 @@ interactions:
       x-content-type-options:
       - nosniff
       x-ms-arm-service-request-id:
-      - 49982c4a-5596-4e73-897a-b6c2914e748d
+      - 1287c93c-d272-4aa6-abe4-3c1f09f06177
       x-ms-ratelimit-remaining-subscription-writes:
-      - '1182'
+      - '1188'
     status:
       code: 200
       message: OK
@@ -472,9 +416,9 @@ interactions:
       - -g --lb-name -n --protocol --frontend-port-range-start --frontend-port-range-end
         --backend-port
       User-Agent:
-      - AZURECLI/2.16.0 azsdk-python-azure-mgmt-network/17.0.0 Python/3.7.8 (Windows-10-10.0.19041-SP0)
+      - AZURECLI/2.23.0 azsdk-python-azure-mgmt-network/18.0.0 Python/3.7.3 (Windows-10-10.0.19041-SP0)
     method: GET
-    uri: https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Network/locations/westus/operations/d7abbaff-c6fa-4dc2-b815-7801b84a5a9a?api-version=2020-07-01
+    uri: https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Network/locations/eastus2/operations/32dbbc1d-e818-4452-b6ad-2ba749c944fd?api-version=2021-02-01
   response:
     body:
       string: "{\r\n  \"status\": \"Succeeded\"\r\n}"
@@ -486,7 +430,7 @@ interactions:
       content-type:
       - application/json; charset=utf-8
       date:
-      - Wed, 16 Dec 2020 06:53:53 GMT
+      - Fri, 14 May 2021 06:06:30 GMT
       expires:
       - '-1'
       pragma:
@@ -503,7 +447,7 @@ interactions:
       x-content-type-options:
       - nosniff
       x-ms-arm-service-request-id:
-      - 4c6c14b2-692b-4a63-8e7c-3efc3e7ec1cb
+      - 21383681-fe7d-4c57-b548-97456f85a8f8
     status:
       code: 200
       message: OK
@@ -522,19 +466,19 @@ interactions:
       - -g --lb-name -n --protocol --frontend-port-range-start --frontend-port-range-end
         --backend-port
       User-Agent:
-      - AZURECLI/2.16.0 azsdk-python-azure-mgmt-network/17.0.0 Python/3.7.8 (Windows-10-10.0.19041-SP0)
+      - AZURECLI/2.23.0 azsdk-python-azure-mgmt-network/18.0.0 Python/3.7.3 (Windows-10-10.0.19041-SP0)
     method: GET
-    uri: https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/loadBalancers/lb1?api-version=2020-07-01
+    uri: https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/loadBalancers/lb1?api-version=2021-02-01
   response:
     body:
       string: "{\r\n  \"name\": \"lb1\",\r\n  \"id\": \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/loadBalancers/lb1\",\r\n
-        \ \"etag\": \"W/\\\"1f36f4b3-9425-4a00-a54f-fb0844e4c4dd\\\"\",\r\n  \"type\":
-        \"Microsoft.Network/loadBalancers\",\r\n  \"location\": \"westus\",\r\n  \"tags\":
+        \ \"etag\": \"W/\\\"65a8b4e5-6354-4d64-b832-2bab63508fa3\\\"\",\r\n  \"type\":
+        \"Microsoft.Network/loadBalancers\",\r\n  \"location\": \"eastus2\",\r\n  \"tags\":
         {},\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n
-        \   \"resourceGuid\": \"a45cfae0-2925-488a-ae45-bc3ec999e0fd\",\r\n    \"frontendIPConfigurations\":
+        \   \"resourceGuid\": \"60eba153-c9f6-42d0-a4ad-2a184e71e303\",\r\n    \"frontendIPConfigurations\":
         [\r\n      {\r\n        \"name\": \"LoadBalancerFrontEnd\",\r\n        \"id\":
         \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/loadBalancers/lb1/frontendIPConfigurations/LoadBalancerFrontEnd\",\r\n
-        \       \"etag\": \"W/\\\"1f36f4b3-9425-4a00-a54f-fb0844e4c4dd\\\"\",\r\n
+        \       \"etag\": \"W/\\\"65a8b4e5-6354-4d64-b832-2bab63508fa3\\\"\",\r\n
         \       \"type\": \"Microsoft.Network/loadBalancers/frontendIPConfigurations\",\r\n
         \       \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n
         \         \"privateIPAllocationMethod\": \"Dynamic\",\r\n          \"publicIPAddress\":
@@ -544,13 +488,13 @@ interactions:
         \           }\r\n          ],\r\n          \"privateIPAddressVersion\": \"IPv4\"\r\n
         \       }\r\n      }\r\n    ],\r\n    \"backendAddressPools\": [\r\n      {\r\n
         \       \"name\": \"lb1bepool\",\r\n        \"id\": \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/loadBalancers/lb1/backendAddressPools/lb1bepool\",\r\n
-        \       \"etag\": \"W/\\\"1f36f4b3-9425-4a00-a54f-fb0844e4c4dd\\\"\",\r\n
+        \       \"etag\": \"W/\\\"65a8b4e5-6354-4d64-b832-2bab63508fa3\\\"\",\r\n
         \       \"properties\": {\r\n          \"provisioningState\": \"Succeeded\"\r\n
         \       },\r\n        \"type\": \"Microsoft.Network/loadBalancers/backendAddressPools\"\r\n
         \     }\r\n    ],\r\n    \"loadBalancingRules\": [],\r\n    \"probes\": [],\r\n
         \   \"inboundNatRules\": [],\r\n    \"inboundNatPools\": [\r\n      {\r\n
         \       \"name\": \"rule1000\",\r\n        \"id\": \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/loadBalancers/lb1/inboundNatPools/rule1000\",\r\n
-        \       \"etag\": \"W/\\\"1f36f4b3-9425-4a00-a54f-fb0844e4c4dd\\\"\",\r\n
+        \       \"etag\": \"W/\\\"65a8b4e5-6354-4d64-b832-2bab63508fa3\\\"\",\r\n
         \       \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n
         \         \"frontendPortRangeStart\": 1000,\r\n          \"frontendPortRangeEnd\":
         1999,\r\n          \"backendPort\": 1000,\r\n          \"protocol\": \"Tcp\",\r\n
@@ -565,13 +509,13 @@ interactions:
       cache-control:
       - no-cache
       content-length:
-      - '3614'
+      - '3615'
       content-type:
       - application/json; charset=utf-8
       date:
-      - Wed, 16 Dec 2020 06:53:53 GMT
+      - Fri, 14 May 2021 06:06:30 GMT
       etag:
-      - W/"1f36f4b3-9425-4a00-a54f-fb0844e4c4dd"
+      - W/"65a8b4e5-6354-4d64-b832-2bab63508fa3"
       expires:
       - '-1'
       pragma:
@@ -588,7 +532,7 @@ interactions:
       x-content-type-options:
       - nosniff
       x-ms-arm-service-request-id:
-      - 3f7d6d99-ad81-4195-8de5-121b23c7705d
+      - 89d3af10-be02-460e-97e4-570bc0a382f4
     status:
       code: 200
       message: OK
@@ -607,19 +551,19 @@ interactions:
       - -g --lb-name -n --protocol --frontend-port-range-start --frontend-port-range-end
         --backend-port
       User-Agent:
-      - AZURECLI/2.16.0 azsdk-python-azure-mgmt-network/17.0.0 Python/3.7.8 (Windows-10-10.0.19041-SP0)
+      - AZURECLI/2.23.0 azsdk-python-azure-mgmt-network/18.0.0 Python/3.7.3 (Windows-10-10.0.19041-SP0)
     method: GET
-    uri: https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/loadBalancers/lb1?api-version=2020-07-01
+    uri: https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/loadBalancers/lb1?api-version=2021-02-01
   response:
     body:
       string: "{\r\n  \"name\": \"lb1\",\r\n  \"id\": \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/loadBalancers/lb1\",\r\n
-        \ \"etag\": \"W/\\\"1f36f4b3-9425-4a00-a54f-fb0844e4c4dd\\\"\",\r\n  \"type\":
-        \"Microsoft.Network/loadBalancers\",\r\n  \"location\": \"westus\",\r\n  \"tags\":
+        \ \"etag\": \"W/\\\"65a8b4e5-6354-4d64-b832-2bab63508fa3\\\"\",\r\n  \"type\":
+        \"Microsoft.Network/loadBalancers\",\r\n  \"location\": \"eastus2\",\r\n  \"tags\":
         {},\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n
-        \   \"resourceGuid\": \"a45cfae0-2925-488a-ae45-bc3ec999e0fd\",\r\n    \"frontendIPConfigurations\":
+        \   \"resourceGuid\": \"60eba153-c9f6-42d0-a4ad-2a184e71e303\",\r\n    \"frontendIPConfigurations\":
         [\r\n      {\r\n        \"name\": \"LoadBalancerFrontEnd\",\r\n        \"id\":
         \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/loadBalancers/lb1/frontendIPConfigurations/LoadBalancerFrontEnd\",\r\n
-        \       \"etag\": \"W/\\\"1f36f4b3-9425-4a00-a54f-fb0844e4c4dd\\\"\",\r\n
+        \       \"etag\": \"W/\\\"65a8b4e5-6354-4d64-b832-2bab63508fa3\\\"\",\r\n
         \       \"type\": \"Microsoft.Network/loadBalancers/frontendIPConfigurations\",\r\n
         \       \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n
         \         \"privateIPAllocationMethod\": \"Dynamic\",\r\n          \"publicIPAddress\":
@@ -629,13 +573,13 @@ interactions:
         \           }\r\n          ],\r\n          \"privateIPAddressVersion\": \"IPv4\"\r\n
         \       }\r\n      }\r\n    ],\r\n    \"backendAddressPools\": [\r\n      {\r\n
         \       \"name\": \"lb1bepool\",\r\n        \"id\": \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/loadBalancers/lb1/backendAddressPools/lb1bepool\",\r\n
-        \       \"etag\": \"W/\\\"1f36f4b3-9425-4a00-a54f-fb0844e4c4dd\\\"\",\r\n
+        \       \"etag\": \"W/\\\"65a8b4e5-6354-4d64-b832-2bab63508fa3\\\"\",\r\n
         \       \"properties\": {\r\n          \"provisioningState\": \"Succeeded\"\r\n
         \       },\r\n        \"type\": \"Microsoft.Network/loadBalancers/backendAddressPools\"\r\n
         \     }\r\n    ],\r\n    \"loadBalancingRules\": [],\r\n    \"probes\": [],\r\n
         \   \"inboundNatRules\": [],\r\n    \"inboundNatPools\": [\r\n      {\r\n
         \       \"name\": \"rule1000\",\r\n        \"id\": \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/loadBalancers/lb1/inboundNatPools/rule1000\",\r\n
-        \       \"etag\": \"W/\\\"1f36f4b3-9425-4a00-a54f-fb0844e4c4dd\\\"\",\r\n
+        \       \"etag\": \"W/\\\"65a8b4e5-6354-4d64-b832-2bab63508fa3\\\"\",\r\n
         \       \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n
         \         \"frontendPortRangeStart\": 1000,\r\n          \"frontendPortRangeEnd\":
         1999,\r\n          \"backendPort\": 1000,\r\n          \"protocol\": \"Tcp\",\r\n
@@ -650,13 +594,13 @@ interactions:
       cache-control:
       - no-cache
       content-length:
-      - '3614'
+      - '3615'
       content-type:
       - application/json; charset=utf-8
       date:
-      - Wed, 16 Dec 2020 06:53:55 GMT
+      - Fri, 14 May 2021 06:06:31 GMT
       etag:
-      - W/"1f36f4b3-9425-4a00-a54f-fb0844e4c4dd"
+      - W/"65a8b4e5-6354-4d64-b832-2bab63508fa3"
       expires:
       - '-1'
       pragma:
@@ -673,13 +617,13 @@ interactions:
       x-content-type-options:
       - nosniff
       x-ms-arm-service-request-id:
-      - fb43d60d-d6ee-4ddf-a0e9-e5f3381f85f2
+      - 91e2390d-4899-49a3-b5f2-60352ca22ac0
     status:
       code: 200
       message: OK
 - request:
     body: '{"id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/loadBalancers/lb1",
-      "location": "westus", "tags": {}, "sku": {"name": "Basic", "tier": "Regional"},
+      "location": "eastus2", "tags": {}, "sku": {"name": "Basic", "tier": "Regional"},
       "properties": {"frontendIPConfigurations": [{"id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/loadBalancers/lb1/frontendIPConfigurations/LoadBalancerFrontEnd",
       "name": "LoadBalancerFrontEnd", "properties": {"privateIPAllocationMethod":
       "Dynamic", "privateIPAddressVersion": "IPv4", "publicIPAddress": {"id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/publicIPAddresses/PublicIPlb1"}}}],
@@ -705,26 +649,26 @@ interactions:
       Connection:
       - keep-alive
       Content-Length:
-      - '2766'
+      - '2767'
       Content-Type:
       - application/json
       ParameterSetName:
       - -g --lb-name -n --protocol --frontend-port-range-start --frontend-port-range-end
         --backend-port
       User-Agent:
-      - AZURECLI/2.16.0 azsdk-python-azure-mgmt-network/17.0.0 Python/3.7.8 (Windows-10-10.0.19041-SP0)
+      - AZURECLI/2.23.0 azsdk-python-azure-mgmt-network/18.0.0 Python/3.7.3 (Windows-10-10.0.19041-SP0)
     method: PUT
-    uri: https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/loadBalancers/lb1?api-version=2020-07-01
+    uri: https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/loadBalancers/lb1?api-version=2021-02-01
   response:
     body:
       string: "{\r\n  \"name\": \"lb1\",\r\n  \"id\": \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/loadBalancers/lb1\",\r\n
-        \ \"etag\": \"W/\\\"ba3e0658-489d-4cf3-a7a2-f5784a53144f\\\"\",\r\n  \"type\":
-        \"Microsoft.Network/loadBalancers\",\r\n  \"location\": \"westus\",\r\n  \"tags\":
+        \ \"etag\": \"W/\\\"565dddc5-02a4-40f6-b44a-e8d97eb7f73b\\\"\",\r\n  \"type\":
+        \"Microsoft.Network/loadBalancers\",\r\n  \"location\": \"eastus2\",\r\n  \"tags\":
         {},\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n
-        \   \"resourceGuid\": \"a45cfae0-2925-488a-ae45-bc3ec999e0fd\",\r\n    \"frontendIPConfigurations\":
+        \   \"resourceGuid\": \"60eba153-c9f6-42d0-a4ad-2a184e71e303\",\r\n    \"frontendIPConfigurations\":
         [\r\n      {\r\n        \"name\": \"LoadBalancerFrontEnd\",\r\n        \"id\":
         \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/loadBalancers/lb1/frontendIPConfigurations/LoadBalancerFrontEnd\",\r\n
-        \       \"etag\": \"W/\\\"ba3e0658-489d-4cf3-a7a2-f5784a53144f\\\"\",\r\n
+        \       \"etag\": \"W/\\\"565dddc5-02a4-40f6-b44a-e8d97eb7f73b\\\"\",\r\n
         \       \"type\": \"Microsoft.Network/loadBalancers/frontendIPConfigurations\",\r\n
         \       \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n
         \         \"privateIPAllocationMethod\": \"Dynamic\",\r\n          \"publicIPAddress\":
@@ -735,13 +679,13 @@ interactions:
         \           }\r\n          ],\r\n          \"privateIPAddressVersion\": \"IPv4\"\r\n
         \       }\r\n      }\r\n    ],\r\n    \"backendAddressPools\": [\r\n      {\r\n
         \       \"name\": \"lb1bepool\",\r\n        \"id\": \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/loadBalancers/lb1/backendAddressPools/lb1bepool\",\r\n
-        \       \"etag\": \"W/\\\"ba3e0658-489d-4cf3-a7a2-f5784a53144f\\\"\",\r\n
+        \       \"etag\": \"W/\\\"565dddc5-02a4-40f6-b44a-e8d97eb7f73b\\\"\",\r\n
         \       \"properties\": {\r\n          \"provisioningState\": \"Succeeded\"\r\n
         \       },\r\n        \"type\": \"Microsoft.Network/loadBalancers/backendAddressPools\"\r\n
         \     }\r\n    ],\r\n    \"loadBalancingRules\": [],\r\n    \"probes\": [],\r\n
         \   \"inboundNatRules\": [],\r\n    \"inboundNatPools\": [\r\n      {\r\n
         \       \"name\": \"rule1000\",\r\n        \"id\": \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/loadBalancers/lb1/inboundNatPools/rule1000\",\r\n
-        \       \"etag\": \"W/\\\"ba3e0658-489d-4cf3-a7a2-f5784a53144f\\\"\",\r\n
+        \       \"etag\": \"W/\\\"565dddc5-02a4-40f6-b44a-e8d97eb7f73b\\\"\",\r\n
         \       \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n
         \         \"frontendPortRangeStart\": 1000,\r\n          \"frontendPortRangeEnd\":
         1999,\r\n          \"backendPort\": 1000,\r\n          \"protocol\": \"Tcp\",\r\n
@@ -752,7 +696,7 @@ interactions:
         \         }\r\n        },\r\n        \"type\": \"Microsoft.Network/loadBalancers/inboundNatPools\"\r\n
         \     },\r\n      {\r\n        \"name\": \"rule2000\",\r\n        \"id\":
         \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/loadBalancers/lb1/inboundNatPools/rule2000\",\r\n
-        \       \"etag\": \"W/\\\"ba3e0658-489d-4cf3-a7a2-f5784a53144f\\\"\",\r\n
+        \       \"etag\": \"W/\\\"565dddc5-02a4-40f6-b44a-e8d97eb7f73b\\\"\",\r\n
         \       \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n
         \         \"frontendPortRangeStart\": 2000,\r\n          \"frontendPortRangeEnd\":
         2999,\r\n          \"backendPort\": 2000,\r\n          \"protocol\": \"Tcp\",\r\n
@@ -765,15 +709,15 @@ interactions:
         \"Regional\"\r\n  }\r\n}"
     headers:
       azure-asyncoperation:
-      - https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Network/locations/westus/operations/973842a8-ba98-440e-a380-fb9cb6f6d6e6?api-version=2020-07-01
+      - https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Network/locations/eastus2/operations/98e9be2b-1134-4a34-b340-b6450d43a49e?api-version=2021-02-01
       cache-control:
       - no-cache
       content-length:
-      - '5041'
+      - '5042'
       content-type:
       - application/json; charset=utf-8
       date:
-      - Wed, 16 Dec 2020 06:53:56 GMT
+      - Fri, 14 May 2021 06:06:34 GMT
       expires:
       - '-1'
       pragma:
@@ -790,9 +734,9 @@ interactions:
       x-content-type-options:
       - nosniff
       x-ms-arm-service-request-id:
-      - 3d49f4b6-959d-4424-8715-aa0830902743
+      - 34b0f173-4446-48f9-a603-9fe6b81b4c20
       x-ms-ratelimit-remaining-subscription-writes:
-      - '1180'
+      - '1185'
     status:
       code: 200
       message: OK
@@ -811,9 +755,9 @@ interactions:
       - -g --lb-name -n --protocol --frontend-port-range-start --frontend-port-range-end
         --backend-port
       User-Agent:
-      - AZURECLI/2.16.0 azsdk-python-azure-mgmt-network/17.0.0 Python/3.7.8 (Windows-10-10.0.19041-SP0)
+      - AZURECLI/2.23.0 azsdk-python-azure-mgmt-network/18.0.0 Python/3.7.3 (Windows-10-10.0.19041-SP0)
     method: GET
-    uri: https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Network/locations/westus/operations/973842a8-ba98-440e-a380-fb9cb6f6d6e6?api-version=2020-07-01
+    uri: https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Network/locations/eastus2/operations/98e9be2b-1134-4a34-b340-b6450d43a49e?api-version=2021-02-01
   response:
     body:
       string: "{\r\n  \"status\": \"Succeeded\"\r\n}"
@@ -825,7 +769,7 @@ interactions:
       content-type:
       - application/json; charset=utf-8
       date:
-      - Wed, 16 Dec 2020 06:54:27 GMT
+      - Fri, 14 May 2021 06:07:05 GMT
       expires:
       - '-1'
       pragma:
@@ -842,7 +786,7 @@ interactions:
       x-content-type-options:
       - nosniff
       x-ms-arm-service-request-id:
-      - 711337a8-3fae-40dd-9773-c71a3eb7c915
+      - 83dd9719-6225-4266-aea5-1475bffa84c4
     status:
       code: 200
       message: OK
@@ -861,19 +805,19 @@ interactions:
       - -g --lb-name -n --protocol --frontend-port-range-start --frontend-port-range-end
         --backend-port
       User-Agent:
-      - AZURECLI/2.16.0 azsdk-python-azure-mgmt-network/17.0.0 Python/3.7.8 (Windows-10-10.0.19041-SP0)
+      - AZURECLI/2.23.0 azsdk-python-azure-mgmt-network/18.0.0 Python/3.7.3 (Windows-10-10.0.19041-SP0)
     method: GET
-    uri: https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/loadBalancers/lb1?api-version=2020-07-01
+    uri: https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/loadBalancers/lb1?api-version=2021-02-01
   response:
     body:
       string: "{\r\n  \"name\": \"lb1\",\r\n  \"id\": \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/loadBalancers/lb1\",\r\n
-        \ \"etag\": \"W/\\\"ba3e0658-489d-4cf3-a7a2-f5784a53144f\\\"\",\r\n  \"type\":
-        \"Microsoft.Network/loadBalancers\",\r\n  \"location\": \"westus\",\r\n  \"tags\":
+        \ \"etag\": \"W/\\\"565dddc5-02a4-40f6-b44a-e8d97eb7f73b\\\"\",\r\n  \"type\":
+        \"Microsoft.Network/loadBalancers\",\r\n  \"location\": \"eastus2\",\r\n  \"tags\":
         {},\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n
-        \   \"resourceGuid\": \"a45cfae0-2925-488a-ae45-bc3ec999e0fd\",\r\n    \"frontendIPConfigurations\":
+        \   \"resourceGuid\": \"60eba153-c9f6-42d0-a4ad-2a184e71e303\",\r\n    \"frontendIPConfigurations\":
         [\r\n      {\r\n        \"name\": \"LoadBalancerFrontEnd\",\r\n        \"id\":
         \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/loadBalancers/lb1/frontendIPConfigurations/LoadBalancerFrontEnd\",\r\n
-        \       \"etag\": \"W/\\\"ba3e0658-489d-4cf3-a7a2-f5784a53144f\\\"\",\r\n
+        \       \"etag\": \"W/\\\"565dddc5-02a4-40f6-b44a-e8d97eb7f73b\\\"\",\r\n
         \       \"type\": \"Microsoft.Network/loadBalancers/frontendIPConfigurations\",\r\n
         \       \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n
         \         \"privateIPAllocationMethod\": \"Dynamic\",\r\n          \"publicIPAddress\":
@@ -884,13 +828,13 @@ interactions:
         \           }\r\n          ],\r\n          \"privateIPAddressVersion\": \"IPv4\"\r\n
         \       }\r\n      }\r\n    ],\r\n    \"backendAddressPools\": [\r\n      {\r\n
         \       \"name\": \"lb1bepool\",\r\n        \"id\": \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/loadBalancers/lb1/backendAddressPools/lb1bepool\",\r\n
-        \       \"etag\": \"W/\\\"ba3e0658-489d-4cf3-a7a2-f5784a53144f\\\"\",\r\n
+        \       \"etag\": \"W/\\\"565dddc5-02a4-40f6-b44a-e8d97eb7f73b\\\"\",\r\n
         \       \"properties\": {\r\n          \"provisioningState\": \"Succeeded\"\r\n
         \       },\r\n        \"type\": \"Microsoft.Network/loadBalancers/backendAddressPools\"\r\n
         \     }\r\n    ],\r\n    \"loadBalancingRules\": [],\r\n    \"probes\": [],\r\n
         \   \"inboundNatRules\": [],\r\n    \"inboundNatPools\": [\r\n      {\r\n
         \       \"name\": \"rule1000\",\r\n        \"id\": \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/loadBalancers/lb1/inboundNatPools/rule1000\",\r\n
-        \       \"etag\": \"W/\\\"ba3e0658-489d-4cf3-a7a2-f5784a53144f\\\"\",\r\n
+        \       \"etag\": \"W/\\\"565dddc5-02a4-40f6-b44a-e8d97eb7f73b\\\"\",\r\n
         \       \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n
         \         \"frontendPortRangeStart\": 1000,\r\n          \"frontendPortRangeEnd\":
         1999,\r\n          \"backendPort\": 1000,\r\n          \"protocol\": \"Tcp\",\r\n
@@ -901,7 +845,7 @@ interactions:
         \         }\r\n        },\r\n        \"type\": \"Microsoft.Network/loadBalancers/inboundNatPools\"\r\n
         \     },\r\n      {\r\n        \"name\": \"rule2000\",\r\n        \"id\":
         \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/loadBalancers/lb1/inboundNatPools/rule2000\",\r\n
-        \       \"etag\": \"W/\\\"ba3e0658-489d-4cf3-a7a2-f5784a53144f\\\"\",\r\n
+        \       \"etag\": \"W/\\\"565dddc5-02a4-40f6-b44a-e8d97eb7f73b\\\"\",\r\n
         \       \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n
         \         \"frontendPortRangeStart\": 2000,\r\n          \"frontendPortRangeEnd\":
         2999,\r\n          \"backendPort\": 2000,\r\n          \"protocol\": \"Tcp\",\r\n
@@ -916,13 +860,13 @@ interactions:
       cache-control:
       - no-cache
       content-length:
-      - '5041'
+      - '5042'
       content-type:
       - application/json; charset=utf-8
       date:
-      - Wed, 16 Dec 2020 06:54:27 GMT
+      - Fri, 14 May 2021 06:07:05 GMT
       etag:
-      - W/"ba3e0658-489d-4cf3-a7a2-f5784a53144f"
+      - W/"565dddc5-02a4-40f6-b44a-e8d97eb7f73b"
       expires:
       - '-1'
       pragma:
@@ -939,7 +883,7 @@ interactions:
       x-content-type-options:
       - nosniff
       x-ms-arm-service-request-id:
-      - c5882221-7c79-4499-8d15-ace64e06054a
+      - 13414c79-0f77-4dc2-9ef8-aaeab1875317
     status:
       code: 200
       message: OK
@@ -958,19 +902,19 @@ interactions:
       - -g --lb-name -n --protocol --frontend-port-range-start --frontend-port-range-end
         --backend-port
       User-Agent:
-      - AZURECLI/2.16.0 azsdk-python-azure-mgmt-network/17.0.0 Python/3.7.8 (Windows-10-10.0.19041-SP0)
+      - AZURECLI/2.23.0 azsdk-python-azure-mgmt-network/18.0.0 Python/3.7.3 (Windows-10-10.0.19041-SP0)
     method: GET
-    uri: https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/loadBalancers/lb1?api-version=2020-07-01
+    uri: https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/loadBalancers/lb1?api-version=2021-02-01
   response:
     body:
       string: "{\r\n  \"name\": \"lb1\",\r\n  \"id\": \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/loadBalancers/lb1\",\r\n
-        \ \"etag\": \"W/\\\"ba3e0658-489d-4cf3-a7a2-f5784a53144f\\\"\",\r\n  \"type\":
-        \"Microsoft.Network/loadBalancers\",\r\n  \"location\": \"westus\",\r\n  \"tags\":
+        \ \"etag\": \"W/\\\"565dddc5-02a4-40f6-b44a-e8d97eb7f73b\\\"\",\r\n  \"type\":
+        \"Microsoft.Network/loadBalancers\",\r\n  \"location\": \"eastus2\",\r\n  \"tags\":
         {},\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n
-        \   \"resourceGuid\": \"a45cfae0-2925-488a-ae45-bc3ec999e0fd\",\r\n    \"frontendIPConfigurations\":
+        \   \"resourceGuid\": \"60eba153-c9f6-42d0-a4ad-2a184e71e303\",\r\n    \"frontendIPConfigurations\":
         [\r\n      {\r\n        \"name\": \"LoadBalancerFrontEnd\",\r\n        \"id\":
         \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/loadBalancers/lb1/frontendIPConfigurations/LoadBalancerFrontEnd\",\r\n
-        \       \"etag\": \"W/\\\"ba3e0658-489d-4cf3-a7a2-f5784a53144f\\\"\",\r\n
+        \       \"etag\": \"W/\\\"565dddc5-02a4-40f6-b44a-e8d97eb7f73b\\\"\",\r\n
         \       \"type\": \"Microsoft.Network/loadBalancers/frontendIPConfigurations\",\r\n
         \       \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n
         \         \"privateIPAllocationMethod\": \"Dynamic\",\r\n          \"publicIPAddress\":
@@ -981,13 +925,13 @@ interactions:
         \           }\r\n          ],\r\n          \"privateIPAddressVersion\": \"IPv4\"\r\n
         \       }\r\n      }\r\n    ],\r\n    \"backendAddressPools\": [\r\n      {\r\n
         \       \"name\": \"lb1bepool\",\r\n        \"id\": \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/loadBalancers/lb1/backendAddressPools/lb1bepool\",\r\n
-        \       \"etag\": \"W/\\\"ba3e0658-489d-4cf3-a7a2-f5784a53144f\\\"\",\r\n
+        \       \"etag\": \"W/\\\"565dddc5-02a4-40f6-b44a-e8d97eb7f73b\\\"\",\r\n
         \       \"properties\": {\r\n          \"provisioningState\": \"Succeeded\"\r\n
         \       },\r\n        \"type\": \"Microsoft.Network/loadBalancers/backendAddressPools\"\r\n
         \     }\r\n    ],\r\n    \"loadBalancingRules\": [],\r\n    \"probes\": [],\r\n
         \   \"inboundNatRules\": [],\r\n    \"inboundNatPools\": [\r\n      {\r\n
         \       \"name\": \"rule1000\",\r\n        \"id\": \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/loadBalancers/lb1/inboundNatPools/rule1000\",\r\n
-        \       \"etag\": \"W/\\\"ba3e0658-489d-4cf3-a7a2-f5784a53144f\\\"\",\r\n
+        \       \"etag\": \"W/\\\"565dddc5-02a4-40f6-b44a-e8d97eb7f73b\\\"\",\r\n
         \       \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n
         \         \"frontendPortRangeStart\": 1000,\r\n          \"frontendPortRangeEnd\":
         1999,\r\n          \"backendPort\": 1000,\r\n          \"protocol\": \"Tcp\",\r\n
@@ -998,7 +942,7 @@ interactions:
         \         }\r\n        },\r\n        \"type\": \"Microsoft.Network/loadBalancers/inboundNatPools\"\r\n
         \     },\r\n      {\r\n        \"name\": \"rule2000\",\r\n        \"id\":
         \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/loadBalancers/lb1/inboundNatPools/rule2000\",\r\n
-        \       \"etag\": \"W/\\\"ba3e0658-489d-4cf3-a7a2-f5784a53144f\\\"\",\r\n
+        \       \"etag\": \"W/\\\"565dddc5-02a4-40f6-b44a-e8d97eb7f73b\\\"\",\r\n
         \       \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n
         \         \"frontendPortRangeStart\": 2000,\r\n          \"frontendPortRangeEnd\":
         2999,\r\n          \"backendPort\": 2000,\r\n          \"protocol\": \"Tcp\",\r\n
@@ -1013,13 +957,13 @@ interactions:
       cache-control:
       - no-cache
       content-length:
-      - '5041'
+      - '5042'
       content-type:
       - application/json; charset=utf-8
       date:
-      - Wed, 16 Dec 2020 06:54:30 GMT
+      - Fri, 14 May 2021 06:07:06 GMT
       etag:
-      - W/"ba3e0658-489d-4cf3-a7a2-f5784a53144f"
+      - W/"565dddc5-02a4-40f6-b44a-e8d97eb7f73b"
       expires:
       - '-1'
       pragma:
@@ -1036,13 +980,13 @@ interactions:
       x-content-type-options:
       - nosniff
       x-ms-arm-service-request-id:
-      - 918b85ec-51ea-4088-adc7-ce352d872bea
+      - 0c50c88d-55fd-428c-9524-0f29a74c2f53
     status:
       code: 200
       message: OK
 - request:
     body: '{"id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/loadBalancers/lb1",
-      "location": "westus", "tags": {}, "sku": {"name": "Basic", "tier": "Regional"},
+      "location": "eastus2", "tags": {}, "sku": {"name": "Basic", "tier": "Regional"},
       "properties": {"frontendIPConfigurations": [{"id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/loadBalancers/lb1/frontendIPConfigurations/LoadBalancerFrontEnd",
       "name": "LoadBalancerFrontEnd", "properties": {"privateIPAllocationMethod":
       "Dynamic", "privateIPAddressVersion": "IPv4", "publicIPAddress": {"id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/publicIPAddresses/PublicIPlb1"}}}],
@@ -1072,26 +1016,26 @@ interactions:
       Connection:
       - keep-alive
       Content-Length:
-      - '3481'
+      - '3482'
       Content-Type:
       - application/json
       ParameterSetName:
       - -g --lb-name -n --protocol --frontend-port-range-start --frontend-port-range-end
         --backend-port
       User-Agent:
-      - AZURECLI/2.16.0 azsdk-python-azure-mgmt-network/17.0.0 Python/3.7.8 (Windows-10-10.0.19041-SP0)
+      - AZURECLI/2.23.0 azsdk-python-azure-mgmt-network/18.0.0 Python/3.7.3 (Windows-10-10.0.19041-SP0)
     method: PUT
-    uri: https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/loadBalancers/lb1?api-version=2020-07-01
+    uri: https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/loadBalancers/lb1?api-version=2021-02-01
   response:
     body:
       string: "{\r\n  \"name\": \"lb1\",\r\n  \"id\": \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/loadBalancers/lb1\",\r\n
-        \ \"etag\": \"W/\\\"3113c2a2-58d4-4f44-b19c-5d59c38b7e7e\\\"\",\r\n  \"type\":
-        \"Microsoft.Network/loadBalancers\",\r\n  \"location\": \"westus\",\r\n  \"tags\":
+        \ \"etag\": \"W/\\\"3f069660-a19e-440b-bafa-b1b9370b9864\\\"\",\r\n  \"type\":
+        \"Microsoft.Network/loadBalancers\",\r\n  \"location\": \"eastus2\",\r\n  \"tags\":
         {},\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n
-        \   \"resourceGuid\": \"a45cfae0-2925-488a-ae45-bc3ec999e0fd\",\r\n    \"frontendIPConfigurations\":
+        \   \"resourceGuid\": \"60eba153-c9f6-42d0-a4ad-2a184e71e303\",\r\n    \"frontendIPConfigurations\":
         [\r\n      {\r\n        \"name\": \"LoadBalancerFrontEnd\",\r\n        \"id\":
         \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/loadBalancers/lb1/frontendIPConfigurations/LoadBalancerFrontEnd\",\r\n
-        \       \"etag\": \"W/\\\"3113c2a2-58d4-4f44-b19c-5d59c38b7e7e\\\"\",\r\n
+        \       \"etag\": \"W/\\\"3f069660-a19e-440b-bafa-b1b9370b9864\\\"\",\r\n
         \       \"type\": \"Microsoft.Network/loadBalancers/frontendIPConfigurations\",\r\n
         \       \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n
         \         \"privateIPAllocationMethod\": \"Dynamic\",\r\n          \"publicIPAddress\":
@@ -1103,13 +1047,13 @@ interactions:
         \           }\r\n          ],\r\n          \"privateIPAddressVersion\": \"IPv4\"\r\n
         \       }\r\n      }\r\n    ],\r\n    \"backendAddressPools\": [\r\n      {\r\n
         \       \"name\": \"lb1bepool\",\r\n        \"id\": \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/loadBalancers/lb1/backendAddressPools/lb1bepool\",\r\n
-        \       \"etag\": \"W/\\\"3113c2a2-58d4-4f44-b19c-5d59c38b7e7e\\\"\",\r\n
+        \       \"etag\": \"W/\\\"3f069660-a19e-440b-bafa-b1b9370b9864\\\"\",\r\n
         \       \"properties\": {\r\n          \"provisioningState\": \"Succeeded\"\r\n
         \       },\r\n        \"type\": \"Microsoft.Network/loadBalancers/backendAddressPools\"\r\n
         \     }\r\n    ],\r\n    \"loadBalancingRules\": [],\r\n    \"probes\": [],\r\n
         \   \"inboundNatRules\": [],\r\n    \"inboundNatPools\": [\r\n      {\r\n
         \       \"name\": \"rule1000\",\r\n        \"id\": \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/loadBalancers/lb1/inboundNatPools/rule1000\",\r\n
-        \       \"etag\": \"W/\\\"3113c2a2-58d4-4f44-b19c-5d59c38b7e7e\\\"\",\r\n
+        \       \"etag\": \"W/\\\"3f069660-a19e-440b-bafa-b1b9370b9864\\\"\",\r\n
         \       \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n
         \         \"frontendPortRangeStart\": 1000,\r\n          \"frontendPortRangeEnd\":
         1999,\r\n          \"backendPort\": 1000,\r\n          \"protocol\": \"Tcp\",\r\n
@@ -1120,7 +1064,7 @@ interactions:
         \         }\r\n        },\r\n        \"type\": \"Microsoft.Network/loadBalancers/inboundNatPools\"\r\n
         \     },\r\n      {\r\n        \"name\": \"rule2000\",\r\n        \"id\":
         \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/loadBalancers/lb1/inboundNatPools/rule2000\",\r\n
-        \       \"etag\": \"W/\\\"3113c2a2-58d4-4f44-b19c-5d59c38b7e7e\\\"\",\r\n
+        \       \"etag\": \"W/\\\"3f069660-a19e-440b-bafa-b1b9370b9864\\\"\",\r\n
         \       \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n
         \         \"frontendPortRangeStart\": 2000,\r\n          \"frontendPortRangeEnd\":
         2999,\r\n          \"backendPort\": 2000,\r\n          \"protocol\": \"Tcp\",\r\n
@@ -1131,7 +1075,7 @@ interactions:
         \         }\r\n        },\r\n        \"type\": \"Microsoft.Network/loadBalancers/inboundNatPools\"\r\n
         \     },\r\n      {\r\n        \"name\": \"rule3000\",\r\n        \"id\":
         \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/loadBalancers/lb1/inboundNatPools/rule3000\",\r\n
-        \       \"etag\": \"W/\\\"3113c2a2-58d4-4f44-b19c-5d59c38b7e7e\\\"\",\r\n
+        \       \"etag\": \"W/\\\"3f069660-a19e-440b-bafa-b1b9370b9864\\\"\",\r\n
         \       \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n
         \         \"frontendPortRangeStart\": 3000,\r\n          \"frontendPortRangeEnd\":
         3999,\r\n          \"backendPort\": 3000,\r\n          \"protocol\": \"Tcp\",\r\n
@@ -1144,15 +1088,15 @@ interactions:
         \"Regional\"\r\n  }\r\n}"
     headers:
       azure-asyncoperation:
-      - https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Network/locations/westus/operations/b6941e6d-3363-44e6-9fb0-a6a0ea4d3b3a?api-version=2020-07-01
+      - https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Network/locations/eastus2/operations/5dc072d8-47b4-4836-beee-999ab48ecf0e?api-version=2021-02-01
       cache-control:
       - no-cache
       content-length:
-      - '6468'
+      - '6469'
       content-type:
       - application/json; charset=utf-8
       date:
-      - Wed, 16 Dec 2020 06:54:31 GMT
+      - Fri, 14 May 2021 06:07:09 GMT
       expires:
       - '-1'
       pragma:
@@ -1169,9 +1113,9 @@ interactions:
       x-content-type-options:
       - nosniff
       x-ms-arm-service-request-id:
-      - e2bd3f63-9c31-440c-8cd8-778ccaef7e20
+      - e2afc854-4069-485e-8ef4-84986c545608
       x-ms-ratelimit-remaining-subscription-writes:
-      - '1170'
+      - '1191'
     status:
       code: 200
       message: OK
@@ -1190,9 +1134,9 @@ interactions:
       - -g --lb-name -n --protocol --frontend-port-range-start --frontend-port-range-end
         --backend-port
       User-Agent:
-      - AZURECLI/2.16.0 azsdk-python-azure-mgmt-network/17.0.0 Python/3.7.8 (Windows-10-10.0.19041-SP0)
+      - AZURECLI/2.23.0 azsdk-python-azure-mgmt-network/18.0.0 Python/3.7.3 (Windows-10-10.0.19041-SP0)
     method: GET
-    uri: https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Network/locations/westus/operations/b6941e6d-3363-44e6-9fb0-a6a0ea4d3b3a?api-version=2020-07-01
+    uri: https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Network/locations/eastus2/operations/5dc072d8-47b4-4836-beee-999ab48ecf0e?api-version=2021-02-01
   response:
     body:
       string: "{\r\n  \"status\": \"Succeeded\"\r\n}"
@@ -1204,7 +1148,7 @@ interactions:
       content-type:
       - application/json; charset=utf-8
       date:
-      - Wed, 16 Dec 2020 06:55:02 GMT
+      - Fri, 14 May 2021 06:07:39 GMT
       expires:
       - '-1'
       pragma:
@@ -1221,7 +1165,7 @@ interactions:
       x-content-type-options:
       - nosniff
       x-ms-arm-service-request-id:
-      - b95fcdda-e7fe-4013-8c30-f288d52093b8
+      - e2ab99d8-9a1e-4422-9b6d-25faa2bb26af
     status:
       code: 200
       message: OK
@@ -1240,19 +1184,19 @@ interactions:
       - -g --lb-name -n --protocol --frontend-port-range-start --frontend-port-range-end
         --backend-port
       User-Agent:
-      - AZURECLI/2.16.0 azsdk-python-azure-mgmt-network/17.0.0 Python/3.7.8 (Windows-10-10.0.19041-SP0)
+      - AZURECLI/2.23.0 azsdk-python-azure-mgmt-network/18.0.0 Python/3.7.3 (Windows-10-10.0.19041-SP0)
     method: GET
-    uri: https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/loadBalancers/lb1?api-version=2020-07-01
+    uri: https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/loadBalancers/lb1?api-version=2021-02-01
   response:
     body:
       string: "{\r\n  \"name\": \"lb1\",\r\n  \"id\": \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/loadBalancers/lb1\",\r\n
-        \ \"etag\": \"W/\\\"3113c2a2-58d4-4f44-b19c-5d59c38b7e7e\\\"\",\r\n  \"type\":
-        \"Microsoft.Network/loadBalancers\",\r\n  \"location\": \"westus\",\r\n  \"tags\":
+        \ \"etag\": \"W/\\\"3f069660-a19e-440b-bafa-b1b9370b9864\\\"\",\r\n  \"type\":
+        \"Microsoft.Network/loadBalancers\",\r\n  \"location\": \"eastus2\",\r\n  \"tags\":
         {},\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n
-        \   \"resourceGuid\": \"a45cfae0-2925-488a-ae45-bc3ec999e0fd\",\r\n    \"frontendIPConfigurations\":
+        \   \"resourceGuid\": \"60eba153-c9f6-42d0-a4ad-2a184e71e303\",\r\n    \"frontendIPConfigurations\":
         [\r\n      {\r\n        \"name\": \"LoadBalancerFrontEnd\",\r\n        \"id\":
         \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/loadBalancers/lb1/frontendIPConfigurations/LoadBalancerFrontEnd\",\r\n
-        \       \"etag\": \"W/\\\"3113c2a2-58d4-4f44-b19c-5d59c38b7e7e\\\"\",\r\n
+        \       \"etag\": \"W/\\\"3f069660-a19e-440b-bafa-b1b9370b9864\\\"\",\r\n
         \       \"type\": \"Microsoft.Network/loadBalancers/frontendIPConfigurations\",\r\n
         \       \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n
         \         \"privateIPAllocationMethod\": \"Dynamic\",\r\n          \"publicIPAddress\":
@@ -1264,13 +1208,13 @@ interactions:
         \           }\r\n          ],\r\n          \"privateIPAddressVersion\": \"IPv4\"\r\n
         \       }\r\n      }\r\n    ],\r\n    \"backendAddressPools\": [\r\n      {\r\n
         \       \"name\": \"lb1bepool\",\r\n        \"id\": \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/loadBalancers/lb1/backendAddressPools/lb1bepool\",\r\n
-        \       \"etag\": \"W/\\\"3113c2a2-58d4-4f44-b19c-5d59c38b7e7e\\\"\",\r\n
+        \       \"etag\": \"W/\\\"3f069660-a19e-440b-bafa-b1b9370b9864\\\"\",\r\n
         \       \"properties\": {\r\n          \"provisioningState\": \"Succeeded\"\r\n
         \       },\r\n        \"type\": \"Microsoft.Network/loadBalancers/backendAddressPools\"\r\n
         \     }\r\n    ],\r\n    \"loadBalancingRules\": [],\r\n    \"probes\": [],\r\n
         \   \"inboundNatRules\": [],\r\n    \"inboundNatPools\": [\r\n      {\r\n
         \       \"name\": \"rule1000\",\r\n        \"id\": \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/loadBalancers/lb1/inboundNatPools/rule1000\",\r\n
-        \       \"etag\": \"W/\\\"3113c2a2-58d4-4f44-b19c-5d59c38b7e7e\\\"\",\r\n
+        \       \"etag\": \"W/\\\"3f069660-a19e-440b-bafa-b1b9370b9864\\\"\",\r\n
         \       \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n
         \         \"frontendPortRangeStart\": 1000,\r\n          \"frontendPortRangeEnd\":
         1999,\r\n          \"backendPort\": 1000,\r\n          \"protocol\": \"Tcp\",\r\n
@@ -1281,7 +1225,7 @@ interactions:
         \         }\r\n        },\r\n        \"type\": \"Microsoft.Network/loadBalancers/inboundNatPools\"\r\n
         \     },\r\n      {\r\n        \"name\": \"rule2000\",\r\n        \"id\":
         \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/loadBalancers/lb1/inboundNatPools/rule2000\",\r\n
-        \       \"etag\": \"W/\\\"3113c2a2-58d4-4f44-b19c-5d59c38b7e7e\\\"\",\r\n
+        \       \"etag\": \"W/\\\"3f069660-a19e-440b-bafa-b1b9370b9864\\\"\",\r\n
         \       \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n
         \         \"frontendPortRangeStart\": 2000,\r\n          \"frontendPortRangeEnd\":
         2999,\r\n          \"backendPort\": 2000,\r\n          \"protocol\": \"Tcp\",\r\n
@@ -1292,7 +1236,7 @@ interactions:
         \         }\r\n        },\r\n        \"type\": \"Microsoft.Network/loadBalancers/inboundNatPools\"\r\n
         \     },\r\n      {\r\n        \"name\": \"rule3000\",\r\n        \"id\":
         \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/loadBalancers/lb1/inboundNatPools/rule3000\",\r\n
-        \       \"etag\": \"W/\\\"3113c2a2-58d4-4f44-b19c-5d59c38b7e7e\\\"\",\r\n
+        \       \"etag\": \"W/\\\"3f069660-a19e-440b-bafa-b1b9370b9864\\\"\",\r\n
         \       \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n
         \         \"frontendPortRangeStart\": 3000,\r\n          \"frontendPortRangeEnd\":
         3999,\r\n          \"backendPort\": 3000,\r\n          \"protocol\": \"Tcp\",\r\n
@@ -1307,13 +1251,13 @@ interactions:
       cache-control:
       - no-cache
       content-length:
-      - '6468'
+      - '6469'
       content-type:
       - application/json; charset=utf-8
       date:
-      - Wed, 16 Dec 2020 06:55:03 GMT
+      - Fri, 14 May 2021 06:07:39 GMT
       etag:
-      - W/"3113c2a2-58d4-4f44-b19c-5d59c38b7e7e"
+      - W/"3f069660-a19e-440b-bafa-b1b9370b9864"
       expires:
       - '-1'
       pragma:
@@ -1330,7 +1274,7 @@ interactions:
       x-content-type-options:
       - nosniff
       x-ms-arm-service-request-id:
-      - 96765f34-f51c-4347-af5b-6142eb0822ed
+      - cbdf6699-acc0-4ec6-b204-15af57fe26b0
     status:
       code: 200
       message: OK
@@ -1348,19 +1292,19 @@ interactions:
       ParameterSetName:
       - -g --lb-name
       User-Agent:
-      - AZURECLI/2.16.0 azsdk-python-azure-mgmt-network/17.0.0 Python/3.7.8 (Windows-10-10.0.19041-SP0)
+      - AZURECLI/2.23.0 azsdk-python-azure-mgmt-network/18.0.0 Python/3.7.3 (Windows-10-10.0.19041-SP0)
     method: GET
-    uri: https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/loadBalancers/lb1?api-version=2020-07-01
+    uri: https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/loadBalancers/lb1?api-version=2021-02-01
   response:
     body:
       string: "{\r\n  \"name\": \"lb1\",\r\n  \"id\": \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/loadBalancers/lb1\",\r\n
-        \ \"etag\": \"W/\\\"3113c2a2-58d4-4f44-b19c-5d59c38b7e7e\\\"\",\r\n  \"type\":
-        \"Microsoft.Network/loadBalancers\",\r\n  \"location\": \"westus\",\r\n  \"tags\":
+        \ \"etag\": \"W/\\\"3f069660-a19e-440b-bafa-b1b9370b9864\\\"\",\r\n  \"type\":
+        \"Microsoft.Network/loadBalancers\",\r\n  \"location\": \"eastus2\",\r\n  \"tags\":
         {},\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n
-        \   \"resourceGuid\": \"a45cfae0-2925-488a-ae45-bc3ec999e0fd\",\r\n    \"frontendIPConfigurations\":
+        \   \"resourceGuid\": \"60eba153-c9f6-42d0-a4ad-2a184e71e303\",\r\n    \"frontendIPConfigurations\":
         [\r\n      {\r\n        \"name\": \"LoadBalancerFrontEnd\",\r\n        \"id\":
         \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/loadBalancers/lb1/frontendIPConfigurations/LoadBalancerFrontEnd\",\r\n
-        \       \"etag\": \"W/\\\"3113c2a2-58d4-4f44-b19c-5d59c38b7e7e\\\"\",\r\n
+        \       \"etag\": \"W/\\\"3f069660-a19e-440b-bafa-b1b9370b9864\\\"\",\r\n
         \       \"type\": \"Microsoft.Network/loadBalancers/frontendIPConfigurations\",\r\n
         \       \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n
         \         \"privateIPAllocationMethod\": \"Dynamic\",\r\n          \"publicIPAddress\":
@@ -1372,13 +1316,13 @@ interactions:
         \           }\r\n          ],\r\n          \"privateIPAddressVersion\": \"IPv4\"\r\n
         \       }\r\n      }\r\n    ],\r\n    \"backendAddressPools\": [\r\n      {\r\n
         \       \"name\": \"lb1bepool\",\r\n        \"id\": \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/loadBalancers/lb1/backendAddressPools/lb1bepool\",\r\n
-        \       \"etag\": \"W/\\\"3113c2a2-58d4-4f44-b19c-5d59c38b7e7e\\\"\",\r\n
+        \       \"etag\": \"W/\\\"3f069660-a19e-440b-bafa-b1b9370b9864\\\"\",\r\n
         \       \"properties\": {\r\n          \"provisioningState\": \"Succeeded\"\r\n
         \       },\r\n        \"type\": \"Microsoft.Network/loadBalancers/backendAddressPools\"\r\n
         \     }\r\n    ],\r\n    \"loadBalancingRules\": [],\r\n    \"probes\": [],\r\n
         \   \"inboundNatRules\": [],\r\n    \"inboundNatPools\": [\r\n      {\r\n
         \       \"name\": \"rule1000\",\r\n        \"id\": \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/loadBalancers/lb1/inboundNatPools/rule1000\",\r\n
-        \       \"etag\": \"W/\\\"3113c2a2-58d4-4f44-b19c-5d59c38b7e7e\\\"\",\r\n
+        \       \"etag\": \"W/\\\"3f069660-a19e-440b-bafa-b1b9370b9864\\\"\",\r\n
         \       \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n
         \         \"frontendPortRangeStart\": 1000,\r\n          \"frontendPortRangeEnd\":
         1999,\r\n          \"backendPort\": 1000,\r\n          \"protocol\": \"Tcp\",\r\n
@@ -1389,7 +1333,7 @@ interactions:
         \         }\r\n        },\r\n        \"type\": \"Microsoft.Network/loadBalancers/inboundNatPools\"\r\n
         \     },\r\n      {\r\n        \"name\": \"rule2000\",\r\n        \"id\":
         \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/loadBalancers/lb1/inboundNatPools/rule2000\",\r\n
-        \       \"etag\": \"W/\\\"3113c2a2-58d4-4f44-b19c-5d59c38b7e7e\\\"\",\r\n
+        \       \"etag\": \"W/\\\"3f069660-a19e-440b-bafa-b1b9370b9864\\\"\",\r\n
         \       \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n
         \         \"frontendPortRangeStart\": 2000,\r\n          \"frontendPortRangeEnd\":
         2999,\r\n          \"backendPort\": 2000,\r\n          \"protocol\": \"Tcp\",\r\n
@@ -1400,7 +1344,7 @@ interactions:
         \         }\r\n        },\r\n        \"type\": \"Microsoft.Network/loadBalancers/inboundNatPools\"\r\n
         \     },\r\n      {\r\n        \"name\": \"rule3000\",\r\n        \"id\":
         \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/loadBalancers/lb1/inboundNatPools/rule3000\",\r\n
-        \       \"etag\": \"W/\\\"3113c2a2-58d4-4f44-b19c-5d59c38b7e7e\\\"\",\r\n
+        \       \"etag\": \"W/\\\"3f069660-a19e-440b-bafa-b1b9370b9864\\\"\",\r\n
         \       \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n
         \         \"frontendPortRangeStart\": 3000,\r\n          \"frontendPortRangeEnd\":
         3999,\r\n          \"backendPort\": 3000,\r\n          \"protocol\": \"Tcp\",\r\n
@@ -1415,13 +1359,13 @@ interactions:
       cache-control:
       - no-cache
       content-length:
-      - '6468'
+      - '6469'
       content-type:
       - application/json; charset=utf-8
       date:
-      - Wed, 16 Dec 2020 06:55:05 GMT
+      - Fri, 14 May 2021 06:07:40 GMT
       etag:
-      - W/"3113c2a2-58d4-4f44-b19c-5d59c38b7e7e"
+      - W/"3f069660-a19e-440b-bafa-b1b9370b9864"
       expires:
       - '-1'
       pragma:
@@ -1438,7 +1382,7 @@ interactions:
       x-content-type-options:
       - nosniff
       x-ms-arm-service-request-id:
-      - 54902353-e87a-4ba4-8662-4c6b78002e12
+      - c8096729-f563-4ed7-895d-71773cf93b85
     status:
       code: 200
       message: OK
@@ -1456,19 +1400,19 @@ interactions:
       ParameterSetName:
       - -g --lb-name -n --protocol --backend-port --floating-ip --idle-timeout
       User-Agent:
-      - AZURECLI/2.16.0 azsdk-python-azure-mgmt-network/17.0.0 Python/3.7.8 (Windows-10-10.0.19041-SP0)
+      - AZURECLI/2.23.0 azsdk-python-azure-mgmt-network/18.0.0 Python/3.7.3 (Windows-10-10.0.19041-SP0)
     method: GET
-    uri: https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/loadBalancers/lb1?api-version=2020-07-01
+    uri: https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/loadBalancers/lb1?api-version=2021-02-01
   response:
     body:
       string: "{\r\n  \"name\": \"lb1\",\r\n  \"id\": \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/loadBalancers/lb1\",\r\n
-        \ \"etag\": \"W/\\\"3113c2a2-58d4-4f44-b19c-5d59c38b7e7e\\\"\",\r\n  \"type\":
-        \"Microsoft.Network/loadBalancers\",\r\n  \"location\": \"westus\",\r\n  \"tags\":
+        \ \"etag\": \"W/\\\"3f069660-a19e-440b-bafa-b1b9370b9864\\\"\",\r\n  \"type\":
+        \"Microsoft.Network/loadBalancers\",\r\n  \"location\": \"eastus2\",\r\n  \"tags\":
         {},\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n
-        \   \"resourceGuid\": \"a45cfae0-2925-488a-ae45-bc3ec999e0fd\",\r\n    \"frontendIPConfigurations\":
+        \   \"resourceGuid\": \"60eba153-c9f6-42d0-a4ad-2a184e71e303\",\r\n    \"frontendIPConfigurations\":
         [\r\n      {\r\n        \"name\": \"LoadBalancerFrontEnd\",\r\n        \"id\":
         \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/loadBalancers/lb1/frontendIPConfigurations/LoadBalancerFrontEnd\",\r\n
-        \       \"etag\": \"W/\\\"3113c2a2-58d4-4f44-b19c-5d59c38b7e7e\\\"\",\r\n
+        \       \"etag\": \"W/\\\"3f069660-a19e-440b-bafa-b1b9370b9864\\\"\",\r\n
         \       \"type\": \"Microsoft.Network/loadBalancers/frontendIPConfigurations\",\r\n
         \       \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n
         \         \"privateIPAllocationMethod\": \"Dynamic\",\r\n          \"publicIPAddress\":
@@ -1480,13 +1424,13 @@ interactions:
         \           }\r\n          ],\r\n          \"privateIPAddressVersion\": \"IPv4\"\r\n
         \       }\r\n      }\r\n    ],\r\n    \"backendAddressPools\": [\r\n      {\r\n
         \       \"name\": \"lb1bepool\",\r\n        \"id\": \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/loadBalancers/lb1/backendAddressPools/lb1bepool\",\r\n
-        \       \"etag\": \"W/\\\"3113c2a2-58d4-4f44-b19c-5d59c38b7e7e\\\"\",\r\n
+        \       \"etag\": \"W/\\\"3f069660-a19e-440b-bafa-b1b9370b9864\\\"\",\r\n
         \       \"properties\": {\r\n          \"provisioningState\": \"Succeeded\"\r\n
         \       },\r\n        \"type\": \"Microsoft.Network/loadBalancers/backendAddressPools\"\r\n
         \     }\r\n    ],\r\n    \"loadBalancingRules\": [],\r\n    \"probes\": [],\r\n
         \   \"inboundNatRules\": [],\r\n    \"inboundNatPools\": [\r\n      {\r\n
         \       \"name\": \"rule1000\",\r\n        \"id\": \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/loadBalancers/lb1/inboundNatPools/rule1000\",\r\n
-        \       \"etag\": \"W/\\\"3113c2a2-58d4-4f44-b19c-5d59c38b7e7e\\\"\",\r\n
+        \       \"etag\": \"W/\\\"3f069660-a19e-440b-bafa-b1b9370b9864\\\"\",\r\n
         \       \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n
         \         \"frontendPortRangeStart\": 1000,\r\n          \"frontendPortRangeEnd\":
         1999,\r\n          \"backendPort\": 1000,\r\n          \"protocol\": \"Tcp\",\r\n
@@ -1497,7 +1441,7 @@ interactions:
         \         }\r\n        },\r\n        \"type\": \"Microsoft.Network/loadBalancers/inboundNatPools\"\r\n
         \     },\r\n      {\r\n        \"name\": \"rule2000\",\r\n        \"id\":
         \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/loadBalancers/lb1/inboundNatPools/rule2000\",\r\n
-        \       \"etag\": \"W/\\\"3113c2a2-58d4-4f44-b19c-5d59c38b7e7e\\\"\",\r\n
+        \       \"etag\": \"W/\\\"3f069660-a19e-440b-bafa-b1b9370b9864\\\"\",\r\n
         \       \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n
         \         \"frontendPortRangeStart\": 2000,\r\n          \"frontendPortRangeEnd\":
         2999,\r\n          \"backendPort\": 2000,\r\n          \"protocol\": \"Tcp\",\r\n
@@ -1508,7 +1452,7 @@ interactions:
         \         }\r\n        },\r\n        \"type\": \"Microsoft.Network/loadBalancers/inboundNatPools\"\r\n
         \     },\r\n      {\r\n        \"name\": \"rule3000\",\r\n        \"id\":
         \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/loadBalancers/lb1/inboundNatPools/rule3000\",\r\n
-        \       \"etag\": \"W/\\\"3113c2a2-58d4-4f44-b19c-5d59c38b7e7e\\\"\",\r\n
+        \       \"etag\": \"W/\\\"3f069660-a19e-440b-bafa-b1b9370b9864\\\"\",\r\n
         \       \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n
         \         \"frontendPortRangeStart\": 3000,\r\n          \"frontendPortRangeEnd\":
         3999,\r\n          \"backendPort\": 3000,\r\n          \"protocol\": \"Tcp\",\r\n
@@ -1523,13 +1467,13 @@ interactions:
       cache-control:
       - no-cache
       content-length:
-      - '6468'
+      - '6469'
       content-type:
       - application/json; charset=utf-8
       date:
-      - Wed, 16 Dec 2020 06:55:07 GMT
+      - Fri, 14 May 2021 06:07:41 GMT
       etag:
-      - W/"3113c2a2-58d4-4f44-b19c-5d59c38b7e7e"
+      - W/"3f069660-a19e-440b-bafa-b1b9370b9864"
       expires:
       - '-1'
       pragma:
@@ -1546,13 +1490,13 @@ interactions:
       x-content-type-options:
       - nosniff
       x-ms-arm-service-request-id:
-      - 5d4612da-97a9-43d0-8e7a-79508628af28
+      - 37be7d3c-d6f2-4d7c-9e2b-b106d9218c39
     status:
       code: 200
       message: OK
 - request:
     body: '{"id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/loadBalancers/lb1",
-      "location": "westus", "tags": {}, "sku": {"name": "Basic", "tier": "Regional"},
+      "location": "eastus2", "tags": {}, "sku": {"name": "Basic", "tier": "Regional"},
       "properties": {"frontendIPConfigurations": [{"id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/loadBalancers/lb1/frontendIPConfigurations/LoadBalancerFrontEnd",
       "name": "LoadBalancerFrontEnd", "properties": {"privateIPAllocationMethod":
       "Dynamic", "privateIPAddressVersion": "IPv4", "publicIPAddress": {"id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/publicIPAddresses/PublicIPlb1"}}}],
@@ -1581,25 +1525,25 @@ interactions:
       Connection:
       - keep-alive
       Content-Length:
-      - '3427'
+      - '3428'
       Content-Type:
       - application/json
       ParameterSetName:
       - -g --lb-name -n --protocol --backend-port --floating-ip --idle-timeout
       User-Agent:
-      - AZURECLI/2.16.0 azsdk-python-azure-mgmt-network/17.0.0 Python/3.7.8 (Windows-10-10.0.19041-SP0)
+      - AZURECLI/2.23.0 azsdk-python-azure-mgmt-network/18.0.0 Python/3.7.3 (Windows-10-10.0.19041-SP0)
     method: PUT
-    uri: https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/loadBalancers/lb1?api-version=2020-07-01
+    uri: https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/loadBalancers/lb1?api-version=2021-02-01
   response:
     body:
       string: "{\r\n  \"name\": \"lb1\",\r\n  \"id\": \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/loadBalancers/lb1\",\r\n
-        \ \"etag\": \"W/\\\"e782bf07-e878-40e2-ba72-4186069a8ca0\\\"\",\r\n  \"type\":
-        \"Microsoft.Network/loadBalancers\",\r\n  \"location\": \"westus\",\r\n  \"tags\":
+        \ \"etag\": \"W/\\\"fdc03c5f-bf75-4c56-812c-fdfc511fc7b1\\\"\",\r\n  \"type\":
+        \"Microsoft.Network/loadBalancers\",\r\n  \"location\": \"eastus2\",\r\n  \"tags\":
         {},\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n
-        \   \"resourceGuid\": \"a45cfae0-2925-488a-ae45-bc3ec999e0fd\",\r\n    \"frontendIPConfigurations\":
+        \   \"resourceGuid\": \"60eba153-c9f6-42d0-a4ad-2a184e71e303\",\r\n    \"frontendIPConfigurations\":
         [\r\n      {\r\n        \"name\": \"LoadBalancerFrontEnd\",\r\n        \"id\":
         \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/loadBalancers/lb1/frontendIPConfigurations/LoadBalancerFrontEnd\",\r\n
-        \       \"etag\": \"W/\\\"e782bf07-e878-40e2-ba72-4186069a8ca0\\\"\",\r\n
+        \       \"etag\": \"W/\\\"fdc03c5f-bf75-4c56-812c-fdfc511fc7b1\\\"\",\r\n
         \       \"type\": \"Microsoft.Network/loadBalancers/frontendIPConfigurations\",\r\n
         \       \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n
         \         \"privateIPAllocationMethod\": \"Dynamic\",\r\n          \"publicIPAddress\":
@@ -1611,13 +1555,13 @@ interactions:
         \           }\r\n          ],\r\n          \"privateIPAddressVersion\": \"IPv4\"\r\n
         \       }\r\n      }\r\n    ],\r\n    \"backendAddressPools\": [\r\n      {\r\n
         \       \"name\": \"lb1bepool\",\r\n        \"id\": \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/loadBalancers/lb1/backendAddressPools/lb1bepool\",\r\n
-        \       \"etag\": \"W/\\\"e782bf07-e878-40e2-ba72-4186069a8ca0\\\"\",\r\n
+        \       \"etag\": \"W/\\\"fdc03c5f-bf75-4c56-812c-fdfc511fc7b1\\\"\",\r\n
         \       \"properties\": {\r\n          \"provisioningState\": \"Succeeded\"\r\n
         \       },\r\n        \"type\": \"Microsoft.Network/loadBalancers/backendAddressPools\"\r\n
         \     }\r\n    ],\r\n    \"loadBalancingRules\": [],\r\n    \"probes\": [],\r\n
         \   \"inboundNatRules\": [],\r\n    \"inboundNatPools\": [\r\n      {\r\n
         \       \"name\": \"rule1000\",\r\n        \"id\": \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/loadBalancers/lb1/inboundNatPools/rule1000\",\r\n
-        \       \"etag\": \"W/\\\"e782bf07-e878-40e2-ba72-4186069a8ca0\\\"\",\r\n
+        \       \"etag\": \"W/\\\"fdc03c5f-bf75-4c56-812c-fdfc511fc7b1\\\"\",\r\n
         \       \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n
         \         \"frontendPortRangeStart\": 1000,\r\n          \"frontendPortRangeEnd\":
         1999,\r\n          \"backendPort\": 50,\r\n          \"protocol\": \"Udp\",\r\n
@@ -1628,7 +1572,7 @@ interactions:
         \         }\r\n        },\r\n        \"type\": \"Microsoft.Network/loadBalancers/inboundNatPools\"\r\n
         \     },\r\n      {\r\n        \"name\": \"rule2000\",\r\n        \"id\":
         \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/loadBalancers/lb1/inboundNatPools/rule2000\",\r\n
-        \       \"etag\": \"W/\\\"e782bf07-e878-40e2-ba72-4186069a8ca0\\\"\",\r\n
+        \       \"etag\": \"W/\\\"fdc03c5f-bf75-4c56-812c-fdfc511fc7b1\\\"\",\r\n
         \       \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n
         \         \"frontendPortRangeStart\": 2000,\r\n          \"frontendPortRangeEnd\":
         2999,\r\n          \"backendPort\": 2000,\r\n          \"protocol\": \"Tcp\",\r\n
@@ -1639,7 +1583,7 @@ interactions:
         \         }\r\n        },\r\n        \"type\": \"Microsoft.Network/loadBalancers/inboundNatPools\"\r\n
         \     },\r\n      {\r\n        \"name\": \"rule3000\",\r\n        \"id\":
         \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/loadBalancers/lb1/inboundNatPools/rule3000\",\r\n
-        \       \"etag\": \"W/\\\"e782bf07-e878-40e2-ba72-4186069a8ca0\\\"\",\r\n
+        \       \"etag\": \"W/\\\"fdc03c5f-bf75-4c56-812c-fdfc511fc7b1\\\"\",\r\n
         \       \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n
         \         \"frontendPortRangeStart\": 3000,\r\n          \"frontendPortRangeEnd\":
         3999,\r\n          \"backendPort\": 3000,\r\n          \"protocol\": \"Tcp\",\r\n
@@ -1652,15 +1596,15 @@ interactions:
         \"Regional\"\r\n  }\r\n}"
     headers:
       azure-asyncoperation:
-      - https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Network/locations/westus/operations/4e319992-ffcf-484a-86b6-6ed4cc60c749?api-version=2020-07-01
+      - https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Network/locations/eastus2/operations/9626f11e-8132-4bdc-ae8d-b53237511edc?api-version=2021-02-01
       cache-control:
       - no-cache
       content-length:
-      - '6466'
+      - '6467'
       content-type:
       - application/json; charset=utf-8
       date:
-      - Wed, 16 Dec 2020 06:55:10 GMT
+      - Fri, 14 May 2021 06:07:45 GMT
       expires:
       - '-1'
       pragma:
@@ -1677,9 +1621,9 @@ interactions:
       x-content-type-options:
       - nosniff
       x-ms-arm-service-request-id:
-      - 5de833ec-978e-4b1a-b0d5-7f3ee567055a
+      - 20acdd16-bf4f-42c8-af4c-8be0de5342d1
       x-ms-ratelimit-remaining-subscription-writes:
-      - '1198'
+      - '1192'
     status:
       code: 200
       message: OK
@@ -1697,9 +1641,9 @@ interactions:
       ParameterSetName:
       - -g --lb-name -n --protocol --backend-port --floating-ip --idle-timeout
       User-Agent:
-      - AZURECLI/2.16.0 azsdk-python-azure-mgmt-network/17.0.0 Python/3.7.8 (Windows-10-10.0.19041-SP0)
+      - AZURECLI/2.23.0 azsdk-python-azure-mgmt-network/18.0.0 Python/3.7.3 (Windows-10-10.0.19041-SP0)
     method: GET
-    uri: https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Network/locations/westus/operations/4e319992-ffcf-484a-86b6-6ed4cc60c749?api-version=2020-07-01
+    uri: https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Network/locations/eastus2/operations/9626f11e-8132-4bdc-ae8d-b53237511edc?api-version=2021-02-01
   response:
     body:
       string: "{\r\n  \"status\": \"Succeeded\"\r\n}"
@@ -1711,7 +1655,7 @@ interactions:
       content-type:
       - application/json; charset=utf-8
       date:
-      - Wed, 16 Dec 2020 06:55:40 GMT
+      - Fri, 14 May 2021 06:08:15 GMT
       expires:
       - '-1'
       pragma:
@@ -1728,7 +1672,7 @@ interactions:
       x-content-type-options:
       - nosniff
       x-ms-arm-service-request-id:
-      - fbb69c6d-b21d-4dc9-a3fd-fbbea6070869
+      - d89c3d9c-1fed-4148-89f5-49226bce43f8
     status:
       code: 200
       message: OK
@@ -1746,19 +1690,19 @@ interactions:
       ParameterSetName:
       - -g --lb-name -n --protocol --backend-port --floating-ip --idle-timeout
       User-Agent:
-      - AZURECLI/2.16.0 azsdk-python-azure-mgmt-network/17.0.0 Python/3.7.8 (Windows-10-10.0.19041-SP0)
+      - AZURECLI/2.23.0 azsdk-python-azure-mgmt-network/18.0.0 Python/3.7.3 (Windows-10-10.0.19041-SP0)
     method: GET
-    uri: https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/loadBalancers/lb1?api-version=2020-07-01
+    uri: https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/loadBalancers/lb1?api-version=2021-02-01
   response:
     body:
       string: "{\r\n  \"name\": \"lb1\",\r\n  \"id\": \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/loadBalancers/lb1\",\r\n
-        \ \"etag\": \"W/\\\"e782bf07-e878-40e2-ba72-4186069a8ca0\\\"\",\r\n  \"type\":
-        \"Microsoft.Network/loadBalancers\",\r\n  \"location\": \"westus\",\r\n  \"tags\":
+        \ \"etag\": \"W/\\\"fdc03c5f-bf75-4c56-812c-fdfc511fc7b1\\\"\",\r\n  \"type\":
+        \"Microsoft.Network/loadBalancers\",\r\n  \"location\": \"eastus2\",\r\n  \"tags\":
         {},\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n
-        \   \"resourceGuid\": \"a45cfae0-2925-488a-ae45-bc3ec999e0fd\",\r\n    \"frontendIPConfigurations\":
+        \   \"resourceGuid\": \"60eba153-c9f6-42d0-a4ad-2a184e71e303\",\r\n    \"frontendIPConfigurations\":
         [\r\n      {\r\n        \"name\": \"LoadBalancerFrontEnd\",\r\n        \"id\":
         \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/loadBalancers/lb1/frontendIPConfigurations/LoadBalancerFrontEnd\",\r\n
-        \       \"etag\": \"W/\\\"e782bf07-e878-40e2-ba72-4186069a8ca0\\\"\",\r\n
+        \       \"etag\": \"W/\\\"fdc03c5f-bf75-4c56-812c-fdfc511fc7b1\\\"\",\r\n
         \       \"type\": \"Microsoft.Network/loadBalancers/frontendIPConfigurations\",\r\n
         \       \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n
         \         \"privateIPAllocationMethod\": \"Dynamic\",\r\n          \"publicIPAddress\":
@@ -1770,13 +1714,13 @@ interactions:
         \           }\r\n          ],\r\n          \"privateIPAddressVersion\": \"IPv4\"\r\n
         \       }\r\n      }\r\n    ],\r\n    \"backendAddressPools\": [\r\n      {\r\n
         \       \"name\": \"lb1bepool\",\r\n        \"id\": \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/loadBalancers/lb1/backendAddressPools/lb1bepool\",\r\n
-        \       \"etag\": \"W/\\\"e782bf07-e878-40e2-ba72-4186069a8ca0\\\"\",\r\n
+        \       \"etag\": \"W/\\\"fdc03c5f-bf75-4c56-812c-fdfc511fc7b1\\\"\",\r\n
         \       \"properties\": {\r\n          \"provisioningState\": \"Succeeded\"\r\n
         \       },\r\n        \"type\": \"Microsoft.Network/loadBalancers/backendAddressPools\"\r\n
         \     }\r\n    ],\r\n    \"loadBalancingRules\": [],\r\n    \"probes\": [],\r\n
         \   \"inboundNatRules\": [],\r\n    \"inboundNatPools\": [\r\n      {\r\n
         \       \"name\": \"rule1000\",\r\n        \"id\": \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/loadBalancers/lb1/inboundNatPools/rule1000\",\r\n
-        \       \"etag\": \"W/\\\"e782bf07-e878-40e2-ba72-4186069a8ca0\\\"\",\r\n
+        \       \"etag\": \"W/\\\"fdc03c5f-bf75-4c56-812c-fdfc511fc7b1\\\"\",\r\n
         \       \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n
         \         \"frontendPortRangeStart\": 1000,\r\n          \"frontendPortRangeEnd\":
         1999,\r\n          \"backendPort\": 50,\r\n          \"protocol\": \"Udp\",\r\n
@@ -1787,7 +1731,7 @@ interactions:
         \         }\r\n        },\r\n        \"type\": \"Microsoft.Network/loadBalancers/inboundNatPools\"\r\n
         \     },\r\n      {\r\n        \"name\": \"rule2000\",\r\n        \"id\":
         \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/loadBalancers/lb1/inboundNatPools/rule2000\",\r\n
-        \       \"etag\": \"W/\\\"e782bf07-e878-40e2-ba72-4186069a8ca0\\\"\",\r\n
+        \       \"etag\": \"W/\\\"fdc03c5f-bf75-4c56-812c-fdfc511fc7b1\\\"\",\r\n
         \       \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n
         \         \"frontendPortRangeStart\": 2000,\r\n          \"frontendPortRangeEnd\":
         2999,\r\n          \"backendPort\": 2000,\r\n          \"protocol\": \"Tcp\",\r\n
@@ -1798,7 +1742,7 @@ interactions:
         \         }\r\n        },\r\n        \"type\": \"Microsoft.Network/loadBalancers/inboundNatPools\"\r\n
         \     },\r\n      {\r\n        \"name\": \"rule3000\",\r\n        \"id\":
         \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/loadBalancers/lb1/inboundNatPools/rule3000\",\r\n
-        \       \"etag\": \"W/\\\"e782bf07-e878-40e2-ba72-4186069a8ca0\\\"\",\r\n
+        \       \"etag\": \"W/\\\"fdc03c5f-bf75-4c56-812c-fdfc511fc7b1\\\"\",\r\n
         \       \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n
         \         \"frontendPortRangeStart\": 3000,\r\n          \"frontendPortRangeEnd\":
         3999,\r\n          \"backendPort\": 3000,\r\n          \"protocol\": \"Tcp\",\r\n
@@ -1813,13 +1757,13 @@ interactions:
       cache-control:
       - no-cache
       content-length:
-      - '6466'
+      - '6467'
       content-type:
       - application/json; charset=utf-8
       date:
-      - Wed, 16 Dec 2020 06:55:41 GMT
+      - Fri, 14 May 2021 06:08:16 GMT
       etag:
-      - W/"e782bf07-e878-40e2-ba72-4186069a8ca0"
+      - W/"fdc03c5f-bf75-4c56-812c-fdfc511fc7b1"
       expires:
       - '-1'
       pragma:
@@ -1836,7 +1780,7 @@ interactions:
       x-content-type-options:
       - nosniff
       x-ms-arm-service-request-id:
-      - 38d5347b-2642-4d40-9395-47807a134762
+      - 6abccb28-9b25-4bb9-8929-9615c5257c8d
     status:
       code: 200
       message: OK
@@ -1854,19 +1798,19 @@ interactions:
       ParameterSetName:
       - -g --lb-name -n
       User-Agent:
-      - AZURECLI/2.16.0 azsdk-python-azure-mgmt-network/17.0.0 Python/3.7.8 (Windows-10-10.0.19041-SP0)
+      - AZURECLI/2.23.0 azsdk-python-azure-mgmt-network/18.0.0 Python/3.7.3 (Windows-10-10.0.19041-SP0)
     method: GET
-    uri: https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/loadBalancers/lb1?api-version=2020-07-01
+    uri: https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/loadBalancers/lb1?api-version=2021-02-01
   response:
     body:
       string: "{\r\n  \"name\": \"lb1\",\r\n  \"id\": \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/loadBalancers/lb1\",\r\n
-        \ \"etag\": \"W/\\\"e782bf07-e878-40e2-ba72-4186069a8ca0\\\"\",\r\n  \"type\":
-        \"Microsoft.Network/loadBalancers\",\r\n  \"location\": \"westus\",\r\n  \"tags\":
+        \ \"etag\": \"W/\\\"fdc03c5f-bf75-4c56-812c-fdfc511fc7b1\\\"\",\r\n  \"type\":
+        \"Microsoft.Network/loadBalancers\",\r\n  \"location\": \"eastus2\",\r\n  \"tags\":
         {},\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n
-        \   \"resourceGuid\": \"a45cfae0-2925-488a-ae45-bc3ec999e0fd\",\r\n    \"frontendIPConfigurations\":
+        \   \"resourceGuid\": \"60eba153-c9f6-42d0-a4ad-2a184e71e303\",\r\n    \"frontendIPConfigurations\":
         [\r\n      {\r\n        \"name\": \"LoadBalancerFrontEnd\",\r\n        \"id\":
         \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/loadBalancers/lb1/frontendIPConfigurations/LoadBalancerFrontEnd\",\r\n
-        \       \"etag\": \"W/\\\"e782bf07-e878-40e2-ba72-4186069a8ca0\\\"\",\r\n
+        \       \"etag\": \"W/\\\"fdc03c5f-bf75-4c56-812c-fdfc511fc7b1\\\"\",\r\n
         \       \"type\": \"Microsoft.Network/loadBalancers/frontendIPConfigurations\",\r\n
         \       \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n
         \         \"privateIPAllocationMethod\": \"Dynamic\",\r\n          \"publicIPAddress\":
@@ -1878,13 +1822,13 @@ interactions:
         \           }\r\n          ],\r\n          \"privateIPAddressVersion\": \"IPv4\"\r\n
         \       }\r\n      }\r\n    ],\r\n    \"backendAddressPools\": [\r\n      {\r\n
         \       \"name\": \"lb1bepool\",\r\n        \"id\": \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/loadBalancers/lb1/backendAddressPools/lb1bepool\",\r\n
-        \       \"etag\": \"W/\\\"e782bf07-e878-40e2-ba72-4186069a8ca0\\\"\",\r\n
+        \       \"etag\": \"W/\\\"fdc03c5f-bf75-4c56-812c-fdfc511fc7b1\\\"\",\r\n
         \       \"properties\": {\r\n          \"provisioningState\": \"Succeeded\"\r\n
         \       },\r\n        \"type\": \"Microsoft.Network/loadBalancers/backendAddressPools\"\r\n
         \     }\r\n    ],\r\n    \"loadBalancingRules\": [],\r\n    \"probes\": [],\r\n
         \   \"inboundNatRules\": [],\r\n    \"inboundNatPools\": [\r\n      {\r\n
         \       \"name\": \"rule1000\",\r\n        \"id\": \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/loadBalancers/lb1/inboundNatPools/rule1000\",\r\n
-        \       \"etag\": \"W/\\\"e782bf07-e878-40e2-ba72-4186069a8ca0\\\"\",\r\n
+        \       \"etag\": \"W/\\\"fdc03c5f-bf75-4c56-812c-fdfc511fc7b1\\\"\",\r\n
         \       \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n
         \         \"frontendPortRangeStart\": 1000,\r\n          \"frontendPortRangeEnd\":
         1999,\r\n          \"backendPort\": 50,\r\n          \"protocol\": \"Udp\",\r\n
@@ -1895,7 +1839,7 @@ interactions:
         \         }\r\n        },\r\n        \"type\": \"Microsoft.Network/loadBalancers/inboundNatPools\"\r\n
         \     },\r\n      {\r\n        \"name\": \"rule2000\",\r\n        \"id\":
         \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/loadBalancers/lb1/inboundNatPools/rule2000\",\r\n
-        \       \"etag\": \"W/\\\"e782bf07-e878-40e2-ba72-4186069a8ca0\\\"\",\r\n
+        \       \"etag\": \"W/\\\"fdc03c5f-bf75-4c56-812c-fdfc511fc7b1\\\"\",\r\n
         \       \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n
         \         \"frontendPortRangeStart\": 2000,\r\n          \"frontendPortRangeEnd\":
         2999,\r\n          \"backendPort\": 2000,\r\n          \"protocol\": \"Tcp\",\r\n
@@ -1906,7 +1850,7 @@ interactions:
         \         }\r\n        },\r\n        \"type\": \"Microsoft.Network/loadBalancers/inboundNatPools\"\r\n
         \     },\r\n      {\r\n        \"name\": \"rule3000\",\r\n        \"id\":
         \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/loadBalancers/lb1/inboundNatPools/rule3000\",\r\n
-        \       \"etag\": \"W/\\\"e782bf07-e878-40e2-ba72-4186069a8ca0\\\"\",\r\n
+        \       \"etag\": \"W/\\\"fdc03c5f-bf75-4c56-812c-fdfc511fc7b1\\\"\",\r\n
         \       \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n
         \         \"frontendPortRangeStart\": 3000,\r\n          \"frontendPortRangeEnd\":
         3999,\r\n          \"backendPort\": 3000,\r\n          \"protocol\": \"Tcp\",\r\n
@@ -1921,13 +1865,13 @@ interactions:
       cache-control:
       - no-cache
       content-length:
-      - '6466'
+      - '6467'
       content-type:
       - application/json; charset=utf-8
       date:
-      - Wed, 16 Dec 2020 06:55:44 GMT
+      - Fri, 14 May 2021 06:08:16 GMT
       etag:
-      - W/"e782bf07-e878-40e2-ba72-4186069a8ca0"
+      - W/"fdc03c5f-bf75-4c56-812c-fdfc511fc7b1"
       expires:
       - '-1'
       pragma:
@@ -1944,7 +1888,7 @@ interactions:
       x-content-type-options:
       - nosniff
       x-ms-arm-service-request-id:
-      - 5fd175d5-87f7-47ce-91ee-df02fea5c156
+      - 6ae9db79-b5cf-49d1-8c68-ab31dab0e8d2
     status:
       code: 200
       message: OK
@@ -1962,19 +1906,19 @@ interactions:
       ParameterSetName:
       - -g --lb-name -n --set
       User-Agent:
-      - AZURECLI/2.16.0 azsdk-python-azure-mgmt-network/17.0.0 Python/3.7.8 (Windows-10-10.0.19041-SP0)
+      - AZURECLI/2.23.0 azsdk-python-azure-mgmt-network/18.0.0 Python/3.7.3 (Windows-10-10.0.19041-SP0)
     method: GET
-    uri: https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/loadBalancers/lb1?api-version=2020-07-01
+    uri: https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/loadBalancers/lb1?api-version=2021-02-01
   response:
     body:
       string: "{\r\n  \"name\": \"lb1\",\r\n  \"id\": \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/loadBalancers/lb1\",\r\n
-        \ \"etag\": \"W/\\\"e782bf07-e878-40e2-ba72-4186069a8ca0\\\"\",\r\n  \"type\":
-        \"Microsoft.Network/loadBalancers\",\r\n  \"location\": \"westus\",\r\n  \"tags\":
+        \ \"etag\": \"W/\\\"fdc03c5f-bf75-4c56-812c-fdfc511fc7b1\\\"\",\r\n  \"type\":
+        \"Microsoft.Network/loadBalancers\",\r\n  \"location\": \"eastus2\",\r\n  \"tags\":
         {},\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n
-        \   \"resourceGuid\": \"a45cfae0-2925-488a-ae45-bc3ec999e0fd\",\r\n    \"frontendIPConfigurations\":
+        \   \"resourceGuid\": \"60eba153-c9f6-42d0-a4ad-2a184e71e303\",\r\n    \"frontendIPConfigurations\":
         [\r\n      {\r\n        \"name\": \"LoadBalancerFrontEnd\",\r\n        \"id\":
         \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/loadBalancers/lb1/frontendIPConfigurations/LoadBalancerFrontEnd\",\r\n
-        \       \"etag\": \"W/\\\"e782bf07-e878-40e2-ba72-4186069a8ca0\\\"\",\r\n
+        \       \"etag\": \"W/\\\"fdc03c5f-bf75-4c56-812c-fdfc511fc7b1\\\"\",\r\n
         \       \"type\": \"Microsoft.Network/loadBalancers/frontendIPConfigurations\",\r\n
         \       \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n
         \         \"privateIPAllocationMethod\": \"Dynamic\",\r\n          \"publicIPAddress\":
@@ -1986,13 +1930,13 @@ interactions:
         \           }\r\n          ],\r\n          \"privateIPAddressVersion\": \"IPv4\"\r\n
         \       }\r\n      }\r\n    ],\r\n    \"backendAddressPools\": [\r\n      {\r\n
         \       \"name\": \"lb1bepool\",\r\n        \"id\": \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/loadBalancers/lb1/backendAddressPools/lb1bepool\",\r\n
-        \       \"etag\": \"W/\\\"e782bf07-e878-40e2-ba72-4186069a8ca0\\\"\",\r\n
+        \       \"etag\": \"W/\\\"fdc03c5f-bf75-4c56-812c-fdfc511fc7b1\\\"\",\r\n
         \       \"properties\": {\r\n          \"provisioningState\": \"Succeeded\"\r\n
         \       },\r\n        \"type\": \"Microsoft.Network/loadBalancers/backendAddressPools\"\r\n
         \     }\r\n    ],\r\n    \"loadBalancingRules\": [],\r\n    \"probes\": [],\r\n
         \   \"inboundNatRules\": [],\r\n    \"inboundNatPools\": [\r\n      {\r\n
         \       \"name\": \"rule1000\",\r\n        \"id\": \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/loadBalancers/lb1/inboundNatPools/rule1000\",\r\n
-        \       \"etag\": \"W/\\\"e782bf07-e878-40e2-ba72-4186069a8ca0\\\"\",\r\n
+        \       \"etag\": \"W/\\\"fdc03c5f-bf75-4c56-812c-fdfc511fc7b1\\\"\",\r\n
         \       \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n
         \         \"frontendPortRangeStart\": 1000,\r\n          \"frontendPortRangeEnd\":
         1999,\r\n          \"backendPort\": 50,\r\n          \"protocol\": \"Udp\",\r\n
@@ -2003,7 +1947,7 @@ interactions:
         \         }\r\n        },\r\n        \"type\": \"Microsoft.Network/loadBalancers/inboundNatPools\"\r\n
         \     },\r\n      {\r\n        \"name\": \"rule2000\",\r\n        \"id\":
         \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/loadBalancers/lb1/inboundNatPools/rule2000\",\r\n
-        \       \"etag\": \"W/\\\"e782bf07-e878-40e2-ba72-4186069a8ca0\\\"\",\r\n
+        \       \"etag\": \"W/\\\"fdc03c5f-bf75-4c56-812c-fdfc511fc7b1\\\"\",\r\n
         \       \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n
         \         \"frontendPortRangeStart\": 2000,\r\n          \"frontendPortRangeEnd\":
         2999,\r\n          \"backendPort\": 2000,\r\n          \"protocol\": \"Tcp\",\r\n
@@ -2014,7 +1958,7 @@ interactions:
         \         }\r\n        },\r\n        \"type\": \"Microsoft.Network/loadBalancers/inboundNatPools\"\r\n
         \     },\r\n      {\r\n        \"name\": \"rule3000\",\r\n        \"id\":
         \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/loadBalancers/lb1/inboundNatPools/rule3000\",\r\n
-        \       \"etag\": \"W/\\\"e782bf07-e878-40e2-ba72-4186069a8ca0\\\"\",\r\n
+        \       \"etag\": \"W/\\\"fdc03c5f-bf75-4c56-812c-fdfc511fc7b1\\\"\",\r\n
         \       \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n
         \         \"frontendPortRangeStart\": 3000,\r\n          \"frontendPortRangeEnd\":
         3999,\r\n          \"backendPort\": 3000,\r\n          \"protocol\": \"Tcp\",\r\n
@@ -2029,13 +1973,13 @@ interactions:
       cache-control:
       - no-cache
       content-length:
-      - '6466'
+      - '6467'
       content-type:
       - application/json; charset=utf-8
       date:
-      - Wed, 16 Dec 2020 06:55:45 GMT
+      - Fri, 14 May 2021 06:08:17 GMT
       etag:
-      - W/"e782bf07-e878-40e2-ba72-4186069a8ca0"
+      - W/"fdc03c5f-bf75-4c56-812c-fdfc511fc7b1"
       expires:
       - '-1'
       pragma:
@@ -2052,13 +1996,13 @@ interactions:
       x-content-type-options:
       - nosniff
       x-ms-arm-service-request-id:
-      - d1e9da5a-9dc1-4552-b1ae-a7f8602e9552
+      - 046f0ff5-d965-4c03-9724-edb44a579b99
     status:
       code: 200
       message: OK
 - request:
     body: '{"id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/loadBalancers/lb1",
-      "location": "westus", "tags": {}, "sku": {"name": "Basic", "tier": "Regional"},
+      "location": "eastus2", "tags": {}, "sku": {"name": "Basic", "tier": "Regional"},
       "properties": {"frontendIPConfigurations": [{"id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/loadBalancers/lb1/frontendIPConfigurations/LoadBalancerFrontEnd",
       "name": "LoadBalancerFrontEnd", "properties": {"privateIPAllocationMethod":
       "Dynamic", "privateIPAddressVersion": "IPv4", "publicIPAddress": {"id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/publicIPAddresses/PublicIPlb1"}}}],
@@ -2087,25 +2031,25 @@ interactions:
       Connection:
       - keep-alive
       Content-Length:
-      - '3427'
+      - '3428'
       Content-Type:
       - application/json
       ParameterSetName:
       - -g --lb-name -n --set
       User-Agent:
-      - AZURECLI/2.16.0 azsdk-python-azure-mgmt-network/17.0.0 Python/3.7.8 (Windows-10-10.0.19041-SP0)
+      - AZURECLI/2.23.0 azsdk-python-azure-mgmt-network/18.0.0 Python/3.7.3 (Windows-10-10.0.19041-SP0)
     method: PUT
-    uri: https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/loadBalancers/lb1?api-version=2020-07-01
+    uri: https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/loadBalancers/lb1?api-version=2021-02-01
   response:
     body:
       string: "{\r\n  \"name\": \"lb1\",\r\n  \"id\": \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/loadBalancers/lb1\",\r\n
-        \ \"etag\": \"W/\\\"70f26461-c182-45dd-84d8-0d4ff22a0c0a\\\"\",\r\n  \"type\":
-        \"Microsoft.Network/loadBalancers\",\r\n  \"location\": \"westus\",\r\n  \"tags\":
+        \ \"etag\": \"W/\\\"625b0c8a-c1bd-49de-8e51-e13cf07faf86\\\"\",\r\n  \"type\":
+        \"Microsoft.Network/loadBalancers\",\r\n  \"location\": \"eastus2\",\r\n  \"tags\":
         {},\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n
-        \   \"resourceGuid\": \"a45cfae0-2925-488a-ae45-bc3ec999e0fd\",\r\n    \"frontendIPConfigurations\":
+        \   \"resourceGuid\": \"60eba153-c9f6-42d0-a4ad-2a184e71e303\",\r\n    \"frontendIPConfigurations\":
         [\r\n      {\r\n        \"name\": \"LoadBalancerFrontEnd\",\r\n        \"id\":
         \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/loadBalancers/lb1/frontendIPConfigurations/LoadBalancerFrontEnd\",\r\n
-        \       \"etag\": \"W/\\\"70f26461-c182-45dd-84d8-0d4ff22a0c0a\\\"\",\r\n
+        \       \"etag\": \"W/\\\"625b0c8a-c1bd-49de-8e51-e13cf07faf86\\\"\",\r\n
         \       \"type\": \"Microsoft.Network/loadBalancers/frontendIPConfigurations\",\r\n
         \       \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n
         \         \"privateIPAllocationMethod\": \"Dynamic\",\r\n          \"publicIPAddress\":
@@ -2117,13 +2061,13 @@ interactions:
         \           }\r\n          ],\r\n          \"privateIPAddressVersion\": \"IPv4\"\r\n
         \       }\r\n      }\r\n    ],\r\n    \"backendAddressPools\": [\r\n      {\r\n
         \       \"name\": \"lb1bepool\",\r\n        \"id\": \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/loadBalancers/lb1/backendAddressPools/lb1bepool\",\r\n
-        \       \"etag\": \"W/\\\"70f26461-c182-45dd-84d8-0d4ff22a0c0a\\\"\",\r\n
+        \       \"etag\": \"W/\\\"625b0c8a-c1bd-49de-8e51-e13cf07faf86\\\"\",\r\n
         \       \"properties\": {\r\n          \"provisioningState\": \"Succeeded\"\r\n
         \       },\r\n        \"type\": \"Microsoft.Network/loadBalancers/backendAddressPools\"\r\n
         \     }\r\n    ],\r\n    \"loadBalancingRules\": [],\r\n    \"probes\": [],\r\n
         \   \"inboundNatRules\": [],\r\n    \"inboundNatPools\": [\r\n      {\r\n
         \       \"name\": \"rule1000\",\r\n        \"id\": \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/loadBalancers/lb1/inboundNatPools/rule1000\",\r\n
-        \       \"etag\": \"W/\\\"70f26461-c182-45dd-84d8-0d4ff22a0c0a\\\"\",\r\n
+        \       \"etag\": \"W/\\\"625b0c8a-c1bd-49de-8e51-e13cf07faf86\\\"\",\r\n
         \       \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n
         \         \"frontendPortRangeStart\": 1000,\r\n          \"frontendPortRangeEnd\":
         1999,\r\n          \"backendPort\": 50,\r\n          \"protocol\": \"Tcp\",\r\n
@@ -2134,7 +2078,7 @@ interactions:
         \         }\r\n        },\r\n        \"type\": \"Microsoft.Network/loadBalancers/inboundNatPools\"\r\n
         \     },\r\n      {\r\n        \"name\": \"rule2000\",\r\n        \"id\":
         \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/loadBalancers/lb1/inboundNatPools/rule2000\",\r\n
-        \       \"etag\": \"W/\\\"70f26461-c182-45dd-84d8-0d4ff22a0c0a\\\"\",\r\n
+        \       \"etag\": \"W/\\\"625b0c8a-c1bd-49de-8e51-e13cf07faf86\\\"\",\r\n
         \       \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n
         \         \"frontendPortRangeStart\": 2000,\r\n          \"frontendPortRangeEnd\":
         2999,\r\n          \"backendPort\": 2000,\r\n          \"protocol\": \"Tcp\",\r\n
@@ -2145,7 +2089,7 @@ interactions:
         \         }\r\n        },\r\n        \"type\": \"Microsoft.Network/loadBalancers/inboundNatPools\"\r\n
         \     },\r\n      {\r\n        \"name\": \"rule3000\",\r\n        \"id\":
         \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/loadBalancers/lb1/inboundNatPools/rule3000\",\r\n
-        \       \"etag\": \"W/\\\"70f26461-c182-45dd-84d8-0d4ff22a0c0a\\\"\",\r\n
+        \       \"etag\": \"W/\\\"625b0c8a-c1bd-49de-8e51-e13cf07faf86\\\"\",\r\n
         \       \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n
         \         \"frontendPortRangeStart\": 3000,\r\n          \"frontendPortRangeEnd\":
         3999,\r\n          \"backendPort\": 3000,\r\n          \"protocol\": \"Tcp\",\r\n
@@ -2158,15 +2102,15 @@ interactions:
         \"Regional\"\r\n  }\r\n}"
     headers:
       azure-asyncoperation:
-      - https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Network/locations/westus/operations/8fd26d38-0c63-4131-828d-56ea46016f43?api-version=2020-07-01
+      - https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Network/locations/eastus2/operations/125ac960-d5f3-4af8-bcd1-5b1db909c872?api-version=2021-02-01
       cache-control:
       - no-cache
       content-length:
-      - '6466'
+      - '6467'
       content-type:
       - application/json; charset=utf-8
       date:
-      - Wed, 16 Dec 2020 06:55:48 GMT
+      - Fri, 14 May 2021 06:08:20 GMT
       expires:
       - '-1'
       pragma:
@@ -2183,9 +2127,9 @@ interactions:
       x-content-type-options:
       - nosniff
       x-ms-arm-service-request-id:
-      - 7189ff2d-c229-47c7-9135-fcfe25d84291
+      - 4ba5af0d-4d93-46d9-b7c7-8a9bc3d6bf33
       x-ms-ratelimit-remaining-subscription-writes:
-      - '1182'
+      - '1185'
     status:
       code: 200
       message: OK
@@ -2203,9 +2147,9 @@ interactions:
       ParameterSetName:
       - -g --lb-name -n --set
       User-Agent:
-      - AZURECLI/2.16.0 azsdk-python-azure-mgmt-network/17.0.0 Python/3.7.8 (Windows-10-10.0.19041-SP0)
+      - AZURECLI/2.23.0 azsdk-python-azure-mgmt-network/18.0.0 Python/3.7.3 (Windows-10-10.0.19041-SP0)
     method: GET
-    uri: https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Network/locations/westus/operations/8fd26d38-0c63-4131-828d-56ea46016f43?api-version=2020-07-01
+    uri: https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Network/locations/eastus2/operations/125ac960-d5f3-4af8-bcd1-5b1db909c872?api-version=2021-02-01
   response:
     body:
       string: "{\r\n  \"status\": \"Succeeded\"\r\n}"
@@ -2217,7 +2161,7 @@ interactions:
       content-type:
       - application/json; charset=utf-8
       date:
-      - Wed, 16 Dec 2020 06:56:18 GMT
+      - Fri, 14 May 2021 06:08:50 GMT
       expires:
       - '-1'
       pragma:
@@ -2234,7 +2178,7 @@ interactions:
       x-content-type-options:
       - nosniff
       x-ms-arm-service-request-id:
-      - 8b799398-dd91-4537-914e-00acf7ddb11d
+      - 44058f39-eb73-4b8b-9b3b-084e212059b2
     status:
       code: 200
       message: OK
@@ -2252,19 +2196,19 @@ interactions:
       ParameterSetName:
       - -g --lb-name -n --set
       User-Agent:
-      - AZURECLI/2.16.0 azsdk-python-azure-mgmt-network/17.0.0 Python/3.7.8 (Windows-10-10.0.19041-SP0)
+      - AZURECLI/2.23.0 azsdk-python-azure-mgmt-network/18.0.0 Python/3.7.3 (Windows-10-10.0.19041-SP0)
     method: GET
-    uri: https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/loadBalancers/lb1?api-version=2020-07-01
+    uri: https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/loadBalancers/lb1?api-version=2021-02-01
   response:
     body:
       string: "{\r\n  \"name\": \"lb1\",\r\n  \"id\": \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/loadBalancers/lb1\",\r\n
-        \ \"etag\": \"W/\\\"70f26461-c182-45dd-84d8-0d4ff22a0c0a\\\"\",\r\n  \"type\":
-        \"Microsoft.Network/loadBalancers\",\r\n  \"location\": \"westus\",\r\n  \"tags\":
+        \ \"etag\": \"W/\\\"625b0c8a-c1bd-49de-8e51-e13cf07faf86\\\"\",\r\n  \"type\":
+        \"Microsoft.Network/loadBalancers\",\r\n  \"location\": \"eastus2\",\r\n  \"tags\":
         {},\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n
-        \   \"resourceGuid\": \"a45cfae0-2925-488a-ae45-bc3ec999e0fd\",\r\n    \"frontendIPConfigurations\":
+        \   \"resourceGuid\": \"60eba153-c9f6-42d0-a4ad-2a184e71e303\",\r\n    \"frontendIPConfigurations\":
         [\r\n      {\r\n        \"name\": \"LoadBalancerFrontEnd\",\r\n        \"id\":
         \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/loadBalancers/lb1/frontendIPConfigurations/LoadBalancerFrontEnd\",\r\n
-        \       \"etag\": \"W/\\\"70f26461-c182-45dd-84d8-0d4ff22a0c0a\\\"\",\r\n
+        \       \"etag\": \"W/\\\"625b0c8a-c1bd-49de-8e51-e13cf07faf86\\\"\",\r\n
         \       \"type\": \"Microsoft.Network/loadBalancers/frontendIPConfigurations\",\r\n
         \       \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n
         \         \"privateIPAllocationMethod\": \"Dynamic\",\r\n          \"publicIPAddress\":
@@ -2276,13 +2220,13 @@ interactions:
         \           }\r\n          ],\r\n          \"privateIPAddressVersion\": \"IPv4\"\r\n
         \       }\r\n      }\r\n    ],\r\n    \"backendAddressPools\": [\r\n      {\r\n
         \       \"name\": \"lb1bepool\",\r\n        \"id\": \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/loadBalancers/lb1/backendAddressPools/lb1bepool\",\r\n
-        \       \"etag\": \"W/\\\"70f26461-c182-45dd-84d8-0d4ff22a0c0a\\\"\",\r\n
+        \       \"etag\": \"W/\\\"625b0c8a-c1bd-49de-8e51-e13cf07faf86\\\"\",\r\n
         \       \"properties\": {\r\n          \"provisioningState\": \"Succeeded\"\r\n
         \       },\r\n        \"type\": \"Microsoft.Network/loadBalancers/backendAddressPools\"\r\n
         \     }\r\n    ],\r\n    \"loadBalancingRules\": [],\r\n    \"probes\": [],\r\n
         \   \"inboundNatRules\": [],\r\n    \"inboundNatPools\": [\r\n      {\r\n
         \       \"name\": \"rule1000\",\r\n        \"id\": \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/loadBalancers/lb1/inboundNatPools/rule1000\",\r\n
-        \       \"etag\": \"W/\\\"70f26461-c182-45dd-84d8-0d4ff22a0c0a\\\"\",\r\n
+        \       \"etag\": \"W/\\\"625b0c8a-c1bd-49de-8e51-e13cf07faf86\\\"\",\r\n
         \       \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n
         \         \"frontendPortRangeStart\": 1000,\r\n          \"frontendPortRangeEnd\":
         1999,\r\n          \"backendPort\": 50,\r\n          \"protocol\": \"Tcp\",\r\n
@@ -2293,7 +2237,7 @@ interactions:
         \         }\r\n        },\r\n        \"type\": \"Microsoft.Network/loadBalancers/inboundNatPools\"\r\n
         \     },\r\n      {\r\n        \"name\": \"rule2000\",\r\n        \"id\":
         \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/loadBalancers/lb1/inboundNatPools/rule2000\",\r\n
-        \       \"etag\": \"W/\\\"70f26461-c182-45dd-84d8-0d4ff22a0c0a\\\"\",\r\n
+        \       \"etag\": \"W/\\\"625b0c8a-c1bd-49de-8e51-e13cf07faf86\\\"\",\r\n
         \       \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n
         \         \"frontendPortRangeStart\": 2000,\r\n          \"frontendPortRangeEnd\":
         2999,\r\n          \"backendPort\": 2000,\r\n          \"protocol\": \"Tcp\",\r\n
@@ -2304,7 +2248,7 @@ interactions:
         \         }\r\n        },\r\n        \"type\": \"Microsoft.Network/loadBalancers/inboundNatPools\"\r\n
         \     },\r\n      {\r\n        \"name\": \"rule3000\",\r\n        \"id\":
         \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/loadBalancers/lb1/inboundNatPools/rule3000\",\r\n
-        \       \"etag\": \"W/\\\"70f26461-c182-45dd-84d8-0d4ff22a0c0a\\\"\",\r\n
+        \       \"etag\": \"W/\\\"625b0c8a-c1bd-49de-8e51-e13cf07faf86\\\"\",\r\n
         \       \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n
         \         \"frontendPortRangeStart\": 3000,\r\n          \"frontendPortRangeEnd\":
         3999,\r\n          \"backendPort\": 3000,\r\n          \"protocol\": \"Tcp\",\r\n
@@ -2319,13 +2263,13 @@ interactions:
       cache-control:
       - no-cache
       content-length:
-      - '6466'
+      - '6467'
       content-type:
       - application/json; charset=utf-8
       date:
-      - Wed, 16 Dec 2020 06:56:19 GMT
+      - Fri, 14 May 2021 06:08:51 GMT
       etag:
-      - W/"70f26461-c182-45dd-84d8-0d4ff22a0c0a"
+      - W/"625b0c8a-c1bd-49de-8e51-e13cf07faf86"
       expires:
       - '-1'
       pragma:
@@ -2342,7 +2286,7 @@ interactions:
       x-content-type-options:
       - nosniff
       x-ms-arm-service-request-id:
-      - 1f12c2e8-5f4f-402f-bb09-d243f9d98b31
+      - 6adaf86c-fb4f-4bd3-b022-059924b7800f
     status:
       code: 200
       message: OK
@@ -2360,19 +2304,19 @@ interactions:
       ParameterSetName:
       - -g --lb-name -n
       User-Agent:
-      - AZURECLI/2.16.0 azsdk-python-azure-mgmt-network/17.0.0 Python/3.7.8 (Windows-10-10.0.19041-SP0)
+      - AZURECLI/2.23.0 azsdk-python-azure-mgmt-network/18.0.0 Python/3.7.3 (Windows-10-10.0.19041-SP0)
     method: GET
-    uri: https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/loadBalancers/lb1?api-version=2020-07-01
+    uri: https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/loadBalancers/lb1?api-version=2021-02-01
   response:
     body:
       string: "{\r\n  \"name\": \"lb1\",\r\n  \"id\": \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/loadBalancers/lb1\",\r\n
-        \ \"etag\": \"W/\\\"70f26461-c182-45dd-84d8-0d4ff22a0c0a\\\"\",\r\n  \"type\":
-        \"Microsoft.Network/loadBalancers\",\r\n  \"location\": \"westus\",\r\n  \"tags\":
+        \ \"etag\": \"W/\\\"625b0c8a-c1bd-49de-8e51-e13cf07faf86\\\"\",\r\n  \"type\":
+        \"Microsoft.Network/loadBalancers\",\r\n  \"location\": \"eastus2\",\r\n  \"tags\":
         {},\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n
-        \   \"resourceGuid\": \"a45cfae0-2925-488a-ae45-bc3ec999e0fd\",\r\n    \"frontendIPConfigurations\":
+        \   \"resourceGuid\": \"60eba153-c9f6-42d0-a4ad-2a184e71e303\",\r\n    \"frontendIPConfigurations\":
         [\r\n      {\r\n        \"name\": \"LoadBalancerFrontEnd\",\r\n        \"id\":
         \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/loadBalancers/lb1/frontendIPConfigurations/LoadBalancerFrontEnd\",\r\n
-        \       \"etag\": \"W/\\\"70f26461-c182-45dd-84d8-0d4ff22a0c0a\\\"\",\r\n
+        \       \"etag\": \"W/\\\"625b0c8a-c1bd-49de-8e51-e13cf07faf86\\\"\",\r\n
         \       \"type\": \"Microsoft.Network/loadBalancers/frontendIPConfigurations\",\r\n
         \       \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n
         \         \"privateIPAllocationMethod\": \"Dynamic\",\r\n          \"publicIPAddress\":
@@ -2384,13 +2328,13 @@ interactions:
         \           }\r\n          ],\r\n          \"privateIPAddressVersion\": \"IPv4\"\r\n
         \       }\r\n      }\r\n    ],\r\n    \"backendAddressPools\": [\r\n      {\r\n
         \       \"name\": \"lb1bepool\",\r\n        \"id\": \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/loadBalancers/lb1/backendAddressPools/lb1bepool\",\r\n
-        \       \"etag\": \"W/\\\"70f26461-c182-45dd-84d8-0d4ff22a0c0a\\\"\",\r\n
+        \       \"etag\": \"W/\\\"625b0c8a-c1bd-49de-8e51-e13cf07faf86\\\"\",\r\n
         \       \"properties\": {\r\n          \"provisioningState\": \"Succeeded\"\r\n
         \       },\r\n        \"type\": \"Microsoft.Network/loadBalancers/backendAddressPools\"\r\n
         \     }\r\n    ],\r\n    \"loadBalancingRules\": [],\r\n    \"probes\": [],\r\n
         \   \"inboundNatRules\": [],\r\n    \"inboundNatPools\": [\r\n      {\r\n
         \       \"name\": \"rule1000\",\r\n        \"id\": \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/loadBalancers/lb1/inboundNatPools/rule1000\",\r\n
-        \       \"etag\": \"W/\\\"70f26461-c182-45dd-84d8-0d4ff22a0c0a\\\"\",\r\n
+        \       \"etag\": \"W/\\\"625b0c8a-c1bd-49de-8e51-e13cf07faf86\\\"\",\r\n
         \       \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n
         \         \"frontendPortRangeStart\": 1000,\r\n          \"frontendPortRangeEnd\":
         1999,\r\n          \"backendPort\": 50,\r\n          \"protocol\": \"Tcp\",\r\n
@@ -2401,7 +2345,7 @@ interactions:
         \         }\r\n        },\r\n        \"type\": \"Microsoft.Network/loadBalancers/inboundNatPools\"\r\n
         \     },\r\n      {\r\n        \"name\": \"rule2000\",\r\n        \"id\":
         \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/loadBalancers/lb1/inboundNatPools/rule2000\",\r\n
-        \       \"etag\": \"W/\\\"70f26461-c182-45dd-84d8-0d4ff22a0c0a\\\"\",\r\n
+        \       \"etag\": \"W/\\\"625b0c8a-c1bd-49de-8e51-e13cf07faf86\\\"\",\r\n
         \       \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n
         \         \"frontendPortRangeStart\": 2000,\r\n          \"frontendPortRangeEnd\":
         2999,\r\n          \"backendPort\": 2000,\r\n          \"protocol\": \"Tcp\",\r\n
@@ -2412,7 +2356,7 @@ interactions:
         \         }\r\n        },\r\n        \"type\": \"Microsoft.Network/loadBalancers/inboundNatPools\"\r\n
         \     },\r\n      {\r\n        \"name\": \"rule3000\",\r\n        \"id\":
         \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/loadBalancers/lb1/inboundNatPools/rule3000\",\r\n
-        \       \"etag\": \"W/\\\"70f26461-c182-45dd-84d8-0d4ff22a0c0a\\\"\",\r\n
+        \       \"etag\": \"W/\\\"625b0c8a-c1bd-49de-8e51-e13cf07faf86\\\"\",\r\n
         \       \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n
         \         \"frontendPortRangeStart\": 3000,\r\n          \"frontendPortRangeEnd\":
         3999,\r\n          \"backendPort\": 3000,\r\n          \"protocol\": \"Tcp\",\r\n
@@ -2427,13 +2371,13 @@ interactions:
       cache-control:
       - no-cache
       content-length:
-      - '6466'
+      - '6467'
       content-type:
       - application/json; charset=utf-8
       date:
-      - Wed, 16 Dec 2020 06:56:21 GMT
+      - Fri, 14 May 2021 06:08:51 GMT
       etag:
-      - W/"70f26461-c182-45dd-84d8-0d4ff22a0c0a"
+      - W/"625b0c8a-c1bd-49de-8e51-e13cf07faf86"
       expires:
       - '-1'
       pragma:
@@ -2450,13 +2394,13 @@ interactions:
       x-content-type-options:
       - nosniff
       x-ms-arm-service-request-id:
-      - 9cfbdef1-0e1c-42cd-8029-3ee59c300454
+      - ba9d083f-ca66-424b-bec8-1d0d64aa7496
     status:
       code: 200
       message: OK
 - request:
     body: '{"id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/loadBalancers/lb1",
-      "location": "westus", "tags": {}, "sku": {"name": "Basic", "tier": "Regional"},
+      "location": "eastus2", "tags": {}, "sku": {"name": "Basic", "tier": "Regional"},
       "properties": {"frontendIPConfigurations": [{"id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/loadBalancers/lb1/frontendIPConfigurations/LoadBalancerFrontEnd",
       "name": "LoadBalancerFrontEnd", "properties": {"privateIPAllocationMethod":
       "Dynamic", "privateIPAddressVersion": "IPv4", "publicIPAddress": {"id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/publicIPAddresses/PublicIPlb1"}}}],
@@ -2481,25 +2425,25 @@ interactions:
       Connection:
       - keep-alive
       Content-Length:
-      - '2714'
+      - '2715'
       Content-Type:
       - application/json
       ParameterSetName:
       - -g --lb-name -n
       User-Agent:
-      - AZURECLI/2.16.0 azsdk-python-azure-mgmt-network/17.0.0 Python/3.7.8 (Windows-10-10.0.19041-SP0)
+      - AZURECLI/2.23.0 azsdk-python-azure-mgmt-network/18.0.0 Python/3.7.3 (Windows-10-10.0.19041-SP0)
     method: PUT
-    uri: https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/loadBalancers/lb1?api-version=2020-07-01
+    uri: https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/loadBalancers/lb1?api-version=2021-02-01
   response:
     body:
       string: "{\r\n  \"name\": \"lb1\",\r\n  \"id\": \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/loadBalancers/lb1\",\r\n
-        \ \"etag\": \"W/\\\"c2b89be3-e00f-4939-b1d3-e8da3d206c12\\\"\",\r\n  \"type\":
-        \"Microsoft.Network/loadBalancers\",\r\n  \"location\": \"westus\",\r\n  \"tags\":
+        \ \"etag\": \"W/\\\"9e152616-dd12-45fe-a586-3ecaeceb2f6c\\\"\",\r\n  \"type\":
+        \"Microsoft.Network/loadBalancers\",\r\n  \"location\": \"eastus2\",\r\n  \"tags\":
         {},\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n
-        \   \"resourceGuid\": \"a45cfae0-2925-488a-ae45-bc3ec999e0fd\",\r\n    \"frontendIPConfigurations\":
+        \   \"resourceGuid\": \"60eba153-c9f6-42d0-a4ad-2a184e71e303\",\r\n    \"frontendIPConfigurations\":
         [\r\n      {\r\n        \"name\": \"LoadBalancerFrontEnd\",\r\n        \"id\":
         \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/loadBalancers/lb1/frontendIPConfigurations/LoadBalancerFrontEnd\",\r\n
-        \       \"etag\": \"W/\\\"c2b89be3-e00f-4939-b1d3-e8da3d206c12\\\"\",\r\n
+        \       \"etag\": \"W/\\\"9e152616-dd12-45fe-a586-3ecaeceb2f6c\\\"\",\r\n
         \       \"type\": \"Microsoft.Network/loadBalancers/frontendIPConfigurations\",\r\n
         \       \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n
         \         \"privateIPAllocationMethod\": \"Dynamic\",\r\n          \"publicIPAddress\":
@@ -2510,13 +2454,13 @@ interactions:
         \           }\r\n          ],\r\n          \"privateIPAddressVersion\": \"IPv4\"\r\n
         \       }\r\n      }\r\n    ],\r\n    \"backendAddressPools\": [\r\n      {\r\n
         \       \"name\": \"lb1bepool\",\r\n        \"id\": \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/loadBalancers/lb1/backendAddressPools/lb1bepool\",\r\n
-        \       \"etag\": \"W/\\\"c2b89be3-e00f-4939-b1d3-e8da3d206c12\\\"\",\r\n
+        \       \"etag\": \"W/\\\"9e152616-dd12-45fe-a586-3ecaeceb2f6c\\\"\",\r\n
         \       \"properties\": {\r\n          \"provisioningState\": \"Succeeded\"\r\n
         \       },\r\n        \"type\": \"Microsoft.Network/loadBalancers/backendAddressPools\"\r\n
         \     }\r\n    ],\r\n    \"loadBalancingRules\": [],\r\n    \"probes\": [],\r\n
         \   \"inboundNatRules\": [],\r\n    \"inboundNatPools\": [\r\n      {\r\n
         \       \"name\": \"rule2000\",\r\n        \"id\": \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/loadBalancers/lb1/inboundNatPools/rule2000\",\r\n
-        \       \"etag\": \"W/\\\"c2b89be3-e00f-4939-b1d3-e8da3d206c12\\\"\",\r\n
+        \       \"etag\": \"W/\\\"9e152616-dd12-45fe-a586-3ecaeceb2f6c\\\"\",\r\n
         \       \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n
         \         \"frontendPortRangeStart\": 2000,\r\n          \"frontendPortRangeEnd\":
         2999,\r\n          \"backendPort\": 2000,\r\n          \"protocol\": \"Tcp\",\r\n
@@ -2527,7 +2471,7 @@ interactions:
         \         }\r\n        },\r\n        \"type\": \"Microsoft.Network/loadBalancers/inboundNatPools\"\r\n
         \     },\r\n      {\r\n        \"name\": \"rule3000\",\r\n        \"id\":
         \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/loadBalancers/lb1/inboundNatPools/rule3000\",\r\n
-        \       \"etag\": \"W/\\\"c2b89be3-e00f-4939-b1d3-e8da3d206c12\\\"\",\r\n
+        \       \"etag\": \"W/\\\"9e152616-dd12-45fe-a586-3ecaeceb2f6c\\\"\",\r\n
         \       \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n
         \         \"frontendPortRangeStart\": 3000,\r\n          \"frontendPortRangeEnd\":
         3999,\r\n          \"backendPort\": 3000,\r\n          \"protocol\": \"Tcp\",\r\n
@@ -2540,15 +2484,15 @@ interactions:
         \"Regional\"\r\n  }\r\n}"
     headers:
       azure-asyncoperation:
-      - https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Network/locations/westus/operations/cd63c7b5-e88f-4b79-9638-5f6be9516343?api-version=2020-07-01
+      - https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Network/locations/eastus2/operations/5bbab3a5-c5bd-4434-920b-d59406c3e6da?api-version=2021-02-01
       cache-control:
       - no-cache
       content-length:
-      - '5041'
+      - '5042'
       content-type:
       - application/json; charset=utf-8
       date:
-      - Wed, 16 Dec 2020 06:56:23 GMT
+      - Fri, 14 May 2021 06:08:55 GMT
       expires:
       - '-1'
       pragma:
@@ -2565,9 +2509,9 @@ interactions:
       x-content-type-options:
       - nosniff
       x-ms-arm-service-request-id:
-      - c07c793a-98a6-4028-b800-8138d9aa8a78
+      - 327f0d41-fab2-442d-92dc-20e30264fdaf
       x-ms-ratelimit-remaining-subscription-writes:
-      - '1173'
+      - '1186'
     status:
       code: 200
       message: OK
@@ -2585,9 +2529,9 @@ interactions:
       ParameterSetName:
       - -g --lb-name -n
       User-Agent:
-      - AZURECLI/2.16.0 azsdk-python-azure-mgmt-network/17.0.0 Python/3.7.8 (Windows-10-10.0.19041-SP0)
+      - AZURECLI/2.23.0 azsdk-python-azure-mgmt-network/18.0.0 Python/3.7.3 (Windows-10-10.0.19041-SP0)
     method: GET
-    uri: https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Network/locations/westus/operations/cd63c7b5-e88f-4b79-9638-5f6be9516343?api-version=2020-07-01
+    uri: https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Network/locations/eastus2/operations/5bbab3a5-c5bd-4434-920b-d59406c3e6da?api-version=2021-02-01
   response:
     body:
       string: "{\r\n  \"status\": \"Succeeded\"\r\n}"
@@ -2599,7 +2543,7 @@ interactions:
       content-type:
       - application/json; charset=utf-8
       date:
-      - Wed, 16 Dec 2020 06:56:53 GMT
+      - Fri, 14 May 2021 06:09:26 GMT
       expires:
       - '-1'
       pragma:
@@ -2616,7 +2560,7 @@ interactions:
       x-content-type-options:
       - nosniff
       x-ms-arm-service-request-id:
-      - 7bf2c25c-bb7a-4c18-a9b6-9420109dbd79
+      - 339fa9ed-ec87-447b-84cc-13829c656706
     status:
       code: 200
       message: OK
@@ -2634,19 +2578,19 @@ interactions:
       ParameterSetName:
       - -g --lb-name -n
       User-Agent:
-      - AZURECLI/2.16.0 azsdk-python-azure-mgmt-network/17.0.0 Python/3.7.8 (Windows-10-10.0.19041-SP0)
+      - AZURECLI/2.23.0 azsdk-python-azure-mgmt-network/18.0.0 Python/3.7.3 (Windows-10-10.0.19041-SP0)
     method: GET
-    uri: https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/loadBalancers/lb1?api-version=2020-07-01
+    uri: https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/loadBalancers/lb1?api-version=2021-02-01
   response:
     body:
       string: "{\r\n  \"name\": \"lb1\",\r\n  \"id\": \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/loadBalancers/lb1\",\r\n
-        \ \"etag\": \"W/\\\"c2b89be3-e00f-4939-b1d3-e8da3d206c12\\\"\",\r\n  \"type\":
-        \"Microsoft.Network/loadBalancers\",\r\n  \"location\": \"westus\",\r\n  \"tags\":
+        \ \"etag\": \"W/\\\"9e152616-dd12-45fe-a586-3ecaeceb2f6c\\\"\",\r\n  \"type\":
+        \"Microsoft.Network/loadBalancers\",\r\n  \"location\": \"eastus2\",\r\n  \"tags\":
         {},\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n
-        \   \"resourceGuid\": \"a45cfae0-2925-488a-ae45-bc3ec999e0fd\",\r\n    \"frontendIPConfigurations\":
+        \   \"resourceGuid\": \"60eba153-c9f6-42d0-a4ad-2a184e71e303\",\r\n    \"frontendIPConfigurations\":
         [\r\n      {\r\n        \"name\": \"LoadBalancerFrontEnd\",\r\n        \"id\":
         \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/loadBalancers/lb1/frontendIPConfigurations/LoadBalancerFrontEnd\",\r\n
-        \       \"etag\": \"W/\\\"c2b89be3-e00f-4939-b1d3-e8da3d206c12\\\"\",\r\n
+        \       \"etag\": \"W/\\\"9e152616-dd12-45fe-a586-3ecaeceb2f6c\\\"\",\r\n
         \       \"type\": \"Microsoft.Network/loadBalancers/frontendIPConfigurations\",\r\n
         \       \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n
         \         \"privateIPAllocationMethod\": \"Dynamic\",\r\n          \"publicIPAddress\":
@@ -2657,13 +2601,13 @@ interactions:
         \           }\r\n          ],\r\n          \"privateIPAddressVersion\": \"IPv4\"\r\n
         \       }\r\n      }\r\n    ],\r\n    \"backendAddressPools\": [\r\n      {\r\n
         \       \"name\": \"lb1bepool\",\r\n        \"id\": \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/loadBalancers/lb1/backendAddressPools/lb1bepool\",\r\n
-        \       \"etag\": \"W/\\\"c2b89be3-e00f-4939-b1d3-e8da3d206c12\\\"\",\r\n
+        \       \"etag\": \"W/\\\"9e152616-dd12-45fe-a586-3ecaeceb2f6c\\\"\",\r\n
         \       \"properties\": {\r\n          \"provisioningState\": \"Succeeded\"\r\n
         \       },\r\n        \"type\": \"Microsoft.Network/loadBalancers/backendAddressPools\"\r\n
         \     }\r\n    ],\r\n    \"loadBalancingRules\": [],\r\n    \"probes\": [],\r\n
         \   \"inboundNatRules\": [],\r\n    \"inboundNatPools\": [\r\n      {\r\n
         \       \"name\": \"rule2000\",\r\n        \"id\": \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/loadBalancers/lb1/inboundNatPools/rule2000\",\r\n
-        \       \"etag\": \"W/\\\"c2b89be3-e00f-4939-b1d3-e8da3d206c12\\\"\",\r\n
+        \       \"etag\": \"W/\\\"9e152616-dd12-45fe-a586-3ecaeceb2f6c\\\"\",\r\n
         \       \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n
         \         \"frontendPortRangeStart\": 2000,\r\n          \"frontendPortRangeEnd\":
         2999,\r\n          \"backendPort\": 2000,\r\n          \"protocol\": \"Tcp\",\r\n
@@ -2674,7 +2618,7 @@ interactions:
         \         }\r\n        },\r\n        \"type\": \"Microsoft.Network/loadBalancers/inboundNatPools\"\r\n
         \     },\r\n      {\r\n        \"name\": \"rule3000\",\r\n        \"id\":
         \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/loadBalancers/lb1/inboundNatPools/rule3000\",\r\n
-        \       \"etag\": \"W/\\\"c2b89be3-e00f-4939-b1d3-e8da3d206c12\\\"\",\r\n
+        \       \"etag\": \"W/\\\"9e152616-dd12-45fe-a586-3ecaeceb2f6c\\\"\",\r\n
         \       \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n
         \         \"frontendPortRangeStart\": 3000,\r\n          \"frontendPortRangeEnd\":
         3999,\r\n          \"backendPort\": 3000,\r\n          \"protocol\": \"Tcp\",\r\n
@@ -2689,13 +2633,13 @@ interactions:
       cache-control:
       - no-cache
       content-length:
-      - '5041'
+      - '5042'
       content-type:
       - application/json; charset=utf-8
       date:
-      - Wed, 16 Dec 2020 06:56:54 GMT
+      - Fri, 14 May 2021 06:09:27 GMT
       etag:
-      - W/"c2b89be3-e00f-4939-b1d3-e8da3d206c12"
+      - W/"9e152616-dd12-45fe-a586-3ecaeceb2f6c"
       expires:
       - '-1'
       pragma:
@@ -2712,7 +2656,7 @@ interactions:
       x-content-type-options:
       - nosniff
       x-ms-arm-service-request-id:
-      - 3bd0bf09-7a62-49a8-9041-b87a515e7ace
+      - 3d01e4d2-837b-48da-8cb5-b70f91de4dfe
     status:
       code: 200
       message: OK
@@ -2730,19 +2674,19 @@ interactions:
       ParameterSetName:
       - -g --lb-name -n
       User-Agent:
-      - AZURECLI/2.16.0 azsdk-python-azure-mgmt-network/17.0.0 Python/3.7.8 (Windows-10-10.0.19041-SP0)
+      - AZURECLI/2.23.0 azsdk-python-azure-mgmt-network/18.0.0 Python/3.7.3 (Windows-10-10.0.19041-SP0)
     method: GET
-    uri: https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/loadBalancers/lb1?api-version=2020-07-01
+    uri: https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/loadBalancers/lb1?api-version=2021-02-01
   response:
     body:
       string: "{\r\n  \"name\": \"lb1\",\r\n  \"id\": \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/loadBalancers/lb1\",\r\n
-        \ \"etag\": \"W/\\\"c2b89be3-e00f-4939-b1d3-e8da3d206c12\\\"\",\r\n  \"type\":
-        \"Microsoft.Network/loadBalancers\",\r\n  \"location\": \"westus\",\r\n  \"tags\":
+        \ \"etag\": \"W/\\\"9e152616-dd12-45fe-a586-3ecaeceb2f6c\\\"\",\r\n  \"type\":
+        \"Microsoft.Network/loadBalancers\",\r\n  \"location\": \"eastus2\",\r\n  \"tags\":
         {},\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n
-        \   \"resourceGuid\": \"a45cfae0-2925-488a-ae45-bc3ec999e0fd\",\r\n    \"frontendIPConfigurations\":
+        \   \"resourceGuid\": \"60eba153-c9f6-42d0-a4ad-2a184e71e303\",\r\n    \"frontendIPConfigurations\":
         [\r\n      {\r\n        \"name\": \"LoadBalancerFrontEnd\",\r\n        \"id\":
         \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/loadBalancers/lb1/frontendIPConfigurations/LoadBalancerFrontEnd\",\r\n
-        \       \"etag\": \"W/\\\"c2b89be3-e00f-4939-b1d3-e8da3d206c12\\\"\",\r\n
+        \       \"etag\": \"W/\\\"9e152616-dd12-45fe-a586-3ecaeceb2f6c\\\"\",\r\n
         \       \"type\": \"Microsoft.Network/loadBalancers/frontendIPConfigurations\",\r\n
         \       \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n
         \         \"privateIPAllocationMethod\": \"Dynamic\",\r\n          \"publicIPAddress\":
@@ -2753,13 +2697,13 @@ interactions:
         \           }\r\n          ],\r\n          \"privateIPAddressVersion\": \"IPv4\"\r\n
         \       }\r\n      }\r\n    ],\r\n    \"backendAddressPools\": [\r\n      {\r\n
         \       \"name\": \"lb1bepool\",\r\n        \"id\": \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/loadBalancers/lb1/backendAddressPools/lb1bepool\",\r\n
-        \       \"etag\": \"W/\\\"c2b89be3-e00f-4939-b1d3-e8da3d206c12\\\"\",\r\n
+        \       \"etag\": \"W/\\\"9e152616-dd12-45fe-a586-3ecaeceb2f6c\\\"\",\r\n
         \       \"properties\": {\r\n          \"provisioningState\": \"Succeeded\"\r\n
         \       },\r\n        \"type\": \"Microsoft.Network/loadBalancers/backendAddressPools\"\r\n
         \     }\r\n    ],\r\n    \"loadBalancingRules\": [],\r\n    \"probes\": [],\r\n
         \   \"inboundNatRules\": [],\r\n    \"inboundNatPools\": [\r\n      {\r\n
         \       \"name\": \"rule2000\",\r\n        \"id\": \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/loadBalancers/lb1/inboundNatPools/rule2000\",\r\n
-        \       \"etag\": \"W/\\\"c2b89be3-e00f-4939-b1d3-e8da3d206c12\\\"\",\r\n
+        \       \"etag\": \"W/\\\"9e152616-dd12-45fe-a586-3ecaeceb2f6c\\\"\",\r\n
         \       \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n
         \         \"frontendPortRangeStart\": 2000,\r\n          \"frontendPortRangeEnd\":
         2999,\r\n          \"backendPort\": 2000,\r\n          \"protocol\": \"Tcp\",\r\n
@@ -2770,7 +2714,7 @@ interactions:
         \         }\r\n        },\r\n        \"type\": \"Microsoft.Network/loadBalancers/inboundNatPools\"\r\n
         \     },\r\n      {\r\n        \"name\": \"rule3000\",\r\n        \"id\":
         \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/loadBalancers/lb1/inboundNatPools/rule3000\",\r\n
-        \       \"etag\": \"W/\\\"c2b89be3-e00f-4939-b1d3-e8da3d206c12\\\"\",\r\n
+        \       \"etag\": \"W/\\\"9e152616-dd12-45fe-a586-3ecaeceb2f6c\\\"\",\r\n
         \       \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n
         \         \"frontendPortRangeStart\": 3000,\r\n          \"frontendPortRangeEnd\":
         3999,\r\n          \"backendPort\": 3000,\r\n          \"protocol\": \"Tcp\",\r\n
@@ -2785,13 +2729,13 @@ interactions:
       cache-control:
       - no-cache
       content-length:
-      - '5041'
+      - '5042'
       content-type:
       - application/json; charset=utf-8
       date:
-      - Wed, 16 Dec 2020 06:56:57 GMT
+      - Fri, 14 May 2021 06:09:27 GMT
       etag:
-      - W/"c2b89be3-e00f-4939-b1d3-e8da3d206c12"
+      - W/"9e152616-dd12-45fe-a586-3ecaeceb2f6c"
       expires:
       - '-1'
       pragma:
@@ -2808,13 +2752,13 @@ interactions:
       x-content-type-options:
       - nosniff
       x-ms-arm-service-request-id:
-      - 55c04a92-ba41-4338-872c-c8f46f9e6dfd
+      - 2ea9de63-cc8a-4c5f-b643-91740b025de2
     status:
       code: 200
       message: OK
 - request:
     body: '{"id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/loadBalancers/lb1",
-      "location": "westus", "tags": {}, "sku": {"name": "Basic", "tier": "Regional"},
+      "location": "eastus2", "tags": {}, "sku": {"name": "Basic", "tier": "Regional"},
       "properties": {"frontendIPConfigurations": [{"id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/loadBalancers/lb1/frontendIPConfigurations/LoadBalancerFrontEnd",
       "name": "LoadBalancerFrontEnd", "properties": {"privateIPAllocationMethod":
       "Dynamic", "privateIPAddressVersion": "IPv4", "publicIPAddress": {"id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/publicIPAddresses/PublicIPlb1"}}}],
@@ -2835,25 +2779,25 @@ interactions:
       Connection:
       - keep-alive
       Content-Length:
-      - '1999'
+      - '2000'
       Content-Type:
       - application/json
       ParameterSetName:
       - -g --lb-name -n
       User-Agent:
-      - AZURECLI/2.16.0 azsdk-python-azure-mgmt-network/17.0.0 Python/3.7.8 (Windows-10-10.0.19041-SP0)
+      - AZURECLI/2.23.0 azsdk-python-azure-mgmt-network/18.0.0 Python/3.7.3 (Windows-10-10.0.19041-SP0)
     method: PUT
-    uri: https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/loadBalancers/lb1?api-version=2020-07-01
+    uri: https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/loadBalancers/lb1?api-version=2021-02-01
   response:
     body:
       string: "{\r\n  \"name\": \"lb1\",\r\n  \"id\": \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/loadBalancers/lb1\",\r\n
-        \ \"etag\": \"W/\\\"9c0c0ccc-5c6e-46c7-a007-600fda8bc258\\\"\",\r\n  \"type\":
-        \"Microsoft.Network/loadBalancers\",\r\n  \"location\": \"westus\",\r\n  \"tags\":
+        \ \"etag\": \"W/\\\"2d211a73-b2fa-4a4f-9172-0c7674a6b37f\\\"\",\r\n  \"type\":
+        \"Microsoft.Network/loadBalancers\",\r\n  \"location\": \"eastus2\",\r\n  \"tags\":
         {},\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n
-        \   \"resourceGuid\": \"a45cfae0-2925-488a-ae45-bc3ec999e0fd\",\r\n    \"frontendIPConfigurations\":
+        \   \"resourceGuid\": \"60eba153-c9f6-42d0-a4ad-2a184e71e303\",\r\n    \"frontendIPConfigurations\":
         [\r\n      {\r\n        \"name\": \"LoadBalancerFrontEnd\",\r\n        \"id\":
         \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/loadBalancers/lb1/frontendIPConfigurations/LoadBalancerFrontEnd\",\r\n
-        \       \"etag\": \"W/\\\"9c0c0ccc-5c6e-46c7-a007-600fda8bc258\\\"\",\r\n
+        \       \"etag\": \"W/\\\"2d211a73-b2fa-4a4f-9172-0c7674a6b37f\\\"\",\r\n
         \       \"type\": \"Microsoft.Network/loadBalancers/frontendIPConfigurations\",\r\n
         \       \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n
         \         \"privateIPAllocationMethod\": \"Dynamic\",\r\n          \"publicIPAddress\":
@@ -2863,13 +2807,13 @@ interactions:
         \           }\r\n          ],\r\n          \"privateIPAddressVersion\": \"IPv4\"\r\n
         \       }\r\n      }\r\n    ],\r\n    \"backendAddressPools\": [\r\n      {\r\n
         \       \"name\": \"lb1bepool\",\r\n        \"id\": \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/loadBalancers/lb1/backendAddressPools/lb1bepool\",\r\n
-        \       \"etag\": \"W/\\\"9c0c0ccc-5c6e-46c7-a007-600fda8bc258\\\"\",\r\n
+        \       \"etag\": \"W/\\\"2d211a73-b2fa-4a4f-9172-0c7674a6b37f\\\"\",\r\n
         \       \"properties\": {\r\n          \"provisioningState\": \"Succeeded\"\r\n
         \       },\r\n        \"type\": \"Microsoft.Network/loadBalancers/backendAddressPools\"\r\n
         \     }\r\n    ],\r\n    \"loadBalancingRules\": [],\r\n    \"probes\": [],\r\n
         \   \"inboundNatRules\": [],\r\n    \"inboundNatPools\": [\r\n      {\r\n
         \       \"name\": \"rule3000\",\r\n        \"id\": \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/loadBalancers/lb1/inboundNatPools/rule3000\",\r\n
-        \       \"etag\": \"W/\\\"9c0c0ccc-5c6e-46c7-a007-600fda8bc258\\\"\",\r\n
+        \       \"etag\": \"W/\\\"2d211a73-b2fa-4a4f-9172-0c7674a6b37f\\\"\",\r\n
         \       \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n
         \         \"frontendPortRangeStart\": 3000,\r\n          \"frontendPortRangeEnd\":
         3999,\r\n          \"backendPort\": 3000,\r\n          \"protocol\": \"Tcp\",\r\n
@@ -2882,15 +2826,15 @@ interactions:
         \"Regional\"\r\n  }\r\n}"
     headers:
       azure-asyncoperation:
-      - https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Network/locations/westus/operations/1faed98d-b0b2-40fc-ac66-1c88d5a9cc2d?api-version=2020-07-01
+      - https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Network/locations/eastus2/operations/1d9456d0-0a39-477c-b561-09784a598ad8?api-version=2021-02-01
       cache-control:
       - no-cache
       content-length:
-      - '3614'
+      - '3615'
       content-type:
       - application/json; charset=utf-8
       date:
-      - Wed, 16 Dec 2020 06:56:58 GMT
+      - Fri, 14 May 2021 06:09:31 GMT
       expires:
       - '-1'
       pragma:
@@ -2907,9 +2851,9 @@ interactions:
       x-content-type-options:
       - nosniff
       x-ms-arm-service-request-id:
-      - 66f12c8d-5aed-4a73-a5d6-3ee6b6e581dc
+      - ba2da0e4-588a-4f3c-9815-45f3b2754e5b
       x-ms-ratelimit-remaining-subscription-writes:
-      - '1197'
+      - '1190'
     status:
       code: 200
       message: OK
@@ -2927,9 +2871,9 @@ interactions:
       ParameterSetName:
       - -g --lb-name -n
       User-Agent:
-      - AZURECLI/2.16.0 azsdk-python-azure-mgmt-network/17.0.0 Python/3.7.8 (Windows-10-10.0.19041-SP0)
+      - AZURECLI/2.23.0 azsdk-python-azure-mgmt-network/18.0.0 Python/3.7.3 (Windows-10-10.0.19041-SP0)
     method: GET
-    uri: https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Network/locations/westus/operations/1faed98d-b0b2-40fc-ac66-1c88d5a9cc2d?api-version=2020-07-01
+    uri: https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Network/locations/eastus2/operations/1d9456d0-0a39-477c-b561-09784a598ad8?api-version=2021-02-01
   response:
     body:
       string: "{\r\n  \"status\": \"Succeeded\"\r\n}"
@@ -2941,7 +2885,7 @@ interactions:
       content-type:
       - application/json; charset=utf-8
       date:
-      - Wed, 16 Dec 2020 06:57:29 GMT
+      - Fri, 14 May 2021 06:10:01 GMT
       expires:
       - '-1'
       pragma:
@@ -2958,7 +2902,7 @@ interactions:
       x-content-type-options:
       - nosniff
       x-ms-arm-service-request-id:
-      - f829c2bd-61f7-40db-8db9-cb83be161936
+      - e8b37415-f8c9-4bca-9f81-e928f967690e
     status:
       code: 200
       message: OK
@@ -2976,19 +2920,19 @@ interactions:
       ParameterSetName:
       - -g --lb-name -n
       User-Agent:
-      - AZURECLI/2.16.0 azsdk-python-azure-mgmt-network/17.0.0 Python/3.7.8 (Windows-10-10.0.19041-SP0)
+      - AZURECLI/2.23.0 azsdk-python-azure-mgmt-network/18.0.0 Python/3.7.3 (Windows-10-10.0.19041-SP0)
     method: GET
-    uri: https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/loadBalancers/lb1?api-version=2020-07-01
+    uri: https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/loadBalancers/lb1?api-version=2021-02-01
   response:
     body:
       string: "{\r\n  \"name\": \"lb1\",\r\n  \"id\": \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/loadBalancers/lb1\",\r\n
-        \ \"etag\": \"W/\\\"9c0c0ccc-5c6e-46c7-a007-600fda8bc258\\\"\",\r\n  \"type\":
-        \"Microsoft.Network/loadBalancers\",\r\n  \"location\": \"westus\",\r\n  \"tags\":
+        \ \"etag\": \"W/\\\"2d211a73-b2fa-4a4f-9172-0c7674a6b37f\\\"\",\r\n  \"type\":
+        \"Microsoft.Network/loadBalancers\",\r\n  \"location\": \"eastus2\",\r\n  \"tags\":
         {},\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n
-        \   \"resourceGuid\": \"a45cfae0-2925-488a-ae45-bc3ec999e0fd\",\r\n    \"frontendIPConfigurations\":
+        \   \"resourceGuid\": \"60eba153-c9f6-42d0-a4ad-2a184e71e303\",\r\n    \"frontendIPConfigurations\":
         [\r\n      {\r\n        \"name\": \"LoadBalancerFrontEnd\",\r\n        \"id\":
         \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/loadBalancers/lb1/frontendIPConfigurations/LoadBalancerFrontEnd\",\r\n
-        \       \"etag\": \"W/\\\"9c0c0ccc-5c6e-46c7-a007-600fda8bc258\\\"\",\r\n
+        \       \"etag\": \"W/\\\"2d211a73-b2fa-4a4f-9172-0c7674a6b37f\\\"\",\r\n
         \       \"type\": \"Microsoft.Network/loadBalancers/frontendIPConfigurations\",\r\n
         \       \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n
         \         \"privateIPAllocationMethod\": \"Dynamic\",\r\n          \"publicIPAddress\":
@@ -2998,13 +2942,13 @@ interactions:
         \           }\r\n          ],\r\n          \"privateIPAddressVersion\": \"IPv4\"\r\n
         \       }\r\n      }\r\n    ],\r\n    \"backendAddressPools\": [\r\n      {\r\n
         \       \"name\": \"lb1bepool\",\r\n        \"id\": \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/loadBalancers/lb1/backendAddressPools/lb1bepool\",\r\n
-        \       \"etag\": \"W/\\\"9c0c0ccc-5c6e-46c7-a007-600fda8bc258\\\"\",\r\n
+        \       \"etag\": \"W/\\\"2d211a73-b2fa-4a4f-9172-0c7674a6b37f\\\"\",\r\n
         \       \"properties\": {\r\n          \"provisioningState\": \"Succeeded\"\r\n
         \       },\r\n        \"type\": \"Microsoft.Network/loadBalancers/backendAddressPools\"\r\n
         \     }\r\n    ],\r\n    \"loadBalancingRules\": [],\r\n    \"probes\": [],\r\n
         \   \"inboundNatRules\": [],\r\n    \"inboundNatPools\": [\r\n      {\r\n
         \       \"name\": \"rule3000\",\r\n        \"id\": \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/loadBalancers/lb1/inboundNatPools/rule3000\",\r\n
-        \       \"etag\": \"W/\\\"9c0c0ccc-5c6e-46c7-a007-600fda8bc258\\\"\",\r\n
+        \       \"etag\": \"W/\\\"2d211a73-b2fa-4a4f-9172-0c7674a6b37f\\\"\",\r\n
         \       \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n
         \         \"frontendPortRangeStart\": 3000,\r\n          \"frontendPortRangeEnd\":
         3999,\r\n          \"backendPort\": 3000,\r\n          \"protocol\": \"Tcp\",\r\n
@@ -3019,13 +2963,13 @@ interactions:
       cache-control:
       - no-cache
       content-length:
-      - '3614'
+      - '3615'
       content-type:
       - application/json; charset=utf-8
       date:
-      - Wed, 16 Dec 2020 06:57:30 GMT
+      - Fri, 14 May 2021 06:10:01 GMT
       etag:
-      - W/"9c0c0ccc-5c6e-46c7-a007-600fda8bc258"
+      - W/"2d211a73-b2fa-4a4f-9172-0c7674a6b37f"
       expires:
       - '-1'
       pragma:
@@ -3042,7 +2986,7 @@ interactions:
       x-content-type-options:
       - nosniff
       x-ms-arm-service-request-id:
-      - 5d5ca1f9-b8c2-41ef-9ef8-ee968aa98efd
+      - 3e9f471b-9d9a-42a9-b4cd-50c4432948b1
     status:
       code: 200
       message: OK
@@ -3060,19 +3004,19 @@ interactions:
       ParameterSetName:
       - -g --lb-name -n
       User-Agent:
-      - AZURECLI/2.16.0 azsdk-python-azure-mgmt-network/17.0.0 Python/3.7.8 (Windows-10-10.0.19041-SP0)
+      - AZURECLI/2.23.0 azsdk-python-azure-mgmt-network/18.0.0 Python/3.7.3 (Windows-10-10.0.19041-SP0)
     method: GET
-    uri: https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/loadBalancers/lb1?api-version=2020-07-01
+    uri: https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/loadBalancers/lb1?api-version=2021-02-01
   response:
     body:
       string: "{\r\n  \"name\": \"lb1\",\r\n  \"id\": \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/loadBalancers/lb1\",\r\n
-        \ \"etag\": \"W/\\\"9c0c0ccc-5c6e-46c7-a007-600fda8bc258\\\"\",\r\n  \"type\":
-        \"Microsoft.Network/loadBalancers\",\r\n  \"location\": \"westus\",\r\n  \"tags\":
+        \ \"etag\": \"W/\\\"2d211a73-b2fa-4a4f-9172-0c7674a6b37f\\\"\",\r\n  \"type\":
+        \"Microsoft.Network/loadBalancers\",\r\n  \"location\": \"eastus2\",\r\n  \"tags\":
         {},\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n
-        \   \"resourceGuid\": \"a45cfae0-2925-488a-ae45-bc3ec999e0fd\",\r\n    \"frontendIPConfigurations\":
+        \   \"resourceGuid\": \"60eba153-c9f6-42d0-a4ad-2a184e71e303\",\r\n    \"frontendIPConfigurations\":
         [\r\n      {\r\n        \"name\": \"LoadBalancerFrontEnd\",\r\n        \"id\":
         \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/loadBalancers/lb1/frontendIPConfigurations/LoadBalancerFrontEnd\",\r\n
-        \       \"etag\": \"W/\\\"9c0c0ccc-5c6e-46c7-a007-600fda8bc258\\\"\",\r\n
+        \       \"etag\": \"W/\\\"2d211a73-b2fa-4a4f-9172-0c7674a6b37f\\\"\",\r\n
         \       \"type\": \"Microsoft.Network/loadBalancers/frontendIPConfigurations\",\r\n
         \       \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n
         \         \"privateIPAllocationMethod\": \"Dynamic\",\r\n          \"publicIPAddress\":
@@ -3082,13 +3026,13 @@ interactions:
         \           }\r\n          ],\r\n          \"privateIPAddressVersion\": \"IPv4\"\r\n
         \       }\r\n      }\r\n    ],\r\n    \"backendAddressPools\": [\r\n      {\r\n
         \       \"name\": \"lb1bepool\",\r\n        \"id\": \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/loadBalancers/lb1/backendAddressPools/lb1bepool\",\r\n
-        \       \"etag\": \"W/\\\"9c0c0ccc-5c6e-46c7-a007-600fda8bc258\\\"\",\r\n
+        \       \"etag\": \"W/\\\"2d211a73-b2fa-4a4f-9172-0c7674a6b37f\\\"\",\r\n
         \       \"properties\": {\r\n          \"provisioningState\": \"Succeeded\"\r\n
         \       },\r\n        \"type\": \"Microsoft.Network/loadBalancers/backendAddressPools\"\r\n
         \     }\r\n    ],\r\n    \"loadBalancingRules\": [],\r\n    \"probes\": [],\r\n
         \   \"inboundNatRules\": [],\r\n    \"inboundNatPools\": [\r\n      {\r\n
         \       \"name\": \"rule3000\",\r\n        \"id\": \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/loadBalancers/lb1/inboundNatPools/rule3000\",\r\n
-        \       \"etag\": \"W/\\\"9c0c0ccc-5c6e-46c7-a007-600fda8bc258\\\"\",\r\n
+        \       \"etag\": \"W/\\\"2d211a73-b2fa-4a4f-9172-0c7674a6b37f\\\"\",\r\n
         \       \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n
         \         \"frontendPortRangeStart\": 3000,\r\n          \"frontendPortRangeEnd\":
         3999,\r\n          \"backendPort\": 3000,\r\n          \"protocol\": \"Tcp\",\r\n
@@ -3103,13 +3047,13 @@ interactions:
       cache-control:
       - no-cache
       content-length:
-      - '3614'
+      - '3615'
       content-type:
       - application/json; charset=utf-8
       date:
-      - Wed, 16 Dec 2020 06:57:33 GMT
+      - Fri, 14 May 2021 06:10:02 GMT
       etag:
-      - W/"9c0c0ccc-5c6e-46c7-a007-600fda8bc258"
+      - W/"2d211a73-b2fa-4a4f-9172-0c7674a6b37f"
       expires:
       - '-1'
       pragma:
@@ -3126,13 +3070,13 @@ interactions:
       x-content-type-options:
       - nosniff
       x-ms-arm-service-request-id:
-      - 1d914c2f-5f1d-41c4-9aea-c440c785b358
+      - 20aab6ff-1700-4fe7-bacc-486350ca59b2
     status:
       code: 200
       message: OK
 - request:
     body: '{"id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/loadBalancers/lb1",
-      "location": "westus", "tags": {}, "sku": {"name": "Basic", "tier": "Regional"},
+      "location": "eastus2", "tags": {}, "sku": {"name": "Basic", "tier": "Regional"},
       "properties": {"frontendIPConfigurations": [{"id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/loadBalancers/lb1/frontendIPConfigurations/LoadBalancerFrontEnd",
       "name": "LoadBalancerFrontEnd", "properties": {"privateIPAllocationMethod":
       "Dynamic", "privateIPAddressVersion": "IPv4", "publicIPAddress": {"id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/publicIPAddresses/PublicIPlb1"}}}],
@@ -3149,25 +3093,25 @@ interactions:
       Connection:
       - keep-alive
       Content-Length:
-      - '1286'
+      - '1287'
       Content-Type:
       - application/json
       ParameterSetName:
       - -g --lb-name -n
       User-Agent:
-      - AZURECLI/2.16.0 azsdk-python-azure-mgmt-network/17.0.0 Python/3.7.8 (Windows-10-10.0.19041-SP0)
+      - AZURECLI/2.23.0 azsdk-python-azure-mgmt-network/18.0.0 Python/3.7.3 (Windows-10-10.0.19041-SP0)
     method: PUT
-    uri: https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/loadBalancers/lb1?api-version=2020-07-01
+    uri: https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/loadBalancers/lb1?api-version=2021-02-01
   response:
     body:
       string: "{\r\n  \"name\": \"lb1\",\r\n  \"id\": \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/loadBalancers/lb1\",\r\n
-        \ \"etag\": \"W/\\\"d887a675-0703-4a32-8742-3d031000e995\\\"\",\r\n  \"type\":
-        \"Microsoft.Network/loadBalancers\",\r\n  \"location\": \"westus\",\r\n  \"tags\":
+        \ \"etag\": \"W/\\\"e5debfc5-8e43-480a-adf6-4a6d1b57f819\\\"\",\r\n  \"type\":
+        \"Microsoft.Network/loadBalancers\",\r\n  \"location\": \"eastus2\",\r\n  \"tags\":
         {},\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n
-        \   \"resourceGuid\": \"a45cfae0-2925-488a-ae45-bc3ec999e0fd\",\r\n    \"frontendIPConfigurations\":
+        \   \"resourceGuid\": \"60eba153-c9f6-42d0-a4ad-2a184e71e303\",\r\n    \"frontendIPConfigurations\":
         [\r\n      {\r\n        \"name\": \"LoadBalancerFrontEnd\",\r\n        \"id\":
         \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/loadBalancers/lb1/frontendIPConfigurations/LoadBalancerFrontEnd\",\r\n
-        \       \"etag\": \"W/\\\"d887a675-0703-4a32-8742-3d031000e995\\\"\",\r\n
+        \       \"etag\": \"W/\\\"e5debfc5-8e43-480a-adf6-4a6d1b57f819\\\"\",\r\n
         \       \"type\": \"Microsoft.Network/loadBalancers/frontendIPConfigurations\",\r\n
         \       \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n
         \         \"privateIPAllocationMethod\": \"Dynamic\",\r\n          \"publicIPAddress\":
@@ -3175,7 +3119,7 @@ interactions:
         \         },\r\n          \"privateIPAddressVersion\": \"IPv4\"\r\n        }\r\n
         \     }\r\n    ],\r\n    \"backendAddressPools\": [\r\n      {\r\n        \"name\":
         \"lb1bepool\",\r\n        \"id\": \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/loadBalancers/lb1/backendAddressPools/lb1bepool\",\r\n
-        \       \"etag\": \"W/\\\"d887a675-0703-4a32-8742-3d031000e995\\\"\",\r\n
+        \       \"etag\": \"W/\\\"e5debfc5-8e43-480a-adf6-4a6d1b57f819\\\"\",\r\n
         \       \"properties\": {\r\n          \"provisioningState\": \"Succeeded\"\r\n
         \       },\r\n        \"type\": \"Microsoft.Network/loadBalancers/backendAddressPools\"\r\n
         \     }\r\n    ],\r\n    \"loadBalancingRules\": [],\r\n    \"probes\": [],\r\n
@@ -3183,15 +3127,15 @@ interactions:
         {\r\n    \"name\": \"Basic\",\r\n    \"tier\": \"Regional\"\r\n  }\r\n}"
     headers:
       azure-asyncoperation:
-      - https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Network/locations/westus/operations/e608418a-2eb9-4914-85a5-2a5b782de43f?api-version=2020-07-01
+      - https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Network/locations/eastus2/operations/230fb2eb-27d1-4ab6-9e5d-15dd204745cb?api-version=2021-02-01
       cache-control:
       - no-cache
       content-length:
-      - '2137'
+      - '2138'
       content-type:
       - application/json; charset=utf-8
       date:
-      - Wed, 16 Dec 2020 06:57:34 GMT
+      - Fri, 14 May 2021 06:10:06 GMT
       expires:
       - '-1'
       pragma:
@@ -3208,9 +3152,9 @@ interactions:
       x-content-type-options:
       - nosniff
       x-ms-arm-service-request-id:
-      - 3fe8e484-a418-449e-8826-0c98f761cf2e
+      - 6f328dd2-98e0-47c6-928c-7125376ef622
       x-ms-ratelimit-remaining-subscription-writes:
-      - '1181'
+      - '1187'
     status:
       code: 200
       message: OK
@@ -3228,9 +3172,9 @@ interactions:
       ParameterSetName:
       - -g --lb-name -n
       User-Agent:
-      - AZURECLI/2.16.0 azsdk-python-azure-mgmt-network/17.0.0 Python/3.7.8 (Windows-10-10.0.19041-SP0)
+      - AZURECLI/2.23.0 azsdk-python-azure-mgmt-network/18.0.0 Python/3.7.3 (Windows-10-10.0.19041-SP0)
     method: GET
-    uri: https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Network/locations/westus/operations/e608418a-2eb9-4914-85a5-2a5b782de43f?api-version=2020-07-01
+    uri: https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Network/locations/eastus2/operations/230fb2eb-27d1-4ab6-9e5d-15dd204745cb?api-version=2021-02-01
   response:
     body:
       string: "{\r\n  \"status\": \"Succeeded\"\r\n}"
@@ -3242,7 +3186,7 @@ interactions:
       content-type:
       - application/json; charset=utf-8
       date:
-      - Wed, 16 Dec 2020 06:58:04 GMT
+      - Fri, 14 May 2021 06:10:36 GMT
       expires:
       - '-1'
       pragma:
@@ -3259,7 +3203,7 @@ interactions:
       x-content-type-options:
       - nosniff
       x-ms-arm-service-request-id:
-      - a119091f-e17b-4172-b2d1-17fa0d48dd69
+      - dd953868-c3f5-4fe2-9686-3ce2db758adc
     status:
       code: 200
       message: OK
@@ -3277,19 +3221,19 @@ interactions:
       ParameterSetName:
       - -g --lb-name -n
       User-Agent:
-      - AZURECLI/2.16.0 azsdk-python-azure-mgmt-network/17.0.0 Python/3.7.8 (Windows-10-10.0.19041-SP0)
+      - AZURECLI/2.23.0 azsdk-python-azure-mgmt-network/18.0.0 Python/3.7.3 (Windows-10-10.0.19041-SP0)
     method: GET
-    uri: https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/loadBalancers/lb1?api-version=2020-07-01
+    uri: https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/loadBalancers/lb1?api-version=2021-02-01
   response:
     body:
       string: "{\r\n  \"name\": \"lb1\",\r\n  \"id\": \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/loadBalancers/lb1\",\r\n
-        \ \"etag\": \"W/\\\"d887a675-0703-4a32-8742-3d031000e995\\\"\",\r\n  \"type\":
-        \"Microsoft.Network/loadBalancers\",\r\n  \"location\": \"westus\",\r\n  \"tags\":
+        \ \"etag\": \"W/\\\"e5debfc5-8e43-480a-adf6-4a6d1b57f819\\\"\",\r\n  \"type\":
+        \"Microsoft.Network/loadBalancers\",\r\n  \"location\": \"eastus2\",\r\n  \"tags\":
         {},\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n
-        \   \"resourceGuid\": \"a45cfae0-2925-488a-ae45-bc3ec999e0fd\",\r\n    \"frontendIPConfigurations\":
+        \   \"resourceGuid\": \"60eba153-c9f6-42d0-a4ad-2a184e71e303\",\r\n    \"frontendIPConfigurations\":
         [\r\n      {\r\n        \"name\": \"LoadBalancerFrontEnd\",\r\n        \"id\":
         \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/loadBalancers/lb1/frontendIPConfigurations/LoadBalancerFrontEnd\",\r\n
-        \       \"etag\": \"W/\\\"d887a675-0703-4a32-8742-3d031000e995\\\"\",\r\n
+        \       \"etag\": \"W/\\\"e5debfc5-8e43-480a-adf6-4a6d1b57f819\\\"\",\r\n
         \       \"type\": \"Microsoft.Network/loadBalancers/frontendIPConfigurations\",\r\n
         \       \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n
         \         \"privateIPAllocationMethod\": \"Dynamic\",\r\n          \"publicIPAddress\":
@@ -3297,7 +3241,7 @@ interactions:
         \         },\r\n          \"privateIPAddressVersion\": \"IPv4\"\r\n        }\r\n
         \     }\r\n    ],\r\n    \"backendAddressPools\": [\r\n      {\r\n        \"name\":
         \"lb1bepool\",\r\n        \"id\": \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/loadBalancers/lb1/backendAddressPools/lb1bepool\",\r\n
-        \       \"etag\": \"W/\\\"d887a675-0703-4a32-8742-3d031000e995\\\"\",\r\n
+        \       \"etag\": \"W/\\\"e5debfc5-8e43-480a-adf6-4a6d1b57f819\\\"\",\r\n
         \       \"properties\": {\r\n          \"provisioningState\": \"Succeeded\"\r\n
         \       },\r\n        \"type\": \"Microsoft.Network/loadBalancers/backendAddressPools\"\r\n
         \     }\r\n    ],\r\n    \"loadBalancingRules\": [],\r\n    \"probes\": [],\r\n
@@ -3307,13 +3251,13 @@ interactions:
       cache-control:
       - no-cache
       content-length:
-      - '2137'
+      - '2138'
       content-type:
       - application/json; charset=utf-8
       date:
-      - Wed, 16 Dec 2020 06:58:05 GMT
+      - Fri, 14 May 2021 06:10:36 GMT
       etag:
-      - W/"d887a675-0703-4a32-8742-3d031000e995"
+      - W/"e5debfc5-8e43-480a-adf6-4a6d1b57f819"
       expires:
       - '-1'
       pragma:
@@ -3330,7 +3274,7 @@ interactions:
       x-content-type-options:
       - nosniff
       x-ms-arm-service-request-id:
-      - eec8dcba-8175-4a46-bffb-73f7c30602a7
+      - 8d41d3b4-a16a-4236-ac1d-99402407cb47
     status:
       code: 200
       message: OK
@@ -3348,19 +3292,19 @@ interactions:
       ParameterSetName:
       - -g --lb-name
       User-Agent:
-      - AZURECLI/2.16.0 azsdk-python-azure-mgmt-network/17.0.0 Python/3.7.8 (Windows-10-10.0.19041-SP0)
+      - AZURECLI/2.23.0 azsdk-python-azure-mgmt-network/18.0.0 Python/3.7.3 (Windows-10-10.0.19041-SP0)
     method: GET
-    uri: https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/loadBalancers/lb1?api-version=2020-07-01
+    uri: https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/loadBalancers/lb1?api-version=2021-02-01
   response:
     body:
       string: "{\r\n  \"name\": \"lb1\",\r\n  \"id\": \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/loadBalancers/lb1\",\r\n
-        \ \"etag\": \"W/\\\"d887a675-0703-4a32-8742-3d031000e995\\\"\",\r\n  \"type\":
-        \"Microsoft.Network/loadBalancers\",\r\n  \"location\": \"westus\",\r\n  \"tags\":
+        \ \"etag\": \"W/\\\"e5debfc5-8e43-480a-adf6-4a6d1b57f819\\\"\",\r\n  \"type\":
+        \"Microsoft.Network/loadBalancers\",\r\n  \"location\": \"eastus2\",\r\n  \"tags\":
         {},\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n
-        \   \"resourceGuid\": \"a45cfae0-2925-488a-ae45-bc3ec999e0fd\",\r\n    \"frontendIPConfigurations\":
+        \   \"resourceGuid\": \"60eba153-c9f6-42d0-a4ad-2a184e71e303\",\r\n    \"frontendIPConfigurations\":
         [\r\n      {\r\n        \"name\": \"LoadBalancerFrontEnd\",\r\n        \"id\":
         \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/loadBalancers/lb1/frontendIPConfigurations/LoadBalancerFrontEnd\",\r\n
-        \       \"etag\": \"W/\\\"d887a675-0703-4a32-8742-3d031000e995\\\"\",\r\n
+        \       \"etag\": \"W/\\\"e5debfc5-8e43-480a-adf6-4a6d1b57f819\\\"\",\r\n
         \       \"type\": \"Microsoft.Network/loadBalancers/frontendIPConfigurations\",\r\n
         \       \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n
         \         \"privateIPAllocationMethod\": \"Dynamic\",\r\n          \"publicIPAddress\":
@@ -3368,7 +3312,7 @@ interactions:
         \         },\r\n          \"privateIPAddressVersion\": \"IPv4\"\r\n        }\r\n
         \     }\r\n    ],\r\n    \"backendAddressPools\": [\r\n      {\r\n        \"name\":
         \"lb1bepool\",\r\n        \"id\": \"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_pools000001/providers/Microsoft.Network/loadBalancers/lb1/backendAddressPools/lb1bepool\",\r\n
-        \       \"etag\": \"W/\\\"d887a675-0703-4a32-8742-3d031000e995\\\"\",\r\n
+        \       \"etag\": \"W/\\\"e5debfc5-8e43-480a-adf6-4a6d1b57f819\\\"\",\r\n
         \       \"properties\": {\r\n          \"provisioningState\": \"Succeeded\"\r\n
         \       },\r\n        \"type\": \"Microsoft.Network/loadBalancers/backendAddressPools\"\r\n
         \     }\r\n    ],\r\n    \"loadBalancingRules\": [],\r\n    \"probes\": [],\r\n
@@ -3378,13 +3322,13 @@ interactions:
       cache-control:
       - no-cache
       content-length:
-      - '2137'
+      - '2138'
       content-type:
       - application/json; charset=utf-8
       date:
-      - Wed, 16 Dec 2020 06:58:07 GMT
+      - Fri, 14 May 2021 06:10:36 GMT
       etag:
-      - W/"d887a675-0703-4a32-8742-3d031000e995"
+      - W/"e5debfc5-8e43-480a-adf6-4a6d1b57f819"
       expires:
       - '-1'
       pragma:
@@ -3401,7 +3345,7 @@ interactions:
       x-content-type-options:
       - nosniff
       x-ms-arm-service-request-id:
-      - 474aea90-7101-458e-a2a2-47ce53ba65cf
+      - 3ca5d297-2ba0-4ee6-a624-0ae447a4a1b4
     status:
       code: 200
       message: OK

@@ -13,10 +13,10 @@ from azure.cli.core.profiles import ResourceType
 class StorageQueueScenarioTests(ScenarioTest):
     @ResourceGroupPreparer()
     @StorageAccountPreparer(sku='Standard_RAGRS')
-    def test_storage_queue_general_scenario(self, resource_group, storage_account):
+    def test_storage_queue_general_scenario(self, resource_group, storage_account_info):
         from datetime import datetime, timedelta
 
-        account_key = self.get_account_key(resource_group, storage_account)
+        storage_account, account_key = storage_account_info
         connection_string = self.get_connection_string(resource_group, storage_account)
 
         self.set_env('AZURE_STORAGE_ACCOUNT', storage_account)
@@ -55,7 +55,6 @@ class StorageQueueScenarioTests(ScenarioTest):
         self.cmd('storage queue policy list -q {}'.format(queue), checks=NoneCheck())
 
         start_time = '2016-01-01T00:00Z'
-        expiry = '2016-05-01T00:00Z'
         policy = self.create_random_name('policy', 16)
         self.cmd('storage queue policy create -q {} -n {} --permission raup --start {} --expiry {}'
                  .format(queue, policy, start_time, expiry))
@@ -66,7 +65,6 @@ class StorageQueueScenarioTests(ScenarioTest):
 
         returned_permissions = self.cmd('storage queue policy show -q {} -n {}'.format(queue, policy), checks=[
             JMESPathCheck('start', '2016-01-01T00:00:00+00:00'),
-            JMESPathCheck('expiry', '2016-05-01T00:00:00+00:00'),
             JMESPathCheckExists('permission')
         ]).get_output_in_json()['permission']
 

@@ -1,5 +1,3 @@
-from __future__ import print_function
-
 # --------------------------------------------------------------------------------------------
 # Copyright (c) Microsoft Corporation. All rights reserved.
 # Licensed under the MIT License. See License.txt in the project root for license information.
@@ -7,7 +5,6 @@ from __future__ import print_function
 
 # pylint: disable=line-too-long
 from knack.log import get_logger
-from knack.prompting import NoTTYException, prompt_y_n
 from knack.util import CLIError
 from azure.appconfiguration import AzureAppConfigurationClient
 from azure.core.exceptions import HttpResponseError
@@ -48,17 +45,6 @@ def resolve_store_metadata(cmd, config_store_name):
         raise CLIError("Failed to get the list of App Configuration stores for the current user. Make sure that the account that logged in has sufficient permissions to access the App Configuration store.\n{}".format(str(ex)))
 
     raise CLIError("Failed to find the App Configuration store '{}'.".format(config_store_name))
-
-
-def user_confirmation(message, yes=False):
-    if yes:
-        return
-    try:
-        if not prompt_y_n(message):
-            raise CLIError('Operation cancelled.')
-    except NoTTYException:
-        raise CLIError(
-            'Unable to prompt for confirmation as no tty available. Use --yes.')
 
 
 def resolve_connection_string(cmd, config_store_name=None, connection_string=None):

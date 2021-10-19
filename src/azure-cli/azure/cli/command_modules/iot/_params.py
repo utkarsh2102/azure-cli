@@ -31,6 +31,7 @@ from ._validators import (validate_policy_permissions,
                           validate_fileupload_sas_ttl,
                           validate_feedback_ttl,
                           validate_feedback_lock_duration,
+                          validate_fileupload_notification_lock_duration,
                           validate_feedback_max_delivery_count,
                           validate_c2d_max_delivery_count,
                           validate_c2d_ttl)
@@ -114,6 +115,11 @@ def load_arguments(self, _):  # pylint: disable=too-many-statements
                    help='A friendly name for the certificate.')
         c.argument('etag', options_list=['--etag', '-e'], help='Entity Tag (etag) of the object.')
 
+    for subgroup in ['create', 'update']:
+        with self.argument_context('iot dps certificate {}'.format(subgroup)) as c:
+            c.argument('is_verified', options_list=['--verified', '-v'], arg_type=get_three_state_flag(),
+                       help='A boolean indicating whether or not the certificate is verified.')
+
     # Arguments for IoT Hub
     with self.argument_context('iot hub') as c:
         c.argument('hub_name', hub_name_type, options_list=['--name', '-n'], id_part='name')
@@ -136,6 +142,17 @@ def load_arguments(self, _):  # pylint: disable=too-many-statements
                    type=int, validator=validate_c2d_max_delivery_count,
                    help='The number of times the IoT hub will attempt to deliver a cloud-to-device'
                         ' message to a device, between 1 and 100.')
+        c.argument('disable_local_auth', options_list=['--disable-local-auth', '--dla'],
+                   arg_type=get_three_state_flag(),
+                   help='A boolean indicating whether or not to disable '
+                        'IoT hub scoped SAS keys for authentication.')
+        c.argument('disable_device_sas', options_list=['--disable-device-sas', '--dds'],
+                   arg_type=get_three_state_flag(),
+                   help='A boolean indicating whether or not to disable all device '
+                        '(including Edge devices but excluding modules) scoped SAS keys for authentication')
+        c.argument('disable_module_sas', options_list=['--disable-module-sas', '--dms'],
+                   arg_type=get_three_state_flag(),
+                   help='A boolean indicating whether or not to disable module-scoped SAS keys for authentication.')
         c.argument('feedback_ttl', options_list=['--feedback-ttl', '--ft'],
                    type=int, validator=validate_feedback_ttl,
                    help='The period of time for which the IoT hub will maintain the feedback for expiration'
@@ -151,6 +168,10 @@ def load_arguments(self, _):  # pylint: disable=too-many-statements
                    arg_type=get_three_state_flag(),
                    help='A boolean indicating whether to log information about uploaded files to the'
                         ' messages/servicebound/filenotifications IoT Hub endpoint.')
+        c.argument('fileupload_notification_lock_duration',
+                   options_list=['--fileupload-notification-lock-duration', '--fnld'],
+                   type=int, validator=validate_fileupload_notification_lock_duration,
+                   help='The lock duration for the file upload notifications queue, between 5 and 300 seconds.')
         c.argument('fileupload_notification_max_delivery_count', type=int,
                    options_list=['--fileupload-notification-max-delivery-count', '--fnd'],
                    validator=validate_fileupload_notification_max_delivery_count,
@@ -164,12 +185,13 @@ def load_arguments(self, _):  # pylint: disable=too-many-statements
                    options_list=['--fileupload-storage-connectionstring', '--fcs'],
                    help='The connection string for the Azure Storage account to which files are uploaded.')
         c.argument('fileupload_storage_authentication_type',
+                   arg_type=get_enum_type(AuthenticationType),
                    options_list=['--fileupload-storage-auth-type', '--fsa'],
-                   help='The authentication type for the Azure Storage account to which files are uploaded.'
-                        'Possible values are keyBased and identityBased')
+                   help='The authentication type for the Azure Storage account to which files are uploaded.')
         c.argument('fileupload_storage_container_uri',
                    options_list=['--fileupload-storage-container-uri', '--fcu'],
-                   help='The container URI for the Azure Storage account to which files are uploaded.')
+                   help='The container URI for the Azure Storage account to which files are uploaded.',
+                   deprecate_info=c.deprecate(hide=True))
         c.argument('fileupload_storage_container_name',
                    options_list=['--fileupload-storage-container-name', '--fc'],
                    help='The name of the root container where you upload files. The container need not exist but'
@@ -178,10 +200,42 @@ def load_arguments(self, _):  # pylint: disable=too-many-statements
                    type=int, validator=validate_fileupload_sas_ttl,
                    help='The amount of time a SAS URI generated by IoT Hub is valid before it expires,'
                         ' between 1 and 24 hours.')
+        c.argument('fileupload_storage_identity',
+                   options_list=['--fileupload-storage-identity', '--fsi'],
+                   help="The managed identity to use for file upload authentication. Use '[system]' to "
+                        "refer to the system-assigned managed identity or a resource ID to refer to a "
+                        "user-assigned managed identity.")
         c.argument('min_tls_version', options_list=['--min-tls-version', '--mintls'],
                    type=str, help='Specify the minimum TLS version to support for this hub. Can be set to'
                                   ' "1.2" to have clients that use a TLS version below 1.2 to be rejected.')
         c.argument('tags', tags_type)
+        c.argument('system_identity', options_list=['--mi-system-assigned'],
+                   arg_type=get_three_state_flag(),
+                   help="Enable system-assigned managed identity for this hub")
+        c.argument('user_identities', options_list=['--mi-user-assigned'],
+                   nargs='*', help="Enable user-assigned managed identities for this hub. "
+                   "Accept space-separated list of identity resource IDs.")
+        c.argument('identity_role', options_list=['--role'],
+                   help="Role to assign to the hub's system-assigned managed identity.")
+        c.argument('identity_scopes', options_list=['--scopes'], nargs='*',
+                   help="Space separated list of scopes to assign the role (--role) "
+                   "for the system-assigned managed identity.")
+
+    with self.argument_context('iot hub identity assign') as c:
+        c.argument('system_identity', options_list=['--system-assigned', '--system'],
+                   arg_type=get_three_state_flag(),
+                   nargs='*', help="Assign a system-assigned managed identity to this hub.")
+        c.argument('user_identities', options_list=['--user-assigned', '--user'],
+                   nargs='+', help="Assign user-assigned managed identities to this hub. "
+                   "Accept space-separated list of identity resource IDs.")
+
+    with self.argument_context('iot hub identity remove') as c:
+        c.argument('system_identity', options_list=['--system-assigned', '--system'],
+                   arg_type=get_three_state_flag(),
+                   nargs='*', help="Remove a system-assigned managed identity from this hub.")
+        c.argument('user_identities', options_list=['--user-assigned', '--user'],
+                   nargs='*', help="Remove user-assigned managed identities from this hub. "
+                   "Accept space-separated list of identity resource IDs.")
 
     for subgroup in ['consumer-group', 'policy', 'certificate', 'routing-endpoint', 'route']:
         with self.argument_context('iot hub {}'.format(subgroup)) as c:
@@ -238,11 +292,20 @@ def load_arguments(self, _):  # pylint: disable=too-many-statements
                         ' mandatory but can be reordered with or without delimiters.')
         c.argument('authentication_type', options_list=['--auth-type'], arg_type=get_enum_type(AuthenticationType),
                    help='Authentication type for the endpoint. The default is keyBased.')
+        c.argument('identity', help='Use a system-assigned or user-assigned managed identity for endpoint '
+                   'authentication. Use "[system]" to refer to the system-assigned identity or a resource ID '
+                   'to refer to a user-assigned identity. If you use --auth-type without this parameter, '
+                   'system-assigned managed identity is assumed.')
 
     with self.argument_context('iot hub certificate') as c:
         c.argument('certificate_path', options_list=['--path', '-p'], type=file_type,
                    completer=FilesCompleter([".cer", ".pem"]), help='The path to the file containing the certificate.')
         c.argument('certificate_name', options_list=['--name', '-n'], help='A friendly name for the certificate.')
+
+    for subgroup in ['create', 'update']:
+        with self.argument_context('iot hub certificate {}'.format(subgroup)) as c:
+            c.argument('is_verified', options_list=['--verified', '-v'], arg_type=get_three_state_flag(),
+                       help='A boolean indicating whether or not the certificate is verified.')
 
     with self.argument_context('iot hub consumer-group') as c:
         c.argument('consumer_group_name', options_list=['--name', '-n'], id_part='child_name_2',

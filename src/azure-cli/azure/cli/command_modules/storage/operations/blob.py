@@ -3,8 +3,6 @@
 # Licensed under the MIT License. See License.txt in the project root for license information.
 # --------------------------------------------------------------------------------------------
 
-from __future__ import print_function
-
 import os
 from datetime import datetime
 
@@ -20,45 +18,54 @@ from azure.cli.command_modules.storage.util import (create_blob_service_from_sto
                                                     check_precondition_success)
 from knack.log import get_logger
 from knack.util import CLIError
+from .._transformers import transform_response_with_bytearray
+from ..util import get_datetime_from_string
 
 logger = get_logger(__name__)
 
 
-def set_legal_hold(cmd, client, container_name, account_name, tags, resource_group_name=None):
+def set_legal_hold(cmd, client, container_name, account_name, tags, allow_protected_append_writes_all,
+                   resource_group_name=None):
     LegalHold = cmd.get_models('LegalHold', resource_type=ResourceType.MGMT_STORAGE)
-    legal_hold = LegalHold(tags=tags)
+    legal_hold = LegalHold(tags=tags, allow_protected_append_writes_all=allow_protected_append_writes_all)
     return client.set_legal_hold(resource_group_name, account_name, container_name, legal_hold)
 
 
-def clear_legal_hold(cmd, client, container_name, account_name, tags, resource_group_name=None):
+def clear_legal_hold(cmd, client, container_name, account_name, tags, allow_protected_append_writes_all,
+                     resource_group_name=None):
     LegalHold = cmd.get_models('LegalHold', resource_type=ResourceType.MGMT_STORAGE)
-    legal_hold = LegalHold(tags=tags)
+    legal_hold = LegalHold(tags=tags, allow_protected_append_writes_all=allow_protected_append_writes_all)
     return client.clear_legal_hold(resource_group_name, account_name, container_name, legal_hold)
 
 
 def create_or_update_immutability_policy(cmd, client, container_name, account_name,
                                          resource_group_name=None, allow_protected_append_writes=None,
+                                         allow_protected_append_writes_all=None,
                                          period=None, if_match=None):
     ImmutabilityPolicy = cmd.get_models('ImmutabilityPolicy', resource_type=ResourceType.MGMT_STORAGE)
     immutability_policy = ImmutabilityPolicy(immutability_period_since_creation_in_days=period,
-                                             allow_protected_append_writes=allow_protected_append_writes)
+                                             allow_protected_append_writes=allow_protected_append_writes,
+                                             allow_protected_append_writes_all=allow_protected_append_writes_all)
     return client.create_or_update_immutability_policy(resource_group_name, account_name, container_name,
                                                        if_match, immutability_policy)
 
 
 def extend_immutability_policy(cmd, client, container_name, account_name, if_match,
                                resource_group_name=None, allow_protected_append_writes=None,
+                               allow_protected_append_writes_all=None,
                                period=None):
     ImmutabilityPolicy = cmd.get_models('ImmutabilityPolicy', resource_type=ResourceType.MGMT_STORAGE)
     immutability_policy = ImmutabilityPolicy(immutability_period_since_creation_in_days=period,
-                                             allow_protected_append_writes=allow_protected_append_writes)
+                                             allow_protected_append_writes=allow_protected_append_writes,
+                                             allow_protected_append_writes_all=allow_protected_append_writes_all)
     return client.extend_immutability_policy(resource_group_name, account_name, container_name,
                                              if_match, immutability_policy)
 
 
 def create_container_rm(cmd, client, container_name, resource_group_name, account_name,
                         metadata=None, public_access=None, fail_on_exist=False,
-                        default_encryption_scope=None, deny_encryption_scope_override=None):
+                        default_encryption_scope=None, deny_encryption_scope_override=None, enable_vlw=None,
+                        enable_nfs_v3_root_squash=None, enable_nfs_v3_all_squash=None):
     if fail_on_exist and container_rm_exists(client, resource_group_name=resource_group_name,
                                              account_name=account_name, container_name=container_name):
         raise CLIError('The specified container already exists.')
@@ -68,7 +75,13 @@ def create_container_rm(cmd, client, container_name, resource_group_name, accoun
         blob_container = BlobContainer(public_access=public_access,
                                        default_encryption_scope=default_encryption_scope,
                                        deny_encryption_scope_override=deny_encryption_scope_override,
-                                       metadata=metadata)
+                                       metadata=metadata,
+                                       enable_nfs_v3_all_squash=enable_nfs_v3_all_squash,
+                                       enable_nfs_v3_root_squash=enable_nfs_v3_root_squash)
+        if enable_vlw is not None:
+            ImmutableStorageWithVersioning = cmd.get_models('ImmutableStorageWithVersioning',
+                                                            resource_type=ResourceType.MGMT_STORAGE)
+            blob_container.immutable_storage_with_versioning = ImmutableStorageWithVersioning(enabled=enable_vlw)
         return client.create(resource_group_name=resource_group_name, account_name=account_name,
                              container_name=container_name, blob_container=blob_container)
     return client.create(resource_group_name=resource_group_name, account_name=account_name,
@@ -76,7 +89,8 @@ def create_container_rm(cmd, client, container_name, resource_group_name, accoun
 
 
 def update_container_rm(cmd, instance, metadata=None, public_access=None,
-                        default_encryption_scope=None, deny_encryption_scope_override=None):
+                        default_encryption_scope=None, deny_encryption_scope_override=None,
+                        enable_nfs_v3_root_squash=None, enable_nfs_v3_all_squash=None):
     BlobContainer = cmd.get_models('BlobContainer', resource_type=ResourceType.MGMT_STORAGE)
     blob_container = BlobContainer(
         metadata=metadata if metadata is not None else instance.metadata,
@@ -85,6 +99,10 @@ def update_container_rm(cmd, instance, metadata=None, public_access=None,
         if default_encryption_scope is not None else instance.default_encryption_scope,
         deny_encryption_scope_override=deny_encryption_scope_override
         if deny_encryption_scope_override is not None else instance.deny_encryption_scope_override,
+        enable_nfs_v3_all_squash=enable_nfs_v3_all_squash
+        if enable_nfs_v3_all_squash is not None else instance.enable_nfs_v3_all_squash,
+        enable_nfs_v3_root_squash=enable_nfs_v3_root_squash
+        if enable_nfs_v3_root_squash is not None else instance.enable_nfs_v3_root_squash
     )
     return blob_container
 
@@ -144,11 +162,33 @@ def list_blobs(client, delimiter=None, include=None, marker=None, num_results=No
     from ..track2_util import list_generator
 
     if delimiter:
-        generator = client.walk_blobs(name_starts_with=prefix, include=include, results_per_page=num_results, **kwargs)
+        generator = client.walk_blobs(
+            name_starts_with=prefix, include=include, results_per_page=num_results, delimiter=delimiter, **kwargs)
     else:
         generator = client.list_blobs(name_starts_with=prefix, include=include, results_per_page=num_results, **kwargs)
 
     pages = generator.by_page(continuation_token=marker)  # BlobPropertiesPaged
+    result = list_generator(pages=pages, num_results=num_results)
+
+    if show_next_marker:
+        next_marker = {"nextMarker": pages.continuation_token}
+        result.append(next_marker)
+    else:
+        if pages.continuation_token:
+            logger.warning('Next Marker:')
+            logger.warning(pages.continuation_token)
+
+    return result
+
+
+def list_containers(client, include_metadata=False, include_deleted=False, marker=None,
+                    num_results=None, prefix=None, show_next_marker=None, **kwargs):
+    from ..track2_util import list_generator
+
+    generator = client.list_containers(name_starts_with=prefix, include_metadata=include_metadata,
+                                       include_deleted=include_deleted, results_per_page=num_results, **kwargs)
+
+    pages = generator.by_page(continuation_token=marker)  # ContainerPropertiesPaged
     result = list_generator(pages=pages, num_results=num_results)
 
     if show_next_marker:
@@ -438,6 +478,18 @@ def transform_blob_type(cmd, blob_type):
     return None
 
 
+# pylint: disable=protected-access
+def _adjust_block_blob_size(client, blob_type, length):
+    if not blob_type or blob_type != 'block':
+        return
+
+    # increase the block size to 4000MB when the block list will contain more than
+    # 50,000 blocks(each block 100MB)
+    if length > 50000 * 100 * 1024 * 1024:
+        client._config.max_block_size = 4000 * 1024 * 1024
+        client._config.max_single_put_size = 5000 * 1024 * 1024
+
+
 # pylint: disable=too-many-locals
 def upload_blob(cmd, client, file_path, container_name=None, blob_name=None, blob_type=None, content_settings=None,
                 metadata=None, validate_content=False, maxsize_condition=None, max_connections=2, lease_id=None,
@@ -480,11 +532,9 @@ def upload_blob(cmd, client, file_path, container_name=None, blob_name=None, blo
         if if_none_match:
             upload_args['etag'] = if_none_match
             upload_args['match_condition'] = MatchConditions.IfModified
+        _adjust_block_blob_size(client, blob_type, length=count)
         response = client.upload_blob(data=data, length=count, encryption_scope=encryption_scope, **upload_args)
-        if response['content_md5'] is not None:
-            from msrest import Serializer
-            response['content_md5'] = Serializer.serialize_bytearray(response['content_md5'])
-        return response
+        return transform_response_with_bytearray(response)
 
     t_content_settings = cmd.get_models('blob.models#ContentSettings')
     content_settings = guess_content_type(file_path, content_settings, t_content_settings)
@@ -560,6 +610,53 @@ def upload_blob(cmd, client, file_path, container_name=None, blob_name=None, blo
     return type_func[blob_type]()
 
 
+def get_block_ids(content_length, block_length):
+    """Get the block id arrary from block blob length, block size"""
+    block_count = 0
+    if block_length:
+        block_count = content_length // block_length
+    if block_count * block_length != content_length:
+        block_count += 1
+    block_ids = []
+    for i in range(block_count):
+        chunk_offset = i * block_length
+        block_id = '{0:032d}'.format(chunk_offset)
+        block_ids.append(block_id)
+    return block_ids
+
+
+def rewrite_blob(cmd, client, source_url, encryption_scope=None, **kwargs):
+    src_properties = client.from_blob_url(source_url).get_blob_properties()
+    BlobType = cmd.get_models('_models#BlobType', resource_type=ResourceType.DATA_STORAGE_BLOB)
+    if src_properties.blob_type != BlobType.BlockBlob:
+        from azure.cli.core.azclierror import ValidationError
+        raise ValidationError("Currently only support block blob! The source blob is {}.".format(
+            src_properties.blob_type))
+    src_content_length = src_properties.size
+    if src_content_length <= 5000 * 1024 * 1024:
+        return client.upload_blob_from_url(source_url=source_url, overwrite=True, encryption_scope=encryption_scope,
+                                           destination_lease=kwargs.pop('lease', None), **kwargs)
+
+    block_length = 4000 * 1024 * 1024  # using max block size
+    block_ids = get_block_ids(src_content_length, block_length)
+
+    copyoffset = 0
+    for block_id in block_ids:
+        block_size = block_length
+        if copyoffset + block_size > src_content_length:
+            block_size = src_content_length - copyoffset
+        client.stage_block_from_url(
+            block_id=block_id,
+            source_url=source_url,
+            source_offset=copyoffset,
+            source_length=block_size,
+            encryption_scope=encryption_scope)
+        copyoffset += block_size
+    response = client.commit_block_list(block_list=block_ids, content_settings=src_properties.content_settings,
+                                        metadata=src_properties.metadata, encryption_scope=encryption_scope, **kwargs)
+    return transform_response_with_bytearray(response)
+
+
 def show_blob(cmd, client, container_name, blob_name, snapshot=None, lease_id=None,
               if_modified_since=None, if_unmodified_since=None, if_match=None,
               if_none_match=None, timeout=None):
@@ -628,9 +725,11 @@ def generate_sas_blob_uri(client, container_name, blob_name, permission=None,
                           protocol=None, cache_control=None, content_disposition=None,
                           content_encoding=None, content_language=None,
                           content_type=None, full_uri=False, as_user=False):
+    from ..url_quote_util import encode_url_path
+    from urllib.parse import quote
     if as_user:
         user_delegation_key = client.get_user_delegation_key(
-            _get_datetime_from_string(start) if start else datetime.utcnow(), _get_datetime_from_string(expiry))
+            get_datetime_from_string(start) if start else datetime.utcnow(), get_datetime_from_string(expiry))
         sas_token = client.generate_blob_shared_access_signature(
             container_name, blob_name, permission=permission, expiry=expiry, start=start, id=id, ip=ip,
             protocol=protocol, cache_control=cache_control, content_disposition=content_disposition,
@@ -642,11 +741,9 @@ def generate_sas_blob_uri(client, container_name, blob_name, permission=None,
             protocol=protocol, cache_control=cache_control, content_disposition=content_disposition,
             content_encoding=content_encoding, content_language=content_language, content_type=content_type)
     if full_uri:
-        from ..url_quote_util import encode_url_path
-        from urllib.parse import quote
         return encode_url_path(client.make_blob_url(container_name, blob_name, protocol=protocol,
                                                     sas_token=quote(sas_token, safe='&%()$=\',~')))
-    return sas_token
+    return quote(sas_token, safe='&%()$=\',~')
 
 
 def generate_container_shared_access_signature(client, container_name, permission=None,
@@ -657,7 +754,7 @@ def generate_container_shared_access_signature(client, container_name, permissio
     user_delegation_key = None
     if as_user:
         user_delegation_key = client.get_user_delegation_key(
-            _get_datetime_from_string(start) if start else datetime.utcnow(), _get_datetime_from_string(expiry))
+            get_datetime_from_string(start) if start else datetime.utcnow(), get_datetime_from_string(expiry))
 
     return client.generate_container_shared_access_signature(
         container_name, permission=permission, expiry=expiry, start=start, id=id, ip=ip,
@@ -701,17 +798,6 @@ def _copy_file_to_blob_container(blob_service, source_file_service, destination_
     except AzureException as ex:
         error_template = 'Failed to copy file {} to container {}. {}'
         raise CLIError(error_template.format(source_file_name, destination_container, ex))
-
-
-def _get_datetime_from_string(dt_str):
-    accepted_date_formats = ['%Y-%m-%dT%H:%M:%SZ', '%Y-%m-%dT%H:%MZ',
-                             '%Y-%m-%dT%HZ', '%Y-%m-%d']
-    for form in accepted_date_formats:
-        try:
-            return datetime.strptime(dt_str, form)
-        except ValueError:
-            continue
-    raise ValueError("datetime string '{}' not valid. Valid example: 2000-12-31T12:59:59Z".format(dt_str))
 
 
 def show_blob_v2(cmd, client, lease_id=None, **kwargs):
@@ -781,3 +867,9 @@ def query_blob(client, query_expression, input_config=None, output_config=None, 
         return None
 
     return reader.readall().decode("utf-8")
+
+
+def copy_blob(client, source_url, metadata=None, **kwargs):
+    if not kwargs['requires_sync']:
+        kwargs.pop('requires_sync')
+    return client.start_copy_from_url(source_url=source_url, metadata=metadata, incremental_copy=False, **kwargs)

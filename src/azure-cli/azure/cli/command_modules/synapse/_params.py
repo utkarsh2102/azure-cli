@@ -7,27 +7,55 @@ from knack.arguments import CLIArgumentType
 from argcomplete import FilesCompleter
 from azure.mgmt.synapse.models import TransparentDataEncryptionStatus, SecurityAlertPolicyState, BlobAuditingPolicyState
 from azure.cli.core.commands.parameters import name_type, tags_type, get_three_state_flag, get_enum_type, \
-    get_resource_name_completion_list, get_location_type
+    get_resource_name_completion_list, get_location_type, file_type
 from azure.cli.core.commands.validators import get_default_location_from_resource_group
 from azure.cli.core.util import get_json_object, shell_safe_json_parse
-from ._validators import validate_storage_account, validate_statement_language
+from ._validators import validate_storage_account, validate_statement_language, add_progress_callback, validate_repository_type
 from ._completers import get_role_definition_name_completion_list
-from .constant import SparkBatchLanguage, SparkStatementLanguage, SqlPoolConnectionClientType, \
-    SqlPoolConnectionClientAuthenticationType
+from .constant import SparkBatchLanguage, SparkStatementLanguage, SqlPoolConnectionClientType, PrincipalType, \
+    SqlPoolConnectionClientAuthenticationType, ItemType
 from .action import AddFilters, AddOrderBy
+from shlex import split
 
 workspace_name_arg_type = CLIArgumentType(help='The workspace name.',
                                           completer=get_resource_name_completion_list('Microsoft.Synapse/workspaces'))
 assignee_arg_type = CLIArgumentType(
-    help='Represent a user, group, or service principal. Supported format: object id, user sign-in name, or service principal name.')
+    help='Represent a user or service principal. Supported format: object id, user sign-in name, or service principal name.')
+
+assignee_object_id_arg_type = CLIArgumentType(
+    help="Use this parameter instead of '--assignee' to bypass Graph API invocation in case of insufficient privileges. "
+         "This parameter only works with object ids for users, groups, service principals, and "
+         "managed identities. For managed identities use the principal id. For service principals, "
+         "use the object id and not the app id.")
+
 role_arg_type = CLIArgumentType(help='The role name/id that is assigned to the principal.',
                                 completer=get_role_definition_name_completion_list)
 definition_file_arg_type = CLIArgumentType(options_list=['--file'], completer=FilesCompleter(),
                                            type=shell_safe_json_parse,
                                            help='Properties may be supplied from a JSON file using the `@{path}` syntax or a JSON string.')
+progress_type = CLIArgumentType(help='Include this flag to disable progress reporting for the command.',
+                                action='store_true', validator=add_progress_callback)
 time_format_help = 'Time should be in following format: "YYYY-MM-DDTHH:MM:SS".'
+
 storage_arg_group = "Storage"
-policy_arg_group = 'Policy'
+log_analytics_arg_group = "Log Analytics"
+event_hub_arg_group = "Event Hub"
+
+
+def _configure_security_policy_storage_params(arg_ctx):
+    arg_ctx.argument('storage_account',
+                     options_list=['--storage-account'],
+                     arg_group=storage_arg_group,
+                     help='Name of the storage account.')
+
+    arg_ctx.argument('storage_account_access_key',
+                     options_list=['--storage-key'],
+                     arg_group=storage_arg_group,
+                     help='Access key for the storage account.')
+
+    arg_ctx.argument('storage_endpoint',
+                     arg_group=storage_arg_group,
+                     help='The storage account endpoint.')
 
 
 def _configure_security_or_audit_policy_storage_params(arg_ctx):
@@ -54,9 +82,20 @@ def load_arguments(self, _):
 
     for scope in ['create', 'update']:
         with self.argument_context('synapse workspace ' + scope) as c:
+            repository_arg_group = 'Git Configuration'
             c.argument('sql_admin_login_password', options_list=['--sql-admin-login-password', '-p'],
                        help='The sql administrator login password.')
             c.argument('tags', arg_type=tags_type)
+            c.argument('allowed_aad_tenant_ids', options_list=['--allowed-tenant-ids'], nargs='+', help="The approved Azure AD tenants which outbound data traffic allowed to. The Azure AD tenant of the current user will be included by default. Use ""(\'""\' in PowerShell) to disable all allowed tenant ids.")
+            c.argument('key_name', help='The workspace customer-managed key display name. All existing keys can be found using "az synapse workspace key list" cmdlet.')
+            c.argument('repository_type', arg_group=repository_arg_group, arg_type=get_enum_type(['AzureDevOpsGit', 'GitHub']), validator=validate_repository_type, help='The repository configuration type.')
+            c.argument('host_name', arg_group=repository_arg_group, help='If using github Enterprise Server, provide sever URL like https://github.mydomain.com.Do not use this option with GitHub Enterprise Cloud.')
+            c.argument('account_name', arg_group=repository_arg_group, help='GitHub account name used for the repository or Azure devops organization name')
+            c.argument('collaboration_branch', arg_group=repository_arg_group, help='The branch name where you will collaborate with others and from which you will publish.')
+            c.argument('repository_name', arg_group=repository_arg_group, help='The name of the repository to which you are connecting.')
+            c.argument('root_folder', arg_group=repository_arg_group, help='The name of the folder to the location of your Azure synapse JSON resources are imported. Default is /')
+            c.argument('project_name', arg_group=repository_arg_group, help='The project name to which you are connecting.')
+            c.argument('tenant_id', arg_group=repository_arg_group, help='The tenant id used to connect Azure devops')
 
     with self.argument_context('synapse workspace create') as c:
         c.argument('location', get_location_type(self.cli_ctx), validator=get_default_location_from_resource_group)
@@ -69,10 +108,17 @@ def load_arguments(self, _):
                                                                    '--enable-managed-virtual-network'],
                    arg_type=get_three_state_flag(),
                    help='The flag indicates whether enable managed virtual network.')
+        c.argument('prevent_data_exfiltration', arg_type=get_three_state_flag(),
+                   help='The flag indicates whether enable data exfiltration.', options_list=['--prevent-exfiltration', '--prevent-data-exfiltration'])
+        c.argument('key_identifier', help='The customer-managed key used to encrypt all data at rest in the workspace. Key identifier should be in the format of: https://{keyvaultname}.vault.azure.net/keys/{keyname}.', options_list=['--key-identifier', '--cmk'])
 
     with self.argument_context('synapse workspace check-name') as c:
         c.argument('name', arg_type=name_type, help='The name you wanted to check.')
 
+    with self.argument_context('synapse workspace activate') as c:
+        c.argument('workspace_name', id_part='name', help='The workspace name.')
+        c.argument('key_identifier', help='The Key Vault Url of the workspace encryption key. should be in the format of: https://{keyvaultname}.vault.azure.net/keys/{keyname}.')
+        c.argument('key_name', arg_type=name_type, id_part='child_name_1', help='The workspace customer-managed key display name. All existing keys can be found using /"az synapse workspace key list/" cmdlet.')
     # synapse spark pool
     with self.argument_context('synapse spark pool') as c:
         c.argument('workspace_name', id_part='name', help='The workspace name.')
@@ -102,10 +148,6 @@ def load_arguments(self, _):
         c.argument('enable_auto_pause', arg_type=get_three_state_flag(), arg_group='AutoPause',
                    help='The flag of enabling auto pause.')
         c.argument('delay', arg_group='AutoPause', help='The delay time whose unit is minute.')
-
-        # Environment Configuration
-        c.argument('library_requirements', arg_group='Environment Configuration',
-                   help='The library requirements file.')
 
         # Default Folder
         c.argument('spark_events_folder', arg_group='Default Folder', help='The Spark events folder.')
@@ -139,6 +181,11 @@ def load_arguments(self, _):
         c.argument('library_requirements', arg_group='Environment Configuration',
                    help='The library requirements file.')
         c.argument('force', arg_type=get_three_state_flag(), help='The flag of force operation.')
+
+        # Custom Libraries
+        c.argument('package_action', arg_group='Custom Libraries', arg_type=get_enum_type(['Add', 'Remove']),
+                   help='Package action must be specified when you add or remove a workspace package from a Apache Spark pool.')
+        c.argument('package', arg_group='Custom Libraries', nargs='+', help='List of workspace packages name.')
 
     # synapse sql pool
     with self.argument_context('synapse sql pool') as c:
@@ -220,14 +267,18 @@ def load_arguments(self, _):
         c.argument('sql_pool_name', arg_type=name_type, id_part='child_name_1', help='The SQL pool name.')
         c.argument('status', arg_type=get_enum_type(TransparentDataEncryptionStatus),
                    required=True, help='Status of the transparent data encryption.')
+        c.argument('transparent_data_encryption_name', options_list=['--transparent-data-encryption-name', '-d'], help='Name of the transparent data encryption.')
 
     # synapse sql pool threat-policy
     with self.argument_context('synapse sql pool threat-policy') as c:
         c.argument('sql_pool_name', arg_type=name_type, id_part='child_name_1', help='The SQL pool name.')
+        c.argument('security_alert_policy_name', options_list=['--security-alert-policy-name', '-s'],
+                   help='Name of the security alert policy.')
 
     with self.argument_context('synapse sql pool threat-policy update') as c:
         _configure_security_or_audit_policy_storage_params(c)
         notification_arg_group = 'Notification'
+        policy_arg_group = 'Policy'
 
         c.argument('state',
                    arg_group=policy_arg_group,
@@ -252,11 +303,25 @@ def load_arguments(self, _):
 
     # synapse sql pool audit-policy
     with self.argument_context('synapse sql pool audit-policy') as c:
+        c.argument('blob_auditing_policy_name', options_list=['--blob-auditing-policy-name', '-b'],
+                   help='Name of the blob auditing policy name.')
+
+    with self.argument_context('synapse sql pool audit-policy show') as c:
+        c.argument('blob_auditing_policy_name', options_list=['--blob-auditing-policy-name', '-b'],
+                   help='Name of the blob auditing policy name.')
+        c.argument('sql_pool_name', arg_type=name_type, id_part='child_name_1', help='The SQL pool name.')
+
+    with self.argument_context('synapse sql pool audit-policy update') as c:
+        c.argument('blob_auditing_policy_name', options_list=['--blob-auditing-policy-name', '-b'],
+                   help='Name of the blob auditing policy name.')
         c.argument('sql_pool_name', arg_type=name_type, id_part='child_name_1', help='The SQL pool name.')
 
     for scope in ['synapse sql pool audit-policy', 'synapse sql audit-policy']:
         with self.argument_context(scope + ' update') as c:
             _configure_security_or_audit_policy_storage_params(c)
+
+            policy_arg_group = 'Policy'
+
             c.argument('storage_account_subscription_id', arg_group=storage_arg_group,
                        options_list=['--storage-subscription'],
                        help='The subscription id of storage account')
@@ -279,11 +344,128 @@ def load_arguments(self, _):
                        type=int,
                        arg_group=policy_arg_group,
                        help='The number of days to retain audit logs.')
+            c.argument('blob_storage_target_state',
+                       arg_group=storage_arg_group,
+                       options_list=['--blob-storage-target-state', '--bsts'],
+                       configured_default='sql-server',
+                       help='Indicate whether blob storage is a destination for audit records.',
+                       arg_type=get_enum_type(BlobAuditingPolicyState))
+            c.argument('log_analytics_target_state',
+                       arg_group=log_analytics_arg_group,
+                       options_list=['--log-analytics-target-state', '--lats'],
+                       configured_default='sql-server',
+                       help='Indicate whether log analytics is a destination for audit records.',
+                       arg_type=get_enum_type(BlobAuditingPolicyState))
+            c.argument('log_analytics_workspace_resource_id',
+                       arg_group=log_analytics_arg_group,
+                       options_list=['--log-analytics-workspace-resource-id', '--lawri'],
+                       configured_default='sql-server',
+                       help='The workspace ID (resource ID of a Log Analytics workspace) for a Log Analytics workspace '
+                            'to which you would like to send Audit Logs.')
+            c.argument('event_hub_target_state',
+                       arg_group=event_hub_arg_group,
+                       options_list=['--event-hub-target-state', '--ehts'],
+                       configured_default='sql-server',
+                       help='Indicate whether event hub is a destination for audit records.',
+                       arg_type=get_enum_type(BlobAuditingPolicyState))
+            c.argument('event_hub_authorization_rule_id',
+                       arg_group=event_hub_arg_group,
+                       options_list=['--event-hub-authorization-rule-id', '--ehari'],
+                       configured_default='sql-server',
+                       help='The resource Id for the event hub authorization rule.')
+            c.argument('event_hub',
+                       arg_group=event_hub_arg_group,
+                       options_list=['--event-hub', '--eh'],
+                       configured_default='sql-server',
+                       help='The name of the event hub. If none is specified '
+                            'when providing event_hub_authorization_rule_id, the default event hub will be selected.'
+                       )
 
     with self.argument_context('synapse sql audit-policy update') as c:
+        c.argument('blob_auditing_policy_name', options_list=['--blob-auditing-policy-name', '-b'],
+                   help='Name of the blob auditing policy name.')
         c.argument('queue_delay_milliseconds', type=int,
                    options_list=['--queue-delay-time', '--queue-delay-milliseconds'],
                    help='The amount of time in milliseconds that can elapse before audit actions are forced to be processed')
+
+        c.argument('storage_account',
+                   options_list=['--storage-account'],
+                   arg_group=storage_arg_group,
+                   help='Name of the storage account.')
+
+        c.argument('storage_account_access_key',
+                   options_list=['--storage-key'],
+                   arg_group=storage_arg_group,
+                   help='Access key for the storage account.')
+
+        c.argument('storage_endpoint',
+                   arg_group=storage_arg_group,
+                   help='The storage account endpoint.')
+        _configure_security_policy_storage_params(c)
+
+        policy_arg_group = 'Policy'
+
+        c.argument('state',
+                   arg_group=policy_arg_group,
+                   help='Auditing policy state',
+                   arg_type=get_enum_type(BlobAuditingPolicyState))
+
+        c.argument('audit_actions_and_groups',
+                   options_list=['--actions'],
+                   arg_group=policy_arg_group,
+                   help='List of actions and action groups to audit.',
+                   nargs='+')
+
+        c.argument('retention_days',
+                   arg_group=policy_arg_group,
+                   help='The number of days to retain audit logs.')
+
+        c.argument('blob_storage_target_state',
+                   arg_group=storage_arg_group,
+                   options_list=['--blob-storage-target-state', '--bsts'],
+                   configured_default='sql-server',
+                   help='Indicate whether blob storage is a destination for audit records.',
+                   arg_type=get_enum_type(BlobAuditingPolicyState))
+
+        c.argument('log_analytics_target_state',
+                   arg_group=log_analytics_arg_group,
+                   options_list=['--log-analytics-target-state', '--lats'],
+                   configured_default='sql-server',
+                   help='Indicate whether log analytics is a destination for audit records.',
+                   arg_type=get_enum_type(BlobAuditingPolicyState))
+
+        c.argument('log_analytics_workspace_resource_id',
+                   arg_group=log_analytics_arg_group,
+                   options_list=['--log-analytics-workspace-resource-id', '--lawri'],
+                   configured_default='sql-server',
+                   help='The workspace ID (resource ID of a Log Analytics workspace) for a Log Analytics workspace '
+                        'to which you would like to send Audit Logs.')
+
+        c.argument('event_hub_target_state',
+                   arg_group=event_hub_arg_group,
+                   options_list=['--event-hub-target-state', '--ehts'],
+                   configured_default='sql-server',
+                   help='Indicate whether event hub is a destination for audit records.',
+                   arg_type=get_enum_type(BlobAuditingPolicyState))
+
+        c.argument('event_hub_authorization_rule_id',
+                   arg_group=event_hub_arg_group,
+                   options_list=['--event-hub-authorization-rule-id', '--ehari'],
+                   configured_default='sql-server',
+                   help='The resource Id for the event hub authorization rule.')
+
+        c.argument('event_hub',
+                   arg_group=event_hub_arg_group,
+                   options_list=['--event-hub', '--eh'],
+                   configured_default='sql-server',
+                   help='The name of the event hub. If none is specified '
+                        'when providing event_hub_authorization_rule_id, the default event hub will be selected.'
+                   )
+
+    with self.argument_context('synapse sql audit-policy') as c:
+        c.argument('blob_auditing_policy_name', options_list=['--blob-auditing-policy-name', '-b'],
+                   help='Name of the blob auditing policy name.')
+        c.argument('workspace_name', help='The workspace name.')
 
     with self.argument_context('synapse sql ad-admin') as c:
         c.argument('workspace_name', help='The workspace name.')
@@ -311,6 +493,28 @@ def load_arguments(self, _):
             c.argument('end_ip_address', help='The end IP address of the firewall rule. Must be IPv4 format. '
                                               'Must be greater than or equal to startIpAddress.')
 
+    # synapse workspace key
+    with self.argument_context('synapse workspace key') as c:
+        c.argument('workspace_name', id_part='name', help='The workspace name.')
+
+    with self.argument_context('synapse workspace key list') as c:
+        c.argument('workspace_name', id_part=None, help='The workspace name.')
+
+    for scope in ['show', 'create', 'delete']:
+        with self.argument_context('synapse workspace key ' + scope) as c:
+            c.argument('key_name', arg_type=name_type, id_part='child_name_1', help='The workspace customer-managed key display name. All existing keys can be found using /"az synapse workspace key list/" cmdlet.')
+
+    with self.argument_context('synapse workspace key create') as c:
+        c.argument('key_identifier', help='The Key Vault Url of the workspace encryption key. should be in the format of: https://{keyvaultname}.vault.azure.net/keys/{keyname}.')
+
+    # synapse workspace managed-identity
+    with self.argument_context('synapse workspace managed-identity') as c:
+        c.argument('workspace_name', id_part='name', help='The workspace name.')
+
+    for scope in ['grant-sql-access', 'revoke-sql-access', ' show-sql-access']:
+        with self.argument_context('synapse workspace managed-identity ' + scope) as c:
+            c.argument('workspace_name', id_part='name', help='The workspace name.')
+
     # synapse spark job
     for scope in ['job', 'session', 'statement']:
         with self.argument_context('synapse spark ' + scope) as c:
@@ -327,13 +531,13 @@ def load_arguments(self, _):
         c.argument('main_definition_file', help='The main file used for the job.')
         c.argument('main_class_name',
                    help='The fully-qualified identifier or the main class that is in the main definition file.')
-        c.argument('command_line_arguments', options_list=['--arguments'], nargs='+',
+        c.argument('command_line_arguments', options_list=['--arguments'], type=split, nargs='+',
                    help='Optional arguments to the job (Note: please use storage URIs for file arguments).')
         c.argument('archives', nargs='+', help='The array of archives.')
         c.argument('job_name', arg_type=name_type, help='The Spark job name.')
         c.argument('reference_files', nargs='+',
                    help='Additional files used for reference in the main definition file.')
-        c.argument('configuration', type=get_json_object, help='The configuration of Spark job.')
+        c.argument('configuration', type=shell_safe_json_parse, help='The configuration of Spark job.')
         c.argument('executors', help='The number of executors.')
         c.argument('executor_size', arg_type=get_enum_type(['Small', 'Medium', 'Large']), help='The executor size')
         c.argument('tags', arg_type=tags_type)
@@ -379,6 +583,18 @@ def load_arguments(self, _):
             c.argument('workspace_name', arg_type=workspace_name_arg_type)
             c.argument('role', arg_type=role_arg_type)
             c.argument('assignee', arg_type=assignee_arg_type)
+            c.argument('assignee_object_id', arg_type=assignee_object_id_arg_type)
+            c.argument('scope', help='A scope defines the resources or artifacts that the access applies to. Synapse supports hierarchical scopes. '
+                                     'Permissions granted at a higher-level scope are inherited by objects at a lower level. '
+                                     'In Synapse RBAC, the top-level scope is a workspace. '
+                                     'Assigning a role with workspace scope grants permissions to all applicable objects in the workspace.')
+            c.argument('item', help='Item granted access in the workspace. Using with --item-type to combine the scope of assignment')
+            c.argument('item_type', arg_type=get_enum_type(ItemType), help='Item type granted access in the workspace. Using with --item to combine the scope of assignment.')
+
+    with self.argument_context('synapse role assignment create') as c:
+        c.argument('assignee_principal_type', options_list=['--assignee-principal-type', '--assignee-type'], arg_type=get_enum_type(PrincipalType),
+                   help='use with --assignee-object-id to avoid errors caused by propagation latency in AAD Graph')
+        c.argument('assignment_id', help='Custom role assignment id in guid format, if not specified, assignment id will be randomly generated.')
 
     with self.argument_context('synapse role assignment show') as c:
         c.argument('workspace_name', arg_type=workspace_name_arg_type)
@@ -389,8 +605,20 @@ def load_arguments(self, _):
         c.argument('workspace_name', arg_type=workspace_name_arg_type)
         c.argument('role', arg_type=role_arg_type)
         c.argument('assignee', arg_type=assignee_arg_type)
+        c.argument('assignee_object_id', arg_type=assignee_object_id_arg_type)
+        c.argument('scope', help='A scope defines the resources or artifacts that the access applies to. Synapse supports hierarchical scopes. '
+                                 'Permissions granted at a higher-level scope are inherited by objects at a lower level. '
+                                 'In Synapse RBAC, the top-level scope is a workspace. '
+                                 'Using az role assignment with filter condition before executing delete operation '
+                                 'to be clearly aware of which assignments will be deleted.')
         c.argument('ids', nargs='+',
                    help='space-separated role assignment ids. You should not provide --role or --assignee when --ids is provided.')
+        c.argument('item', help='Item granted access in the workspace. Using with --item-type to combine the scope of assignment.'
+                                'Using az role assignment with filter condition before executing delete operation '
+                                'to be clearly aware of which assignments will be deleted.')
+        c.argument('item_type', arg_type=get_enum_type(ItemType), help='Item type granted access in the workspace. Using with --item to combine the scope of assignment.'
+                                                                       'Using az role assignment with filter condition before executing delete operation '
+                                                                       'to be clearly aware of which assignments will be deleted.')
 
     with self.argument_context('synapse role definition show') as c:
         c.argument('workspace_name', arg_type=workspace_name_arg_type)
@@ -398,9 +626,13 @@ def load_arguments(self, _):
 
     with self.argument_context('synapse role definition list') as c:
         c.argument('workspace_name', arg_type=workspace_name_arg_type)
+        c.argument('is_built_in', arg_type=get_three_state_flag(), help='Is a Synapse Built-In Role or not.')
+
+    with self.argument_context('synapse role scope list') as c:
+        c.argument('workspace_name', arg_type=workspace_name_arg_type)
 
     # synapse artifacts linked-service
-    for scope in ['create', 'set']:
+    for scope in ['create', 'update', 'set']:
         with self.argument_context('synapse linked-service ' + scope) as c:
             c.argument('workspace_name', arg_type=workspace_name_arg_type)
             c.argument('linked_service_name', arg_type=name_type, help='The linked service name.')
@@ -418,7 +650,7 @@ def load_arguments(self, _):
         c.argument('linked_service_name', arg_type=name_type, help='The linked service name.')
 
     # synapse artifacts dataset
-    for scope in ['create', 'set']:
+    for scope in ['create', 'update', 'set']:
         with self.argument_context('synapse dataset ' + scope) as c:
             c.argument('workspace_name', arg_type=workspace_name_arg_type)
             c.argument('dataset_name', arg_type=name_type, help='The dataset name.')
@@ -436,7 +668,7 @@ def load_arguments(self, _):
         c.argument('dataset_name', arg_type=name_type, help='The dataset name.')
 
     # synapse artifacts pipeline
-    for scope in ['create', 'set']:
+    for scope in ['create', 'update', 'set']:
         with self.argument_context('synapse pipeline ' + scope) as c:
             c.argument('workspace_name', arg_type=workspace_name_arg_type)
             c.argument('pipeline_name', arg_type=name_type, help='The pipeline name.')
@@ -501,7 +733,7 @@ def load_arguments(self, _):
         c.argument('order_by', action=AddOrderBy, nargs='*', help='List of OrderBy option.')
 
     # synapse artifacts trigger
-    for scope in ['create', 'set']:
+    for scope in ['create', 'update', 'set']:
         with self.argument_context('synapse trigger ' + scope) as c:
             c.argument('workspace_name', arg_type=workspace_name_arg_type)
             c.argument('trigger_name', arg_type=name_type, help='The trigger name.')
@@ -538,8 +770,17 @@ def load_arguments(self, _):
         c.argument('workspace_name', arg_type=workspace_name_arg_type)
         c.argument('trigger_name', arg_type=name_type, help='The trigger name.')
 
+    with self.argument_context('synapse trigger wait') as c:
+        c.argument('workspace_name', arg_type=workspace_name_arg_type)
+        c.argument('trigger_name', arg_type=name_type, help='The trigger name.')
+
     # synapse artifacts trigger run
     with self.argument_context('synapse trigger-run rerun') as c:
+        c.argument('workspace_name', arg_type=workspace_name_arg_type)
+        c.argument('trigger_name', arg_type=name_type, help='The trigger name.')
+        c.argument('run_id', help='The trigger run identifier.')
+
+    with self.argument_context('synapse trigger-run cancel') as c:
         c.argument('workspace_name', arg_type=workspace_name_arg_type)
         c.argument('trigger_name', arg_type=name_type, help='The trigger name.')
         c.argument('run_id', help='The trigger run identifier.')
@@ -601,6 +842,24 @@ def load_arguments(self, _):
         c.argument('workspace_name', arg_type=workspace_name_arg_type)
         c.argument('notebook_name', arg_type=name_type, help='The notebook name.')
 
+    # synapse artifacts library
+    with self.argument_context('synapse workspace-package') as c:
+        c.argument('workspace_name', arg_type=workspace_name_arg_type)
+        c.ignore('progress_callback')
+
+    for scope in ['show', 'delete']:
+        with self.argument_context('synapse workspace-package ' + scope) as c:
+            c.argument('package_name', arg_type=name_type, options_list=['--package-name', '--package', '--name', '-n'], help='The workspace package name.')
+
+    with self.argument_context('synapse workspace-package upload') as c:
+        c.argument('package', options_list=('--package', '--file', '-f'), type=file_type, completer=FilesCompleter(),
+                   help='Specifies a local file path for a file to upload as workspace package.')
+        c.extra('no_progress', progress_type)
+
+    with self.argument_context('synapse workspace-package upload-batch') as c:
+        c.argument('source', options_list=('--source', '-s'), help='The directory where the files to be uploaded are located.')
+        c.extra('no_progress', progress_type)
+
     # synapse integration runtime
     with self.argument_context('synapse integration-runtime') as c:
         c.argument('workspace_name', arg_type=workspace_name_arg_type, id_part='name')
@@ -613,7 +872,7 @@ def load_arguments(self, _):
         with self.argument_context('synapse integration-runtime ' + scope) as c:
             c.argument('integration_runtime_name', arg_type=name_type, help='The integration runtime name.', id_part=None)
 
-    for scope in ['show', 'create', 'delete', 'wait', 'update', 'upgrade', 'regenerate-auth-key', 'get-monitoring-data', 'sync-credentials', 'get-connection-info', 'get-status']:
+    for scope in ['show', 'create', 'managed create', 'self-hosted create', 'delete', 'wait', 'update', 'upgrade', 'regenerate-auth-key', 'get-monitoring-data', 'sync-credentials', 'get-connection-info', 'get-status', 'start', 'stop']:
         with self.argument_context('synapse integration-runtime ' + scope) as c:
             c.argument('integration_runtime_name', arg_type=name_type, help='The integration runtime name.', id_part='child_name_1')
 
@@ -628,6 +887,21 @@ def load_arguments(self, _):
                    help='Compute type of the data flow cluster which will execute data flow job.')
         c.argument('core_count', arg_group='Managed', help='Core count of the data flow cluster which will execute data flow job.')
         c.argument('time_to_live', arg_group='Managed', help='Time to live (in minutes) setting of the data flow cluster which will execute data flow job.')
+
+    with self.argument_context('synapse integration-runtime managed create') as c:
+        c.argument('description', help='The integration runtime description.')
+        c.argument('if_match', help='ETag of the integration runtime entity. Should only be specified for update, for '
+                   'which it should match existing entity or can be * for unconditional update.')
+        c.argument('location', help='The integration runtime location.')
+        c.argument('compute_type', arg_type=get_enum_type(['General', 'MemoryOptimized', 'ComputeOptimized']),
+                   help='Compute type of the data flow cluster which will execute data flow job.')
+        c.argument('core_count', help='Core count of the data flow cluster which will execute data flow job.')
+        c.argument('time_to_live', help='Time to live (in minutes) setting of the data flow cluster which will execute data flow job.')
+
+    with self.argument_context('synapse integration-runtime self-hosted create') as c:
+        c.argument('description', help='The integration runtime description.')
+        c.argument('if_match', help='ETag of the integration runtime entity. Should only be specified for update, for '
+                   'which it should match existing entity or can be * for unconditional update.')
 
     with self.argument_context('synapse integration-runtime update') as c:
         c.argument('auto_update', arg_type=get_enum_type(['On', 'Off']), help='Enable or disable the self-hosted integration runtime auto-update.')
@@ -647,3 +921,35 @@ def load_arguments(self, _):
     with self.argument_context('synapse integration-runtime-node update') as c:
         c.argument('concurrent_jobs_limit', options_list=['--concurrent-jobs'], help='The number of concurrent jobs permitted to '
                    'run on the integration runtime node. Values between 1 and maxConcurrentJobs are allowed.')
+        c.argument('auto_update', arg_type=get_enum_type(['On', 'Off']),
+                   help='Enable or disable the self-hosted integration runtime auto-update.')
+        c.argument('update_delay_offset',
+                   help='The time of the day for the self-hosted integration runtime auto-update.')
+
+    # synapse managed private endpoints
+    for scope in ['show', 'create', 'delete']:
+        with self.argument_context('synapse managed-private-endpoints ' + scope) as c:
+            c.argument('workspace_name', arg_type=workspace_name_arg_type, id_part='name')
+            c.argument('managed_private_endpoint_name', options_list=['--pe-name'], help='The managed private endpoint name.')
+
+    with self.argument_context('synapse managed-private-endpoints list') as c:
+        c.argument('workspace_name', arg_type=workspace_name_arg_type)
+
+    with self.argument_context('synapse managed-private-endpoints create') as c:
+        c.argument('private_Link_Resource_Id', options_list=['--resource-id'], help='The ARM resource ID of the resource to which the managed private endpoint is created. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}')
+        c.argument('group_Id', help='The groupId to which the managed private endpoint is created')
+
+    # synapse artifacts spark job definition
+    with self.argument_context('synapse spark-job-definition list') as c:
+        c.argument('workspace_name', arg_type=workspace_name_arg_type)
+
+    for scope in ['show', 'wait', 'delete']:
+        with self.argument_context('synapse spark-job-definition ' + scope) as c:
+            c.argument('workspace_name', arg_type=workspace_name_arg_type)
+            c.argument('spark_job_definition_name', options_list=['--name', '-n'], help='The spark job definition name')
+
+    for scope in ['create', 'update']:
+        with self.argument_context('synapse spark-job-definition ' + scope) as c:
+            c.argument('workspace_name', arg_type=workspace_name_arg_type)
+            c.argument('spark_job_definition_name', options_list=['--name', '-n'], help='The spark job definition name')
+            c.argument('definition_file', arg_type=definition_file_arg_type)
