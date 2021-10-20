@@ -1,3 +1,12 @@
+azure-cli (2.29.0-0ubuntu1) impish; urgency=medium
+
+  * New upstream version 2.29.0
+  * Drop d/gbp.conf for now. ^.^
+  * Drop d/p/crypto_dependency.patch;
+    doesn't apply anymore.
+
+ -- Utkarsh Gupta <utkarsh@debian.org>  Tue, 19 Oct 2021 19:05:50 +0530
+
 azure-cli (2.18.0-2) unstable; urgency=medium
 
   * Add build-dependency on antlr4
